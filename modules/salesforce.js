@@ -171,5 +171,5 @@ exports.org = org;
 exports.findProperties = findProperties;
 exports.findPropertiesByCategory = findPropertiesByCategory;
 exports.findPriceChanges = findPriceChanges;
-exports.createCase = createCase;
 exports.createLead - createLead;
+exports.createCase = createCase;
