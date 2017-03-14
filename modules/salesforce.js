@@ -156,7 +156,7 @@ let createLead = (propertyId, customerName, customerId) => {
         org.insert({sobject: c}, err => {
             if (err) {
                 console.error(err);
-                reject("An error occurred while creating a case");
+                reject("An error occurred while creating a lead");
             } else {
                 resolve(c);
             }
