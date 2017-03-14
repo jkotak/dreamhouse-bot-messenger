@@ -119,8 +119,8 @@ exports.formatAppointment = property => {
 exports.formatBroker = broker => {
     let elements = [];
     elements.push({
-        title: "Caroline Kingsley",
-        subtitle: "Senior Broker  · 617-219-6363 · ckingsley@dreamhouse.com",
+        title: "Richard Diebel",
+        subtitle: "Senior Broker  · 617-219-6363 · kotakj@gmail.com",
         "image_url": "https://s3-us-west-1.amazonaws.com/sfdc-demo/messenger/caroline_500x260.png",
         "buttons": [
             {
