@@ -126,7 +126,7 @@ exports.formatBroker = broker => {
             {
                 "type": "postback",
                 "title": "Contact Me",
-                "payload": "contact_me"
+                "payload": "contact_me," + property.Id
             }]
     });
     return {
