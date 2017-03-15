@@ -151,4 +151,3 @@ exports.findProperties = findProperties;
 exports.findPropertiesByCategory = findPropertiesByCategory;
 exports.findPriceChanges = findPriceChanges;
 exports.createLead - createLead;
-exports.createCase = createCase;
