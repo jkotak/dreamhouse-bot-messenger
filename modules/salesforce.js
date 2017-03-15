@@ -149,7 +149,7 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
         c.set('firstname', `Contact ${customerFirstName} (Facebook Customer)`);
-        c.set('lasttname', customerLastName);
+        c.set('lastname', customerLastName);
         c.set('description', "Facebook id: " + customerId);
         c.set('LeadSource', 'Facebook Bot');
         c.set('status', 'New');
@@ -158,7 +158,7 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
         org.insert({sobject: c}, err => {
             if (err) {
                 console.error(err);
-                reject("An error occurred while creating a case");
+                reject("An error occurred while creating a lead");
             } else {
                 resolve(c);
             }
