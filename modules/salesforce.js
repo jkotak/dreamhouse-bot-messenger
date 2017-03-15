@@ -121,28 +121,7 @@ let findPriceChanges = () => {
 };
 
 
-let createCase = (propertyId, customerName, customerId) => {
-
-    return new Promise((resolve, reject) => {
-        let c = nforce.createSObject('Case');
-        c.set('subject', `Contact ${customerName} (Facebook Customer)`);
-        c.set('description', "Facebook id: " + customerId);
-        c.set('origin', 'Facebook Bot');
-        c.set('status', 'New');
-        c.set('Property__c', propertyId);
-
-        org.insert({sobject: c}, err => {
-            if (err) {
-                console.error(err);
-                reject("An error occurred while creating a case");
-            } else {
-                resolve(c);
-            }
-        });
-    });
-};
-
-    let createLead = (propertyId, customerName, customerId) => {
+let createLead = (propertyId, customerName, customerId) => {
 
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Lead');
@@ -161,8 +140,8 @@ let createCase = (propertyId, customerName, customerId) => {
             }
         });
     });
-    
 };
+
 
 
 login();
