@@ -25,11 +25,6 @@ exports.formatProperties = properties => {
                         "type": "postback",
                         "title": "Contact me",
                         "payload": "contact_me," + property.getId()
-                    },
-                    {
-                        "type":"phone_number",
-                        "title":"Call Loan Officer",
-                        "payload":"+19494384950"
                     }
                 ]
             })
