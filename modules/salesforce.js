@@ -140,6 +140,7 @@ let createCase = (propertyId, customerName, customerId) => {
             }
         });
     });
+};
 
     let createLead = (propertyId, customerName, customerId) => {
 
