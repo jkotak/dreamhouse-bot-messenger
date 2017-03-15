@@ -69,11 +69,6 @@ exports.formatPriceChanges = priceChanges => {
                         "type": "postback",
                         "title": "Contact me",
                         "payload": "contact_me," + property.Id
-                    },
-                    {
-                        "type":"phone_number",
-                        "title":"Call Representative",
-                        "payload":"+19494384950"
                     }
                 ]
             })
