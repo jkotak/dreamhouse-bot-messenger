@@ -120,7 +120,7 @@ exports.formatBroker = broker => {
     let elements = [];
     elements.push({
         title: "Stephanie Diebel",
-        subtitle: "Senior Broker  · 617-219-6363 · kotakj@gmail.com",
+        subtitle: "Senior Realtor  · 617-219-6363 · kotakj@gmail.com",
         "image_url": "https://s3-us-west-1.amazonaws.com/sfdc-demo/messenger/caroline_500x260.png",
         "buttons": [
             {
