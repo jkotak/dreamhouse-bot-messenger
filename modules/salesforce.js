@@ -144,11 +144,12 @@ let createCase = (propertyId, customerName, customerId) => {
 
 };
 
-let createLead = (propertyId, customerName, customerId) => {
+let createLead = (propertyId, customerFirstName, customerLastName, customerId) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
-        c.set('lastname', `Contact ${customerName} (Facebook Customer)`);
+        c.set('firstname', `Contact ${customerFirstName} (Facebook Customer)`);
+        c.set('firstname', customerLastName);
         c.set('description', "Facebook id: " + customerId);
         c.set('LeadSource', 'Facebook Bot');
         c.set('status', 'New');
