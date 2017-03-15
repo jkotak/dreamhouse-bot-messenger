@@ -22,9 +22,9 @@ exports.formatProperties = properties => {
                         "payload": "contact_broker," + property.getId()
                     },
                     {
-                        "type": "postback",
+                        "type": "phone_number",
                         "title": "Contact me",
-                        "payload": "contact_me," + property.getId()
+                        "payload": "+19493941937"
                     }
                 ]
             })
