@@ -149,7 +149,7 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
         c.set('firstname', `Contact ${customerFirstName} (Facebook Customer)`);
-        c.set('firstname', customerLastName);
+        c.set('lasttname', customerLastName);
         c.set('description', "Facebook id: " + customerId);
         c.set('LeadSource', 'Facebook Bot');
         c.set('status', 'New');
