@@ -24,7 +24,7 @@ exports.contact_me = (sender, values) => {
     let propertyId = values[1];
     messenger.getUserInfo(sender).then(response => {
         salesforce.createLead(propertyId, response.first_name, response.first_name, sender).then(() => {
-            messenger.send({text: `Thanks for your interest, ${response.first_name}. I asked a realtor to contact you asap.`}, sender);
+            messenger.send({text: `Thanks for your interest, ${response.first_name}. I asked the listing agent to contact you asap.`}, sender);
         });
     });
 
