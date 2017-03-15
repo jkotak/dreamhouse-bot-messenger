@@ -18,12 +18,12 @@ exports.formatProperties = properties => {
                     },
                     {
                         "type": "postback",
-                        "title": "View broker info",
+                        "title": "View realtor info",
                         "payload": "contact_broker," + property.getId()
                     },
                     {
                         "type": "postback",
-                        "title": "Contact me",
+                        "title": "Contact loan officer",
                         "payload": "contact_me," + property.getId()
                     }
                 ]
@@ -57,12 +57,12 @@ exports.formatPriceChanges = priceChanges => {
                     },
                     {
                         "type": "postback",
-                        "title": "View broker info",
+                        "title": "View realtor info",
                         "payload": "contact_broker," + property.Id
                     },
                     {
                         "type": "postback",
-                        "title": "Contact me",
+                        "title": "Contact loan officer",
                         "payload": "contact_me," + property.Id
                     }
                 ]
