@@ -121,10 +121,11 @@ let findPriceChanges = () => {
 };
 
 
-let createLead = (propertyId, customerName, customerId) => {
+
+let createCase = (propertyId, customerName, customerId) => {
 
     return new Promise((resolve, reject) => {
-        let c = nforce.createSObject('Lead');
+         let c = nforce.createSObject('Lead');
         c.set('lastname', `Contact ${customerName} (Facebook Customer)`);
         c.set('description', "Facebook id: " + customerId);
         c.set('LeadSource', 'Facebook Bot');
@@ -134,15 +135,14 @@ let createLead = (propertyId, customerName, customerId) => {
         org.insert({sobject: c}, err => {
             if (err) {
                 console.error(err);
-                reject("An error occurred while creating a lead");
+                reject("An error occurred while creating a case");
             } else {
                 resolve(c);
             }
         });
     });
+
 };
-
-
 
 login();
 
