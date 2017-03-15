@@ -141,9 +141,7 @@ let createCase = (propertyId, customerName, customerId) => {
         });
     });
 
-};
-
-let createLead = (propertyId, customerName, customerId) => {
+    let createLead = (propertyId, customerName, customerId) => {
 
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Lead');
@@ -162,8 +160,9 @@ let createLead = (propertyId, customerName, customerId) => {
             }
         });
     });
-
+    
 };
+
 
 login();
 
