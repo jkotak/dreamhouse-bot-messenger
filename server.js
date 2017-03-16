@@ -37,6 +37,8 @@ app.post('/webhook', (req, res) => {
                 } else {
                     console.log("Handler " + result.handlerName + " is not defined");
                 }
+            }else{
+                sendMessage({text: `Sorry I don't understand that command. For list of commands type "help"`}, sender);
             }
         } else if (event.postback) {
             let payload = event.postback.payload.split(",");
