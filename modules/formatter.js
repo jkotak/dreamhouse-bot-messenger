@@ -73,9 +73,6 @@ exports.requestLocation = location => {
             }
         }
     };
-    return {
-        
-    };
 };
 
 exports.formatPriceChanges = priceChanges => {
