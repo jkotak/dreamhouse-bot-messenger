@@ -5,31 +5,43 @@ let moment = require("moment"),
 
 exports.formatProperties = properties => {
     let elements = [];
-    properties.forEach(property => {
-            elements.push({
-                title: property.get("Title__c"),
-                subtitle: `${property.get("Address__c")}, ${property.get("City__c")} ${property.get("State__c")} · ${numeral(property.get("Price__c")).format('$0,0')}`,
-                "image_url": property.get("Picture__c"),
-                "buttons": [
-                    {
-                        "type": "postback",
-                        "title": "Schedule visit",
-                        "payload": "schedule_visit," + property.getId()
-                    },
-                    {
-                        "type": "postback",
-                        "title": "View realtor info",
-                        "payload": "contact_broker," + property.getId()
-                    },
-                    {
-                        "type": "postback",
-                        "title": "Contact loan officer",
-                        "payload": "contact_me," + property.getId()
-                    }
-                ]
-            })
-        }
-    );
+    if(properties.length==0){
+        elements.push({
+            subtitle: "Sorry, no house found witht your criteria.",
+            "buttons": [
+                {
+                    "type": "postback",
+                    "title": "Contact Loan Officer",
+                    "payload": "contact_me"
+                }]
+        });
+    }else{
+        properties.forEach(property => {
+                elements.push({
+                    title: property.get("Title__c"),
+                    subtitle: `${property.get("Address__c")}, ${property.get("City__c")} ${property.get("State__c")} · ${numeral(property.get("Price__c")).format('$0,0')}`,
+                    "image_url": property.get("Picture__c"),
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Schedule visit",
+                            "payload": "schedule_visit," + property.getId()
+                        },
+                        {
+                            "type": "postback",
+                            "title": "View realtor info",
+                            "payload": "contact_broker," + property.getId()
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Contact loan officer",
+                            "payload": "contact_me," + property.getId()
+                        }
+                    ]
+                })
+            }
+        );
+    }
     return {
         "attachment": {
             "type": "template",
