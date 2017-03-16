@@ -8,7 +8,7 @@ exports.searchHouse = (sender) => {
     messenger.send({text: `OK, looking for houses for sale around you...`}, sender);
     salesforce.findProperties().then(properties => {
         if(properties.length==0)
-            messenger.send({text: `Sorry, we couldn't find any homes around you...`}, sender);
+            messenger.send({text: `Sorry, we couldn't find any houses around you...`}, sender);
         else
             messenger.send(formatter.formatProperties(properties), sender);
     });
