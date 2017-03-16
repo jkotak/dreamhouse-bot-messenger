@@ -5,7 +5,10 @@ let moment = require("moment"),
 
 exports.formatProperties = properties => {
     let elements = [];
-    if(properties.length==0){}
+    console.log('Length of this properties object'+properties.length);
+    if(properties.length==0){
+        console.log('Empty properties');
+    }
     properties.forEach(property => {
             elements.push({
                 title: property.get("Title__c"),
