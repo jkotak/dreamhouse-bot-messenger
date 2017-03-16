@@ -62,3 +62,7 @@ exports.hi = (sender) => {
 exports.help = (sender) => {
     messenger.send({text: `You can ask me questions like "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes"`}, sender);
 };
+
+exports.catchall = (sender) => {
+    messenger.send({text: `Sorry I don't understand that command. For list of commands please type "help"`}, sender);
+};
