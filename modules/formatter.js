@@ -6,15 +6,21 @@ let moment = require("moment"),
 exports.formatProperties = properties => {
     let elements = [];
     if(properties.length==0){
-        elements.push({
-            "text": "Sorry, no house found with that criteria. Do you want to contact a loan officer?",
-            "buttons": [
-                {
-                    "type": "postback",
-                    "title": "Contact Loan Officer",
-                    "payload": "contact_me"
-                }]
-        });
+        return {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": "Sorry, no house found with that criteria. Do you want to contact a loan officer?",
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Contact Loan Officer",
+                            "payload": "contact_me"
+                        }]
+                }
+            }
+        };
     }else{
         properties.forEach(property => {
                 elements.push({
@@ -41,16 +47,16 @@ exports.formatProperties = properties => {
                 })
             }
         );
-    }
-    return {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": elements
+        return {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": elements
+                }
             }
-        }
-    };
+        };
+    }
 };
 
 exports.formatPriceChanges = priceChanges => {
