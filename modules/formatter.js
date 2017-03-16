@@ -59,6 +59,17 @@ exports.formatProperties = properties => {
     }
 };
 
+exports.requestLocation = location => {
+    return {
+        "text":"Please share your location:",
+        "quick_replies":[
+          {
+            "content_type":"location",
+          }
+        ]
+    };
+};
+
 exports.formatPriceChanges = priceChanges => {
     let elements = [];
     priceChanges.forEach(priceChange => {
