@@ -64,5 +64,5 @@ exports.help = (sender) => {
 };
 
 exports.catchall = (sender) => {
-    messenger.send({text: `Sorry I don't understand that command. For list of commands please type "help"`}, sender);
+    messenger.send({text: `Sorry, I don't understand that command. For list of commands please type "help"`}, sender);
 };
