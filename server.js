@@ -36,11 +36,11 @@ app.post('/webhook', (req, res) => {
                     handler(sender, result.match);
                 } else {
                     console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
-                    catchall(sender,'catchall');
+                    handler.catchall(sender,'catchall');
                 }
             }else {
                     console.log("Command is not defined. Calling catch all function.");
-                    catchall(sender,'catchall');
+                    handler.catchall(sender,'catchall');
             }
         } else if (event.postback) {
             let payload = event.postback.payload.split(",");
