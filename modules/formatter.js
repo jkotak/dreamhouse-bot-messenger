@@ -7,7 +7,7 @@ exports.formatProperties = properties => {
     let elements = [];
     if(properties.length==0){
         elements.push({
-            subtitle: "Sorry, no house found witht your criteria.",
+            text: "Sorry, no house found witht your criteria. Do you want to contact a loan officer?",
             "buttons": [
                 {
                     "type": "postback",
