@@ -5,7 +5,7 @@ let moment = require("moment"),
 
 exports.formatProperties = properties => {
     let elements = [];
-    if(properties.isEmpty()){
+    if(isEmpty(properties)) {
         return {
              "message": {
                 "text": "hello, world!"
