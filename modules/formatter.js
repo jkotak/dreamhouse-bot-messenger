@@ -5,13 +5,11 @@ let moment = require("moment"),
 
 exports.formatProperties = properties => {
     let elements = [];
-    if(isEmpty(properties)) {
-        return {
+    return {
              "message": {
                 "text": "hello, world!"
               }
         };
-    }
     properties.forEach(property => {
             elements.push({
                 title: property.get("Title__c"),
