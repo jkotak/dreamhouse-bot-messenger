@@ -7,6 +7,7 @@ let salesforce = require('./salesforce'),
 exports.searchHouse = (sender) => {
     messenger.send({text: `OK, looking for houses for sale around you...`}, sender);
     salesforce.findProperties().then(properties => {
+        console.log('properties length' + proprties.length);
         messenger.send(formatter.formatProperties(properties), sender);
     });
 };
