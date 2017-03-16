@@ -5,10 +5,7 @@ let salesforce = require('./salesforce'),
     formatter = require('./formatter');
 
 exports.searchHouse = (sender) => {
-    messenger.send({text: `OK, looking for houses for sale around you...`}, sender);
-    salesforce.findProperties().then(properties => {
-        messenger.send(formatter.formatProperties(properties), sender);
-    });
+    messenger.send(formatter.requestLocation(), sender);
 };
 
 exports.searchHouse_City = (sender, values) => {
