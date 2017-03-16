@@ -61,17 +61,14 @@ exports.formatProperties = properties => {
 
 exports.requestLocation = location => {
     return {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "text":"Please share your location:",
-                "quick_replies":[
-                  {
-                    "content_type":"location",
-                  }
-                ]
-            }
-        }
+        "text":"Please share your location:",
+        "quick_replies":[
+          {
+              "content_type":"location",
+              "title":"Send Location",
+              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_LOCATION"
+          }
+        ]
     };
 };
 
