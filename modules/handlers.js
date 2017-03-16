@@ -5,6 +5,7 @@ let salesforce = require('./salesforce'),
     formatter = require('./formatter');
 
 exports.searchHouse = (sender) => {
+    console.log('Checking for location');
     messenger.send(formatter.requestLocation(), sender);
 };
 
