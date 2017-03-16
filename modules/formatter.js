@@ -61,12 +61,20 @@ exports.formatProperties = properties => {
 
 exports.requestLocation = location => {
     return {
-        "text":"Please share your location:",
-        "quick_replies":[
-          {
-            "content_type":"location",
-          }
-        ]
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "text":"Please share your location:",
+                "quick_replies":[
+                  {
+                    "content_type":"location",
+                  }
+                ]
+            }
+        }
+    };
+    return {
+        
     };
 };
 
