@@ -22,20 +22,21 @@ exports.address = (latitude, longitude) => {
                 if(response.statusCode ===200){
                     try {
                         //parse the data (read the data from a string in a program friendly way
+                        console.log('Response: '+response);
                         var profile = JSON.parse(body);
                         //print out the data
-                        response('San Francisco');     
+                        resolve('San Francisco');     
                     } catch(error) {
                         //handling a parse error
-                        reject(response.statusCode);
+                        reject(response);
                     }
                 } else {
                     //handling status code error
-                   reject(response.statusCode);
+                   reject(response);
                 }
             });
           });
           //Connection Error
-           reject(response.statusCode);
+           reject(request);
     });
 };
