@@ -1,6 +1,7 @@
 "use strict";
 
-var geocoder = require('geocoder');
+var geocoder = require('geocoder'),
+cities = require("cities");
 
 exports.classify = imageURL => new Promise((resolve, reject) => {
     setTimeout(() => {
