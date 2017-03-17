@@ -28,6 +28,7 @@ exports.address = (latitude, longitude) => {
                         console.log('Response: '+response);
                         var profile = JSON.parse(body);
                         //print out the data
+                        console.log(profile);
                         resolve(profile);     
                     } catch(error) {
                         //handling a parse error
