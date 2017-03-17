@@ -21,7 +21,7 @@ exports.processUpload = (sender, attachments) => {
                 .then(city => {
                     console.log(city);
                     messenger.send({text: `${city}, what a beautiful city! Looking for houses within 10 miles of your vicinity...`}, sender);
-                    return salesforce.findProperties({city: values[1]})
+                    return salesforce.findProperties({city: city})
                 })
                 .then(properties => messenger.send(formatter.formatProperties(properties), sender))
         }
