@@ -16,7 +16,10 @@ exports.processUpload = (sender, attachments) => {
                     return salesforce.findPropertiesByCategory(houseType)
                 })
                 .then(properties => messenger.send(formatter.formatProperties(properties), sender))
-        } else {
+        }else if (attachment.type === "location") {
+            console.log('This is a location' + attachment);
+        }
+        else {
             messenger.send({text: 'This type of attachment is not supported'}, sender);
         }
     }
