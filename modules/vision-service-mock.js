@@ -1,6 +1,6 @@
 "use strict";
 
-var cities = require("cities")
+var geocoder = require('geocoder');
 
 exports.classify = imageURL => new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -10,6 +10,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
 exports.address = (latitude, longitude) => {
     return new Promise(function (resolve, reject) {
-       cities.gps_lookup(37.790293414181, 37.790293414181);
+      geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
+        });
     });
 };
