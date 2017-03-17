@@ -18,10 +18,9 @@ exports.processUpload = (sender, attachments) => {
                 .then(properties => messenger.send(formatter.formatProperties(properties), sender))
         }else if (attachment.type === "location") {
             console.log('This is a location' + attachment.payload.coordinates.lat);
-            messenger.send({text: 'OK, looking for houses within 5 miles of that location...'}, sender);
             visionService.address( attachment.payload.coordinates.lat, attachment.payload.coordinates.long)
                 .then(properties => {
-                    messenger.send({text: `Done`}, sender);
+                    messenger.send({text: '"${properties}", what a beautiful city! OK, looking for houses within 5 miles of that location...'}, sender);
                     return false;     
                 })
         }
