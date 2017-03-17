@@ -28,7 +28,9 @@ exports.address = (latitude, longitude) => {
                         console.log('Response: '+response);
                         var profile = JSON.parse(body);
                         //print out the data
+                        console.log(profile);
                         for (var i = 0; i < profile[0].address_components.length; i++){
+                            console.log(profile[0]);
                             var addr = profile[0].address_components[i];
                             console.log(addr);
                             if (addr.types[0] == 'locality') 
