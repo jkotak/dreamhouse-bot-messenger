@@ -17,7 +17,7 @@ exports.processUpload = (sender, attachments) => {
                 })
                 .then(properties => messenger.send(formatter.formatProperties(properties), sender))
         }else if (attachment.type === "location") {
-            console.log('This is a location' + attachment.coordinates.lat);
+            console.log('This is a location' + attachment.location.coordinates.lat);
         }
         else {
             messenger.send({text: 'This type of attachment is not supported'}, sender);
