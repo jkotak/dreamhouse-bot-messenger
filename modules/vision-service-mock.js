@@ -40,7 +40,5 @@ exports.address = (latitude, longitude) => {
                 }
             });
           });
-          //Connection Error
-           reject(request);
     });
 };
