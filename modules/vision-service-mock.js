@@ -29,13 +29,12 @@ exports.address = (latitude, longitude) => {
                         var profile = JSON.parse(body);
                         //print out the data
                         console.log(profile.results[0]);
-                        for (var i = 0; i < profile.result[0].address_components.length; i++){
-                            console.log(profile.results[0]);
-                            var addr = profile.results[0].address_components[i];
-                            console.log(addr);
-                            if (addr.types[0] == 'locality') 
-                              resolve(addr.long_name);
-                        }   
+                        profile.result[0].address_component.forEach(component => {
+                                if(component.get('types')=='locality')
+                                    resolve(component.get('long_name'));
+                            }
+                        );
+                       
                         reject(profile);
                     } catch(error) {
                         //handling a parse error
