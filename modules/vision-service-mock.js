@@ -28,45 +28,9 @@ exports.address = (latitude, longitude) => {
                         console.log('Response: '+response);
                         var profile = JSON.parse(body);
                         //print out the data
-                        var arrAddress = profile.address_components;
-                        var itemRoute='';
-                        var itemLocality='';
-                        var itemCountry='';
-                        var itemPc='';
-                        var itemSnumber='';
-
-                        // iterate through address_component array
-                        $.each(arrAddress, function (i, address_component) {
-                            console.log('address_component:'+i);
-
-                            if (address_component.types[0] == "route"){
-                                console.log(i+": route:"+address_component.long_name);
-                                itemRoute = address_component.long_name;
-                            }
-
-                            if (address_component.types[0] == "locality"){
-                                console.log("town:"+address_component.long_name);
-                                itemLocality = address_component.long_name;
-                            }
-
-                            if (address_component.types[0] == "country"){ 
-                                console.log("country:"+address_component.long_name); 
-                                itemCountry = address_component.long_name;
-                            }
-
-                            if (address_component.types[0] == "postal_code_prefix"){ 
-                                console.log("pc:"+address_component.long_name);  
-                                itemPc = address_component.long_name;
-                            }
-
-                            if (address_component.types[0] == "street_number"){ 
-                                console.log("street_number:"+address_component.long_name);  
-                                itemSnumber = address_component.long_name;
-                            }
-                            //return false; // break the loop   
-                        });
+                        
                        
-                        resolve(itemLocality);
+                        resolve(profile.results[0].address_components[2].long_name);
                     } catch(error) {
                         //handling a parse error
                         reject(response);
