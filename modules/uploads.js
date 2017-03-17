@@ -20,10 +20,6 @@ exports.processUpload = (sender, attachments) => {
             console.log('This is a location' + attachment.payload.coordinates.lat);
             messenger.send({text: 'OK, looking for houses within 5 miles of that location...'}, sender);
             visionService.address( attachment.payload.coordinates.lat, attachment.payload.coordinates.long)
-                .then(houseType => {
-                    messenger.send({text: `Looking for houses matching "${houseType}"`}, sender);
-                    return salesforce.findProperties(houseType)
-                })
                 .then(properties => messenger.send({text: `Done`}, sender))
         }
         else {
