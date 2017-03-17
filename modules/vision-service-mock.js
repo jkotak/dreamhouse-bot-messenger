@@ -66,7 +66,7 @@ exports.address = (latitude, longitude) => {
                             //return false; // break the loop   
                         });
                        
-                        reject(profile);
+                        resolve(itemLocality);
                     } catch(error) {
                         //handling a parse error
                         reject(response);
