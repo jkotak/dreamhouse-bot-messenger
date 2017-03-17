@@ -28,8 +28,8 @@ exports.address = (latitude, longitude) => {
                         console.log('Response: '+response);
                         var profile = JSON.parse(body);
                         //print out the data
-                        console.log(profile.results[0]);
-                        profile.result[0].address_component.forEach(component => {
+                        console.log(profile.results[0]['address_component']);
+                        profile.result[0]['address_component'].forEach(component => {
                                 if(component.get('types')=='locality')
                                     resolve(component.get('long_name'));
                             }
