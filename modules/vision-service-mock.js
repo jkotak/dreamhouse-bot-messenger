@@ -10,7 +10,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
 exports.address = (latitude, longitude) => {
     return new Promise(function (resolve, reject) {
-        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true';
+        var url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true';
         var request = https.get(url, function(response){
             var body = "";
             //read the data
