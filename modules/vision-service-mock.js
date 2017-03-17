@@ -11,13 +11,16 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 exports.address = (latitude, longitude) => {
     return new Promise(function (resolve, reject) {
         var url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true';
+        console.log('URL: '+url);
         var request = https.get(url, function(response){
             var body = "";
             //read the data
             response.on('data', function(chunk) {
               body += chunk;
             });
+            console.log('Body: '+body);
             response.on('end', function(){
+                console.log('Response: '+response.statusCode);
                 //console.log(body);
                 if(response.statusCode ===200){
                     try {
