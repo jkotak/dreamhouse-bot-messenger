@@ -20,7 +20,7 @@ exports.processUpload = (sender, attachments) => {
             visionService.address( attachment.payload.coordinates.lat, attachment.payload.coordinates.long)
                 .then(properties => {
                     console.log(properties);
-                    messenger.send({text: '"${properties}" ,what a beautiful city! OK, looking for houses within 5 miles of that location...'}, sender);
+                    messenger.send({text: '${properties} ,what a beautiful city! OK, looking for houses within 5 miles of that location...'}, sender);
                     return true;     
                 })
         }
