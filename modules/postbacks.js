@@ -22,7 +22,7 @@ exports.confirm_visit = (sender, values) => {
 exports.contact_me = (sender, values) => {
 
     let propertyId = values[1];
-    messenger.send({text: `Thanks for your interest, ${response.first_name}. I asked the listing agent to contact you asap.`}, sender);
+    messenger.send({text: `Thanks for your interest. I asked the listing agent to contact you asap.`}, sender);
     messenger.getUserInfo(sender).then(response => {
         salesforce.createLead(propertyId, response.first_name, response.last_name, sender);
     });
