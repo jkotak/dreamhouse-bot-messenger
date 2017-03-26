@@ -72,6 +72,22 @@ exports.requestLocation = location => {
     };
 };
 
+exports.requestProductOptions = productOptions =>{
+    let elements = [];
+    productOptions.forEach(product => {
+            elements.push({  
+                "content_type":"text",
+                "title":product.get("Product_Type__c"),
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            })
+        }
+    );
+    return {
+        "text":"Please select a mortgage product type",
+        "quick_replies":elements
+    };
+};
+
 exports.formatPriceChanges = priceChanges => {
     let elements = [];
     priceChanges.forEach(priceChange => {
