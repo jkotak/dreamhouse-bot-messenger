@@ -88,6 +88,34 @@ exports.formatProductOptions = productOptions =>{
     };
 };
 
+exports.formatProducts = products => {
+    let elements = [];
+    products.forEach(product => {
+            elements.push({
+                title: product.get("Product_Name__c"),
+                subtitle: `Rate ${product.get("rate__c")}%  · APR ${product.get("apr__c")}%`,
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Contact loan officer",
+                        "payload": "contact_me," + product.getId()
+                    }
+                ]
+            })
+        }
+    );
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": elements
+            }
+        }
+    };
+    
+};
+
 exports.formatPriceChanges = priceChanges => {
     let elements = [];
     priceChanges.forEach(priceChange => {
