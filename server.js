@@ -39,7 +39,7 @@ app.post('/webhook', (req, res) => {
                     handlers.catchall(sender);
                 }
             }else {
-                    console.log("Command is not defined. Calling catch all function.");
+                    console.log("Command 'event.message.text' is not defined. Calling catch all function.");
                     handlers.catchall(sender);
             }
         } else if (event.postback) {
