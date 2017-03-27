@@ -5,8 +5,14 @@ let salesforce = require('./salesforce'),
     formatter = require('./formatter');
 
 exports.searchHouse = (sender) => {
-    console.log('Checking for location');
     messenger.send(formatter.requestLocation(), sender);
+};
+
+exports.searchProducts = (sender) => {
+    messenger.send({text: `OK, looking for rates...`}, sender);
+    salesforce.findAllRateTpyes().then(rateTypes => {
+        messenger.send(formatter.formatProductOptions (rateTypes), sender);
+    });
 };
 
 exports.searchHouse_City = (sender, values) => {
