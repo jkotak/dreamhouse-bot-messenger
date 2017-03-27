@@ -19,6 +19,12 @@ exports.confirm_visit = (sender, values) => {
     messenger.send({text: `OK, your appointment is confirmed for ${values[2]}. ${values[1]}.`}, sender);
 };
 
+exports.get_rates = (sender,values) => {
+    salesforce.findRate({productType: values[1]}).then(productType => {
+        messenger.send(formatter.formatProducts(productType), sender);
+    });
+};
+
 exports.contact_me = (sender, values) => {
 
     let propertyId = values[1];
