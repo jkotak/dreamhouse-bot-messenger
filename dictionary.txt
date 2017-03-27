@@ -11,5 +11,6 @@ searchHouse find house
 searchHouse for sale
 priceChanges price changes
 searchProducts rates
+getRatesForProduct show rates
 hi hi
 help help
