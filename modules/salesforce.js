@@ -120,7 +120,7 @@ let findPriceChanges = () => {
     });
 };
 
-let findAllRateTpyes = () => {
+let findAllRateTypes = () => {
     return new Promise((resolve, reject) => {
         let q = `SELECT
                     Product_Type__c,
@@ -190,6 +190,6 @@ exports.org = org;
 exports.findProperties = findProperties;
 exports.findPropertiesByCategory = findPropertiesByCategory;
 exports.findPriceChanges = findPriceChanges;
-exports.findAllRateTpyes = findAllRateTpyes;
+exports.findAllRateTpyes = findAllRateTypes;
 exports.createLead = createLead;
 exports.createCase = createCase;
