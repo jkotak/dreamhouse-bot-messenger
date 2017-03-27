@@ -76,15 +76,21 @@ exports.formatProductOptions = productOptions =>{
     let elements = [];
     productOptions.forEach(product => {
             elements.push({  
-                "content_type":"text",
+                "type":"postback",
                 "title":product.get("Product_Type__c"),
-                "payload":`show rates for ${product.get("Product_Type__c")}`
+                "payload":"show_rates," + product.get("Product_Type__c")
             })
         }
     );
     return {
-        "text":"Please select a mortgage product type",
-        "quick_replies":elements
+        "attachment": {
+            "type":"template"
+            "payload":{
+                "template_type":"button",
+                "text":"Please select a mortgage product type:",
+                "buttons": elements
+            }
+        }
     };
 };
 
