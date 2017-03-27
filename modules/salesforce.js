@@ -124,7 +124,7 @@ let findAllRateTypes = () => {
     return new Promise((resolve, reject) => {
         let q = `SELECT
                     Product_Type__c,
-                    Name
+                    count(Name)
                 FROM Rate_Sheet__c
                 Group By Product_Type__c
                 LIMIT 5`;
