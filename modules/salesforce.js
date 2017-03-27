@@ -120,7 +120,7 @@ let findPriceChanges = () => {
     });
 };
 
-let findAllRates = () => {
+let findAllRateTpyes = () => {
     return new Promise((resolve, reject) => {
         let q = `SELECT
                     Product_Type__c,
