@@ -10,5 +10,7 @@ searchHouse looking for house
 searchHouse find house
 searchHouse for sale
 priceChanges price changes
+searchProducts rates
+searchProducts show rates
 hi hi
 help help
