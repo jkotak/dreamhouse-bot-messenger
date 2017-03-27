@@ -190,5 +190,6 @@ exports.org = org;
 exports.findProperties = findProperties;
 exports.findPropertiesByCategory = findPropertiesByCategory;
 exports.findPriceChanges = findPriceChanges;
+exports.findAllRateTpyes = findAllRateTpyes;
 exports.createLead = createLead;
 exports.createCase = createCase;
