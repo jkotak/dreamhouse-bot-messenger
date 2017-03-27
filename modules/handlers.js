@@ -15,6 +15,12 @@ exports.searchProducts = (sender) => {
     });
 };
 
+exports.getRatesForProduct = (sender,values) => {
+    salesforce.findRate({productType: values[1]}).then(productType => {
+        messenger.send(formatter.formatProducts(productType), sender);
+    });
+};
+
 exports.searchHouse_City = (sender, values) => {
     messenger.send({text: `OK, looking for houses in ${values[1]}`}, sender);
     salesforce.findProperties({city: values[1]}).then(properties => {
