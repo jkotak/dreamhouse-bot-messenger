@@ -72,7 +72,27 @@ exports.requestLocation = location => {
     };
 };
 
-
+exports.formatProductOptions = productOptions =>{
+    let elements = [];
+    productOptions.forEach(product => {
+            elements.push({  
+                "type":"postback",
+                "title":product.get("Product_Type__c"),
+                "payload":"show_rates," + product.get("Product_Type__c")
+            })
+        }
+    );
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text":"Please select a mortgage product type:",
+                "buttons": elements
+            }
+        }
+    };
+};
 
 exports.formatProducts = products => {
     let elements = [];
