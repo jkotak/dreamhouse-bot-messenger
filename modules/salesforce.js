@@ -149,6 +149,7 @@ let findRate = (productType) => {
                     FROM Rate_Sheet__c
                     WHERE Product_Type__c LIKE '${productType}'
                     LIMIT 5`;
+        console.log("Query "+ q);
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
