@@ -142,6 +142,7 @@ let findRate = (productType) => {
     return new Promise((resolve, reject) => {
         let q = `SELECT
                     rate__c,
+                    id,
                     apr__c,
                     Product_Name__c
                     FROM Rate_Sheet__c
