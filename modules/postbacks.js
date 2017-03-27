@@ -5,6 +5,7 @@ let salesforce = require('./salesforce'),
     formatter = require('./formatter');
 
 exports.schedule_visit = (sender, values) => {
+    console.log("Values " + values);
     salesforce.findProperties({id: values[1]}).then(properties => {
         messenger.send(formatter.formatAppointment(properties[0]), sender);
     });
