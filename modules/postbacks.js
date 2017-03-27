@@ -6,6 +6,7 @@ let salesforce = require('./salesforce'),
 
 exports.schedule_visit = (sender, values) => {
     console.log("Values " + values);
+    console.log("Values1 " + values[1]);
     salesforce.findProperties({id: values[1]}).then(properties => {
         messenger.send(formatter.formatAppointment(properties[0]), sender);
     });
@@ -21,6 +22,8 @@ exports.confirm_visit = (sender, values) => {
 };
 
 exports.show_rates = (sender,values) => {
+    console.log("Values " + values);
+    console.log("Values1 " + values[1]);
     salesforce.findRate({productType: values[1]}).then(products => {
         console.log("Values " + products);
         messenger.send(formatter.formatProducts(products), sender);
