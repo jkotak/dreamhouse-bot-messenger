@@ -72,7 +72,7 @@ exports.requestLocation = location => {
     };
 };
 
-exports.requestProductOptions = productOptions =>{
+exports.formatProductOptions = productOptions =>{
     let elements = [];
     productOptions.forEach(product => {
             elements.push({  
