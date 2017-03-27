@@ -128,6 +128,7 @@ let findAllRateTypes = () => {
                 FROM Rate_Sheet__c
                 Group By Product_Type__c
                 LIMIT 3`;
+        console.log("Query "+ q);
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
