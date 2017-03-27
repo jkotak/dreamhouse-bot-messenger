@@ -78,7 +78,7 @@ exports.formatProductOptions = productOptions =>{
             elements.push({  
                 "content_type":"text",
                 "title":product.get("Product_Type__c"),
-                "payload":"show rates for " + product.get("Product_Type__c")
+                "payload":"show rate for " + product.get("Product_Type__c")
             })
         }
     );
