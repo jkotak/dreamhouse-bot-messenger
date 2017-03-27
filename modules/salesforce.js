@@ -127,7 +127,7 @@ let findAllRateTypes = () => {
                     count(Name)
                 FROM Rate_Sheet__c
                 Group By Product_Type__c
-                LIMIT 5`;
+                LIMIT 3`;
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
