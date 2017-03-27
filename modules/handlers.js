@@ -10,7 +10,7 @@ exports.searchHouse = (sender) => {
 
 exports.searchProducts = (sender) => {
     messenger.send({text: `OK, looking for rates...`}, sender);
-    salesforce.findAllRateTpyes().then(rateTypes => {
+    salesforce.findAllRateTypes().then(rateTypes => {
         messenger.send(formatter.formatProductOptions (rateTypes), sender);
     });
 };
