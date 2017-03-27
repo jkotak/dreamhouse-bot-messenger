@@ -66,7 +66,7 @@ exports.hi = (sender) => {
 };
 
 exports.help = (sender) => {
-    messenger.send({text: `*Cumulus Mortgageface is a demo mortgage company*. You can ask me questions like "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes","rates"`}, sender);
+    messenger.send({text: `*This is for demonstration only*. You can ask me questions like "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes","rates"`}, sender);
 };
 
 exports.catchall = (sender) => {
