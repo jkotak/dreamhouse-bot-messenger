@@ -126,7 +126,7 @@ let findAllRateTypes = () => {
                     Product_Type__c,
                     Name
                 FROM Rate_Sheet__c
-                ORDER BY CreatedDate DESC
+                Group By Product_Type__c
                 LIMIT 5`;
         org.query({query: q}, (err, resp) => {
             if (err) {
