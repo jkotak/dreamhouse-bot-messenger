@@ -78,7 +78,7 @@ exports.formatProductOptions = productOptions =>{
             elements.push({  
                 "content_type":"text",
                 "title":product.get("Product_Type__c"),
-                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                "payload":"get_rates,"+product.get("Product_Type__c")
             })
         }
     );
