@@ -21,9 +21,9 @@ exports.confirm_visit = (sender, values) => {
 };
 
 exports.show_rates = (sender,values) => {
-    salesforce.findRate({productType: values[1]}).then(productType => {
-        console.log("Values " + productType);
-        messenger.send(formatter.formatProducts(productType), sender);
+    salesforce.findRate({productType: values[1]}).then(products => {
+        console.log("Values " + products);
+        messenger.send(formatter.formatProducts(products), sender);
     });
 };
 
