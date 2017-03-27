@@ -138,6 +138,26 @@ let findAllRateTypes = () => {
     });
 };
 
+let findRate = (productType) => {
+    return new Promise((resolve, reject) => {
+        let q = `SELECT
+                    rate__c,
+                    apr__c,
+                    Product_Name__c
+                    FROM Rate_Sheet__c
+                    WHERE Product_Type__c LIKE '${productType}'
+                    LIMIT 5`;
+        org.query({query: q}, (err, resp) => {
+            if (err) {
+                reject("An error as occurred");
+            } else {
+                resolve(resp.records);
+            }
+        });
+    });
+}
+    
+
 let createCase = (propertyId, customerName, customerId) => {
 
     return new Promise((resolve, reject) => {
@@ -191,5 +211,6 @@ exports.findProperties = findProperties;
 exports.findPropertiesByCategory = findPropertiesByCategory;
 exports.findPriceChanges = findPriceChanges;
 exports.findAllRateTypes = findAllRateTypes;
+exports.findRate = findRate;
 exports.createLead = createLead;
 exports.createCase = createCase;
