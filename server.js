@@ -9,6 +9,8 @@ var express = require('express'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
+var stopbot = false;
+
 app.set('port', process.env.PORT || 5000);
 
 app.use(bodyParser.json());
@@ -38,6 +40,8 @@ app.post('/webhook', (req, res) => {
                     console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
                     handlers.catchall(sender);
                 }
+            }else if(event.message.text=='Agent'){
+                console.log("Asked for Agent");
             }else {
                     console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                     handlers.catchall(sender);
