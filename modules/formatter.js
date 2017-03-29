@@ -167,7 +167,7 @@ exports.formatTransferAgent =()=>{
         "quick_replies":[
           {
             "content_type":"text",
-            "title":"Transfer to agent",
+            "title":"Transfer me",
             "payload":"Transfer"
           },
           {
