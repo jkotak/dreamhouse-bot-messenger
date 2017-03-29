@@ -168,12 +168,12 @@ exports.formatTransferAgent =()=>{
           {
             "content_type":"text",
             "title":"Yes",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            "payload":"Transfer"
           },
           {
             "content_type":"text",
             "title":"No",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            "payload":"Continue"
           }
         ]
     }
