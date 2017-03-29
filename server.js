@@ -42,11 +42,11 @@ app.post('/webhook', (req, res) => {
                 }
             }else if(event.message.text=='Transfer to agent'){
                 console.log("Asked for Agent");
-                sendMessage({text: `Transfering now...please wait for an agent`}, sender);
+                handlers.ContinueWithAgent(sender);
                 stopbot = true;
             }else if(event.message.text=='Continue with bot'){
                 console.log("Asked for Agent");
-                sendMessage({text: `Sorry, my bad. Type "Help" for a list of commands.`}, sender);
+                handlers.ContinueWithoutAgent(sender);
                 stopbot = true;
             }else {
                     console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
