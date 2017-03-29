@@ -76,7 +76,7 @@ exports.wakeup = (sender) => {
 };
 
 exports.ContinueWithAgent =(sender)=>{
-    messenger.send({text: `Transfering now...please wait for an agent`}, sender);
+    messenger.send({text: `Transfering now...please wait for an agent. If you need me just type "wakeup"`}, sender);
 }
 exports.ContinueWithoutAgent =(sender)=>{
     messenger.send({text: `Sorry, my bad. Type "Help" for a list of commands.`}, sender);
