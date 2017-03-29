@@ -47,7 +47,6 @@ app.post('/webhook', (req, res) => {
             }else if(event.message.text=='Continue with bot'){
                 console.log("Asked for Agent");
                 handlers.ContinueWithoutAgent(sender);
-                stopbot = true;
             }else {
                     console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                     handlers.catchall(sender);
