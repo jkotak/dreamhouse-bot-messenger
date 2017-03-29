@@ -52,7 +52,7 @@ app.post('/webhook', (req, res) => {
                     handlers.catchall(sender);
             }
         }else if(event.message && event.message.text && stopbot){
-            if(event.message.text=='wakeup'){
+            if(event.message.text.toLowerCase()=='wakeup'){
                 stopbot = false;
                 handlers.wakeup(sender);
             }
