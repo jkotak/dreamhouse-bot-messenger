@@ -69,6 +69,13 @@ exports.hi = (sender) => {
     });
 };
 
+exports.ContinueWithAgent =(sender)=>{
+    messenger.send({text: `Transfering now...please wait for an agent`}, sender);
+}
+exports.ContinueWithoutAgent =(sender)=>{
+    messenger.send({text: `Sorry, my bad. Type "Help" for a list of commands.`}, sender);
+}
+
 exports.help = (sender) => {
     messenger.send({text: `*This is for demonstration only*. You can ask me questions like "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes","rates"`}, sender);
 };
