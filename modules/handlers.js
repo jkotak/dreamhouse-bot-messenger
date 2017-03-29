@@ -69,6 +69,12 @@ exports.hi = (sender) => {
     });
 };
 
+exports.wakeup = (sender) => {
+    messenger.getUserInfo(sender).then(response => {
+        messenger.send({text: `Hello, ${response.first_name}! I am back. How can I help you?`}, sender);
+    });
+};
+
 exports.ContinueWithAgent =(sender)=>{
     messenger.send({text: `Transfering now...please wait for an agent`}, sender);
 }
