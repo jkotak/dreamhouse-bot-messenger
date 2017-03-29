@@ -30,7 +30,7 @@ app.post('/webhook', (req, res) => {
         let sender = event.sender.id;
         if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
             sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
-        } else if (event.message && event.message.text) {
+        } else if (event.message && event.message.text && !stopbot) {
             let result = processor.match(event.message.text);
             if (result) {
                 let handler = handlers[result.handler];
@@ -42,6 +42,7 @@ app.post('/webhook', (req, res) => {
                 }
             }else if(event.message.text=='Agent'){
                 console.log("Asked for Agent");
+                stopbot = true;
             }else {
                     console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                     handlers.catchall(sender);
