@@ -51,7 +51,13 @@ app.post('/webhook', (req, res) => {
                     console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                     handlers.catchall(sender);
             }
-        } else if (event.postback) {
+        }else if(event.message && event.message.text && stopbot){
+            if(event.message.text=='wakeup'){
+                stopbot = false;
+                handlers.wakeup(sender);
+            }
+        }
+        else if (event.postback) {
             let payload = event.postback.payload.split(",");
             let postback = postbacks[payload[0]];
             if (postback && typeof postback === "function") {
