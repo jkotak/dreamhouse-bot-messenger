@@ -13,5 +13,6 @@ priceChanges price changes
 searchProducts rates
 getRatesForProduct show rates
 agent agent
+wakeup wakeup bot
 hi hi
 help help
