@@ -165,9 +165,7 @@ exports.formatTransferAgent =()=>{
     return {
         "message":{
             "text":"Do you want me to transfer you to a live agent?",
-            "attachment":{
-                "type":"text"
-            },
+            "attachment":"text",
             "quick_replies":[
               {
                 "content_type":"text",
