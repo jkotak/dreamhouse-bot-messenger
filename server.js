@@ -40,7 +40,7 @@ app.post('/webhook', (req, res) => {
                     console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
                     handlers.catchall(sender);
                 }
-            }else if(event.message.text=='Transfer to agent'){
+            }else if(event.message.text=='Transfer me'){
                 console.log("Asked for Agent");
                 stopbot = true;
                 handlers.ContinueWithAgent(sender);
