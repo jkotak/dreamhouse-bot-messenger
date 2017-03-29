@@ -42,8 +42,8 @@ app.post('/webhook', (req, res) => {
                 }
             }else if(event.message.text=='Transfer to agent'){
                 console.log("Asked for Agent");
-                handlers.ContinueWithAgent(sender);
                 stopbot = true;
+                handlers.ContinueWithAgent(sender);
             }else if(event.message.text=='Continue with bot'){
                 console.log("Asked for Agent");
                 handlers.ContinueWithoutAgent(sender);
