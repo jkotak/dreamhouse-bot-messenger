@@ -13,6 +13,5 @@ priceChanges price changes
 searchProducts rates
 getRatesForProduct show rates
 agent agent
-agent transfer
 hi hi
 help help
