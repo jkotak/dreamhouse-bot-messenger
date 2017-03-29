@@ -59,6 +59,10 @@ exports.priceChanges = (sender, values) => {
     });
 };
 
+exports.agent = (sender) => {
+    messenger.send(formatter.formatTransferAgent(), sender);
+};
+
 exports.hi = (sender) => {
     messenger.getUserInfo(sender).then(response => {
         messenger.send({text: `Hello, ${response.first_name}!`}, sender);
