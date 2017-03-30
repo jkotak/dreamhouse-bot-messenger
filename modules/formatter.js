@@ -133,8 +133,7 @@ exports.formatLoanAccountLinking = () =>{
                 "text":"Happy to get that! Before I can provide you with the status, could you click below to authenticate yourself?",
                 "buttons": [
                     {  
-                    "type":"postback",
-                    "title":"Authenticate",
+                    "type":"account_link",
                     "url":"https://www.example.com/authorize"
                     }
                 ]
