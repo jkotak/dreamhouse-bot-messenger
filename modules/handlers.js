@@ -63,6 +63,10 @@ exports.agent = (sender) => {
     messenger.send(formatter.formatTransferAgent(), sender);
 };
 
+exports.loanStatus = (sender) => {
+    messenger.send(formatter.formatLoanAccountLinking(), sender);
+};
+
 exports.hi = (sender) => {
     messenger.getUserInfo(sender).then(response => {
         messenger.send({text: `Hello, ${response.first_name}!`}, sender);
