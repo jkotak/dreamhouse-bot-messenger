@@ -13,6 +13,7 @@ priceChanges price changes
 searchProducts rates
 getRatesForProduct show rates
 agent agent
+loanStatus loan status
 wakeup wakeup bot
 hi hi
 help help
