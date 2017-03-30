@@ -94,6 +94,24 @@ exports.formatProductOptions = productOptions =>{
     };
 };
 
+exports.formatLoanAccountLinking = () =>{
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text":"Happy to! Before I can provide you with the status, could you click below to authenticate yourself?",
+                "buttons": [
+                    {  
+                    "type":"postback",
+                    "url":"https://www.example.com/authorize
+                    }
+                ]}
+            }
+        }
+    };
+};
+
 exports.formatProducts = products => {
     let elements = [];
     products.forEach(product => {
