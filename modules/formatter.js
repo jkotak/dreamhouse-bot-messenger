@@ -125,7 +125,7 @@ exports.formatProducts = products => {
 };
 
 exports.formatLoanAccountLinking = () =>{
-    return {
+    return true;
         
     };
 
