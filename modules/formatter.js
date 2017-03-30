@@ -110,7 +110,7 @@ exports.formatLoanAccountLinking = () =>{
             }
         }
     };
-};
+}
 
 exports.formatProducts = products => {
     let elements = [];
