@@ -100,7 +100,7 @@ exports.formatLoanAccountLinking = () =>{
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text":"Happy to! Before I can provide you with the status, could you click below to authenticate yourself?",
+                "text":"Happy to get that! Before I can provide you with the status, could you click below to authenticate yourself?",
                 "buttons": [
                     {  
                     "type":"postback",
