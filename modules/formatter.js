@@ -126,19 +126,7 @@ exports.formatProducts = products => {
 
 exports.formatLoanAccountLinking = () =>{
     return {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "button",
-                "text":"Happy to get that! Before I can provide you with the status, could you click below to authenticate yourself?",
-                "buttons": [
-                    {  
-                    "type":"postback",
-                    "url":"https://www.example.com/authorize"
-                    }
-                ]
-            }
-        }
+        
     };
 
 exports.formatPriceChanges = priceChanges => {
