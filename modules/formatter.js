@@ -104,7 +104,7 @@ exports.formatLoanAccountLinking = () =>{
                 "buttons": [
                     {  
                     "type":"postback",
-                    "url":"https://www.example.com/authorize
+                    "url":"https://www.example.com/authorize"
                     }
                 ]}
             }
