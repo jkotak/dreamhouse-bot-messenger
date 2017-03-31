@@ -59,6 +59,52 @@ exports.formatProperties = properties => {
     }
 };
 
+
+exports.formatLoans = loans => {
+    let elements = [];
+    if(loans.length==0){
+        return {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": "Sorry, no house found with that criteria. Do you want to contact a loan officer?",
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Contact Loan Officer",
+                            "payload": "contact_me"
+                        }]
+                }
+            }
+        };
+    }else{
+        loans.forEach(loan => {
+                elements.push({
+                    title: loan.get("loan_number__c"),
+                    subtitle: `${loan.get("status__c")}`,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Schedule visit",
+                            "payload": "schedule_visit"
+                        }
+                    ]
+                })
+            }
+        );
+        return {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": elements
+                }
+            }
+        };
+    }
+};
+
 exports.requestLocation = location => {
     return {
         "text":"Please share your location:",
