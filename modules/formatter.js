@@ -81,7 +81,7 @@ exports.formatLoans = loans => {
     }else{
         loans.forEach(loan => {
                 elements.push({
-                    title: loan.get("loan_number__c"),
+                    title: 'Loan Number:'+loan.get("loan_number__c"),
                     subtitle: `${loan.get("status__c")}`,
                     "buttons": [
                         {
@@ -176,7 +176,7 @@ exports.formatLoanAccountLinking = () =>{
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text":"Happy to get that! Before I can provide you with the status, could you click below to authenticate yourself?",
+                "text":"Happy to, but before I can provide you with the status, could you click below to authenticate yourself?",
                 "buttons": [
                     {  
                     "type":"account_link",
