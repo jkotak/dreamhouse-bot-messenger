@@ -94,7 +94,8 @@ let getLoanStatus = (userid) => {
     return new Promise((resolve, reject) => {
         let q = `Select 
                     Status__c,
-                    Loan_Number__c
+                    Loan_Number__c,
+                    owner.name
                   From X1003_Application__c 
                   Where Borrower__c in (select Contactid from user where id = '${userid}')`;
         console.log(q);
@@ -103,6 +104,7 @@ let getLoanStatus = (userid) => {
                 console.error(err);
                 reject("An error as occurred");
             } else {
+                console.log(resp.records);
                 resolve(resp.records);
             }
         });
