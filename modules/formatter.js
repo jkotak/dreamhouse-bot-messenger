@@ -68,7 +68,7 @@ exports.formatLoans = loans => {
                 "type": "template",
                 "payload": {
                     "template_type": "button",
-                    "text": "Sorry, no house found with that criteria. Do you want to contact a loan officer?",
+                    "text": "Sorry, I couldn't find any loans. Do you want to contact a loan officer?",
                     "buttons": [
                         {
                             "type": "postback",
@@ -82,7 +82,7 @@ exports.formatLoans = loans => {
         loans.forEach(loan => {
                 elements.push({
                     title: 'Loan Number:'+loan.get("loan_number__c"),
-                    subtitle: `${loan.get("status__c")}`,
+                    subtitle: `Loan Status: ${loan.get("status__c")}`,
                     "buttons": [
                         {
                             "type": "postback",
