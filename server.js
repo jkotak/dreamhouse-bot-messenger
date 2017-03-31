@@ -24,7 +24,9 @@ app.get('/webhook', (req, res) => {
 });
 
 app.get('/authorize', (req, res) => {
-   console.log(req.body);
+  var requestURI = req.param('redirect_uri');
+  var token = req.param('authorization_code');
+  console.log(token+' '+ requestURI);
 });
 
 app.post('/webhook', (req, res) => {
