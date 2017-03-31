@@ -68,9 +68,8 @@ app.post('/webhook', (req, res) => {
                 handlers.wakeup(sender);
             }
         }else if(event.account_linking){
-            let payload = event.account_linking.split(",");
-            console.log('payload'+payload[0]);
-            handler.authorization(sender,payload[1]);
+            console.log('status'+status);
+            handler.authorization(sender,authorization_code);
         }else if (event.postback) {
             let payload = event.postback.payload.split(",");
             let postback = postbacks[payload[0]];
