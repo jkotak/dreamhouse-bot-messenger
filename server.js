@@ -10,6 +10,7 @@ var express = require('express'),
     app = express();
 
 var stopbot = false;
+var userid;
 
 app.set('port', process.env.PORT || 5000);
 
@@ -24,10 +25,12 @@ app.get('/webhook', (req, res) => {
 });
 
 app.get('/authorize', (req, res) => {
-  var requestURI = req.param('redirect_uri');
-  var token = req.param('authorization_code');
-  console.log(token+' '+ requestURI);
-  res.redirect(requestURI+'&authorization_code'+token);
+    var requestURI = req.param('redirect_uri');
+    var token = req.param('authorization_code');
+    userid = token;
+    console.log(token+' '+ requestURI);
+    handlers.authenticated(sender,token);
+    res.redirect(requestURI+'&authorization_code='+token);
 });
 
 app.post('/webhook', (req, res) => {
