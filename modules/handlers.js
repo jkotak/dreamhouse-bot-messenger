@@ -79,7 +79,7 @@ exports.wakeup = (sender) => {
     });
 };
 exports.authenticated =(sender,userid)=>{
-    messenger.send({text: `You are now authenticated. Let me check on that loan status for you...`});
+    messenger.send({text: `${response.first_name}, you are now authenticated. Let me check on that loan status for you...`}, sender);
 }
 
 exports.ContinueWithAgent =(sender)=>{
