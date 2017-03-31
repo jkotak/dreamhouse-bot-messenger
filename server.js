@@ -67,8 +67,11 @@ app.post('/webhook', (req, res) => {
                 stopbot = false;
                 handlers.wakeup(sender);
             }
-        }
-        else if (event.postback) {
+        }else if(event.message && event.message.account_linking){
+            let payload = event.postback.payload.split(",");
+            console.log('payload'+payload[0]);
+            handler.authorization(sender,payload[1]);
+        }else if (event.postback) {
             let payload = event.postback.payload.split(",");
             let postback = postbacks[payload[0]];
             if (postback && typeof postback === "function") {
@@ -78,7 +81,7 @@ app.post('/webhook', (req, res) => {
             }
         } else if (event.message && event.message.attachments) {
             uploads.processUpload(sender, event.message.attachments);
-        }
+        } 
     }
     
     res.sendStatus(200);
