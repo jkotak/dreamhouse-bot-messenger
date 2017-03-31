@@ -134,7 +134,7 @@ exports.formatLoanAccountLinking = () =>{
                 "buttons": [
                     {  
                     "type":"account_link",
-                    "url":"https://mortgagecommunitydemo-15801ffe7f4.force.com/realtors/FBCommunitiesLoginPage"
+                    "url":"https://mortgagecommunitydemo-15801ffe7f4.force.com/realtors/FBCommunitiesLoginPage?startURL=FBRedirect"
                     }
                 ]
             }
