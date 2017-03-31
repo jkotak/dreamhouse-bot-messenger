@@ -86,7 +86,7 @@ exports.formatLoans = loans => {
                     "buttons": [
                         {
                             "type": "postback",
-                            "title": "Schedule visit",
+                            "title": "Contact ${loan.get('owner.name')}",
                             "payload": "schedule_visit"
                         }
                     ]
