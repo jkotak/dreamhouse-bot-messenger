@@ -93,7 +93,8 @@ let findPropertiesByCategory = (category) => {
 let getLoanStatus = (userid) => {
     return new Promise((resolve, reject) => {
         let q = `Select 
-                    Status__c 
+                    Status__c,
+                    Loan_Number__c
                   From X1003_Application__c 
                   Where Borrower__c in (select Contactid from user where id = ${userid})`;
         console.log(q);
