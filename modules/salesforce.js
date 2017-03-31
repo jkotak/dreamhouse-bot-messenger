@@ -96,7 +96,7 @@ let getLoanStatus = (userid) => {
                     Status__c,
                     Loan_Number__c
                   From X1003_Application__c 
-                  Where Borrower__c in (select Contactid from user where id = ${userid})`;
+                  Where Borrower__c in (select Contactid from user where id = '${userid}')`;
         console.log(q);
         org.query({query: q}, (err, resp) => {
             if (err) {
