@@ -29,7 +29,7 @@ app.get('/authorize', (req, res) => {
     var token = req.param('authorization_code');
     userid = token;
     console.log(token+' '+ requestURI);
-    handlers.authenticated(sender,token);
+    handlers.authenticated(token);
     res.redirect(requestURI+'&authorization_code='+token);
 });
 
