@@ -90,6 +90,25 @@ let findPropertiesByCategory = (category) => {
 
 };
 
+let getLoanStatus = (userid) => {
+    return new Promise((resolve, reject) => {
+        let q = `Select 
+                    Status__c 
+                  From X1003_Application__c 
+                  Where Borrower__c in (select Contactid from user where id = ${userid})`;
+        console.log(q);
+        org.query({query: q}, (err, resp) => {
+            if (err) {
+                console.error(err);
+                reject("An error as occurred");
+            } else {
+                resolve(resp.records);
+            }
+        });
+    });
+
+};
+
 let findPriceChanges = () => {
     return new Promise((resolve, reject) => {
         let q = `SELECT
@@ -217,3 +236,4 @@ exports.findAllRateTypes = findAllRateTypes;
 exports.findRate = findRate;
 exports.createLead = createLead;
 exports.createCase = createCase;
+exports.getLoanStatus = getLoanStatus;
