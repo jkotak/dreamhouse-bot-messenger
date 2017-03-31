@@ -78,6 +78,9 @@ exports.wakeup = (sender) => {
         messenger.send({text: `Hello, ${response.first_name}! I am back. How can I help you?`}, sender);
     });
 };
+exports.authenticated =(sender,userid)=>{
+    messenger.send({text: `${response.first_name}, you are now authenticated. Let me check on that loan status for you...`}, sender);
+}
 
 exports.ContinueWithAgent =(sender)=>{
     messenger.send({text: `Transfering now...please wait for an agent. If you need me just type "wakeup"`}, sender);
