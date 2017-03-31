@@ -80,9 +80,7 @@ app.post('/webhook', (req, res) => {
             uploads.processUpload(sender, event.message.attachments);
         }
     }
-    let events = req.body.entry[0].messaging;
-    if(){
-    }
+    
     res.sendStatus(200);
 });
 
