@@ -15,5 +15,7 @@ getRatesForProduct show rates
 agent agent
 loanStatus loan status
 wakeup wakeup bot
+thankYou thanks
+thankYou thank you 
 hi hi
 help help
