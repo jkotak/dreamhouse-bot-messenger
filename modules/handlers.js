@@ -73,6 +73,12 @@ exports.hi = (sender) => {
     });
 };
 
+exports.thankYou = (sender) => {
+    messenger.getUserInfo(sender).then(response => {
+        messenger.send({text: `You're welcome, ${response.first_name}! I am happy to help.`}, sender);
+    });
+};
+
 exports.wakeup = (sender) => {
     messenger.getUserInfo(sender).then(response => {
         messenger.send({text: `Hello, ${response.first_name}! I am back. How can I help you?`}, sender);
