@@ -75,7 +75,7 @@ exports.hi = (sender) => {
 
 exports.thankYou = (sender) => {
     messenger.getUserInfo(sender).then(response => {
-        messenger.send({text: `You're welcome, ${response.first_name}! I am happy to help.`}, sender);
+        messenger.send({text: `You're welcome, ${response.first_name}! I am happy to help. You could also provide feedback to my creator at http://bit.ly/2qOPctw`}, sender);
     });
 };
 
