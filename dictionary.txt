@@ -16,6 +16,6 @@ agent agent
 loanStatus loan status
 wakeup wakeup bot
 thankYou thanks
-thankYou thank you 
+thankYou thank 
 hi hi
 help help
