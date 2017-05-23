@@ -33,7 +33,7 @@ exports.show_rates = (sender,values) => {
 exports.contact_me = (sender, values) => {
 
     let propertyId = values[1];
-    messenger.send({text: `Thanks for your interest. I asked the loan officer to contact you asap.`}, sender);
+    messenger.send({text: `Thanks for your interest. I asked the loan officer to contact you asap. Before you leave, could you please provide feedback to my creator at http://bit.ly/2qOPctw ?`}, sender);
     messenger.getUserInfo(sender).then(response => {
         salesforce.createLead(propertyId, response.first_name, response.last_name, sender);
     });
