@@ -69,7 +69,7 @@ exports.loanStatus = (sender) => {
 
 exports.hi = (sender) => {
     messenger.getUserInfo(sender).then(response => {
-        messenger.send({text: `Hello, ${response.first_name}!`}, sender);
+        messenger.send({text: `Hello, ${response.first_name}! Welcome to Cumulus Mortgage Demo.`}, sender);
     });
 };
 
