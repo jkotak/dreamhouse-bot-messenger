@@ -111,3 +111,8 @@ exports.catchall = (sender) => {
 exports.creator = (sender)  =>{
     messenger.send({text: `Ah! You are referring to my creator; makes me very happy. I am his bot and for list of commands please type "help"`}, sender);
 };
+
+exports.mortgageApply = (sender)  =>{
+    messenger.send({text: `If you are looking to get apply for a loan here, I am not trained to handle that but I can ask a loan officer to contact you.`}, sender);
+};
+
