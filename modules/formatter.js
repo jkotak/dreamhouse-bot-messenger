@@ -306,21 +306,21 @@ exports.formatBroker = broker => {
 
 exports.contactLoanOfficer = () => {
      return {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "button",
-                "text":"Unfortunately I am unable to take your loan application. Do you want me to ask a loan officer to contact you?",
-                "quick_replies":[
-                  {
-                        "type": "postback",
-                        "title": "Contact loan officer",
-                        "payload": "contact_me"
-                   }
-                ]
-            }
-        }
-    };
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": "Unfortunately I am unable to take your loan application. Do you want me to ask a loan officer to contact you?",
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Contact Loan Officer",
+                            "payload": "contact_me"
+                        }]
+                }
+          }
+     };
+    
 };
     
     
