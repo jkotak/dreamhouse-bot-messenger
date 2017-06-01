@@ -304,7 +304,7 @@ exports.formatBroker = broker => {
     };
 };
 
-exports.contactLoanOfficer = () = > {
+exports.contactLoanOfficer = () => {
 return {
         "text":"Do you want me to ask a loan officer to contact you?",
         "quick_replies":[
