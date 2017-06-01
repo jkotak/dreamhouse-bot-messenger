@@ -11,6 +11,7 @@ searchHouse find house
 searchHouse for sale
 priceChanges price changes
 searchProducts rates
+searchProducts apr
 getRatesForProduct show rates
 agent agent
 loanStatus loan status
@@ -19,4 +20,9 @@ thankYou thanks
 thankYou thank 
 hi hi
 help help
-creator Jigar Kotak
+creator Jigar
+creator kotak
+mortgageApply want mortgage
+mortgageApply mortgage application
+mortgageApply apply for loan
+mortgageApply apply
