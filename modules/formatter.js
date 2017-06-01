@@ -314,8 +314,7 @@ return {
                 "payload": "contact_me"
            }
         ]
-    }
-
-}
+    };
+};
     
     
