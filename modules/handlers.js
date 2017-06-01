@@ -107,3 +107,7 @@ exports.help = (sender) => {
 exports.catchall = (sender) => {
     messenger.send({text: `Sorry, I don't understand that command. For list of commands please type "help"`}, sender);
 };
+
+export.creator = (sender)  =>{
+    messenger.send({text: `Ah! You are referring to my creator. Makes me very happy. I am his bot and for list of commands please type "help"`}, sender);
+};
