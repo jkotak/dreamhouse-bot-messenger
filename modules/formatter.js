@@ -303,3 +303,19 @@ exports.formatBroker = broker => {
         }
     };
 };
+
+exports.contactLoanOfficer = () = > {
+return {
+        "text":"Do you want me to ask a loan officer to contact you?",
+        "quick_replies":[
+          {
+                "type": "postback",
+                "title": "Contact loan officer",
+                "payload": "contact_me"
+           }
+        ]
+    }
+
+}
+    
+    
