@@ -113,6 +113,6 @@ exports.creator = (sender)  =>{
 };
 
 exports.mortgageApply = (sender)  =>{
-    messenger.send({text: `If you are looking to get apply for a loan here, I am not trained to handle that but I can ask a loan officer to contact you.`}, sender);
+    messenger.send(formatter.contactLoanOfficer(), sender);
 };
 
