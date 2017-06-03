@@ -89,7 +89,6 @@ exports.authenticated =(sender,userid)=>{
         messenger.send({text: `${response.first_name}, you are now authenticated. Let me check on that loan status for you...`}, sender);
         salesforce.getLoanStatus(userid).then(loans => {
             messenger.send(formatter.formatLoans(loans), sender);
-            messenger.setMenu();
         });
     });
 }
