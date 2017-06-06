@@ -42,7 +42,7 @@ exports.contact_me = (sender, values) => {
 };
 
 exports.loan_status = (sender,values) =>{
-    if(userid!=null){
+    if(this.userid!=null){
         salesforce.getLoanStatus(userid).then(loans => {
             messenger.send(formatter.formatLoans(loans), sender);
         });
