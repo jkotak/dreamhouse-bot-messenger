@@ -28,7 +28,7 @@ exports.setMenu = (buttons, disableInput) => {
     return new Promise((resolve, reject) => {
         request({
             url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
-            qs: { access_token: PAGE_ACCESS_TOKEN },
+            qs: { access_token: FB_PAGE_TOKEN },
             method: 'POST',
             json:{
                 "get_started":{
@@ -57,8 +57,12 @@ exports.setMenu = (buttons, disableInput) => {
         }, (error, response) => {
             if (error) {
                 console.log('(messenger) Error sending message: ', error);
+                reject(error);
             } else if (response.body.error) {
                 console.log('(messenger) Error: ', response.body.error);
+                reject(error);
+            }else{
+                resolve(JSON.parse(response.body));
             }
         });
     });
