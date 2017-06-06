@@ -4,6 +4,8 @@ let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
     formatter = require('./formatter');
 
+let userid = null;
+
 exports.searchHouse = (sender) => {
     messenger.send(formatter.requestLocation(), sender);
 };
