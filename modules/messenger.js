@@ -20,7 +20,9 @@ exports.send = (message, recipient) => {
         }
     });
 };
-exports.setMenu = (message, recipient) => {
+
+
+exports.setMenu = () => {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_TOKEN},
@@ -29,7 +31,7 @@ exports.setMenu = (message, recipient) => {
             "persistent_menu":[
                 {
                   "locale":"default",
-                  "composer_input_disabled":true,
+                  "composer_input_disabled":false,
                   "call_to_actions":[
                     {
                       "title":"My Account",
