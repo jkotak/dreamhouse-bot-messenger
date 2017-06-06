@@ -53,7 +53,7 @@ exports.loan_status = (sender,values) =>{
 
 exports.GET_STARTED_PAYLOAD = (sender, values) => {
     messenger.getUserInfo(sender).then(response => {
-        messenger.send({text: `Hi, ${response.first_name}! Thanks for getting in touch with us on Messenger. Please type "help" for list of commands to get started.`}, sender);
+        messenger.send({text: `Hi, ${response.first_name}! Thanks for getting in touch with us on Messenger. Please type "help" for list of commands to get started. And before I forget, you can also use the menu below to interact with me.`}, sender);
     });
 };
 
