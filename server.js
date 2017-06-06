@@ -53,7 +53,6 @@ app.post('/webhook', (req, res) => {
             if (result) {
                 let handler = handlers[result.handler];
                 if (handler && typeof handler === "function") {
-                    handler.userid = this.userid;
                     handler(sender, result.match);
                 } else {
                     console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
@@ -82,7 +81,6 @@ app.post('/webhook', (req, res) => {
             let payload = event.postback.payload.split(",");
             let postback = postbacks[payload[0]];
             if (postback && typeof postback === "function") {
-                postback.userid = this.userid;
                 postback(sender, payload);
             } else {
                 console.log("Postback " + postback + " is not defined");
