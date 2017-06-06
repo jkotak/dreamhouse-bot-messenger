@@ -25,9 +25,6 @@ app.get('/webhook', (req, res) => {
     }
 });
 
-app.setMenu() => {
-    menu.createMenu;
-};
 
 app.get('/authorize', (req, res) => {
     var requestURI = req.param('redirect_uri');
