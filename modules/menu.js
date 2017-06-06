@@ -27,7 +27,7 @@ exports.createMenu = () => {
     ]
   },
   {
-    title: 'Rates',
+    title: 'Today\'s Rates',
     type: 'nested',
     call_to_actions: [
       {
@@ -38,7 +38,7 @@ exports.createMenu = () => {
       {
         title: 'Adjustable-Rate',
         type: 'postback',
-        payload: 'show_rates,Adjustable-Rate Mortgages'
+        payload: 'show_rates,Adjustable-Rate Mortgages (ARMs)'
       },
       {
         title: 'FHA',
