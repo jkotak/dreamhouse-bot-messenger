@@ -6,6 +6,7 @@ var express = require('express'),
     handlers = require('./modules/handlers'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
+    menu = require('./modules/menu'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
@@ -23,6 +24,10 @@ app.get('/webhook', (req, res) => {
         res.send('Error, wrong validation token');
     }
 });
+
+app.setMenu() => {
+    menu.createMenu;
+};
 
 app.get('/authorize', (req, res) => {
     var requestURI = req.param('redirect_uri');
