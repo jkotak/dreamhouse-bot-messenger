@@ -15,12 +15,12 @@ exports.createMenu = () => {
         payload: 'loan_status'
       },
       {
-        title: 'History',
+        title: 'Next Payment',
         type: 'postback',
-        payload: 'HISTORY_PAYLOAD'
+        payload: 'next_payment'
       },
       {
-        title: 'Contact Info',
+        title: 'Contact Support',
         type: 'postback',
         payload: 'CONTACT_INFO_PAYLOAD'
       }
