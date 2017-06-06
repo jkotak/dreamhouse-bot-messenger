@@ -81,8 +81,8 @@ app.post('/webhook', (req, res) => {
         }else if (event.postback) {
             let payload = event.postback.payload.split(",");
             let postback = postbacks[payload[0]];
-            postback.userid = this.userid;
             if (postback && typeof postback === "function") {
+                postback.userid = this.userid;
                 postback(sender, payload);
             } else {
                 console.log("Postback " + postback + " is not defined");
