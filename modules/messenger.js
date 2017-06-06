@@ -25,23 +25,42 @@ exports.send = (message, recipient) => {
 
 exports.setMenu = (buttons, disableInput) => {
     console.log(util.inspect(buttons));
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
-        qs: {access_token: FB_PAGE_TOKEN},
-        method: 'POST',
-        json: {
-            persistent_menu:[{
-                locale:'default',
-                composer_input_disabled:disableInput,
-                call_to_actions:buttons
-            }]
-        }
-    }, (error, response) => {
-        if (error) {
-            console.log('(messenger) Error sending message: ', error);
-        } else if (response.body.error) {
-            console.log('(messenger) Error: ', response.body.error);
-        }
+    return new Promise((resolve, reject) => {
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+            qs: { access_token: PAGE_ACCESS_TOKEN },
+            method: 'POST',
+            json:{
+                "get_started":{
+                    "payload":"GET_STARTED_PAYLOAD"
+                }
+            }
+        }, function(error, response, body) {
+            console.log(response)
+            if (error) {
+                console.log('Error sending messages: ', error)
+            } else if (response.body.error) {
+                console.log('Error: ', response.body.error)
+            }
+        });
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+            qs: {access_token: FB_PAGE_TOKEN},
+            method: 'POST',
+            json: {
+                persistent_menu:[{
+                    locale:'default',
+                    composer_input_disabled:disableInput,
+                    call_to_actions:buttons
+                }]
+            }
+        }, (error, response) => {
+            if (error) {
+                console.log('(messenger) Error sending message: ', error);
+            } else if (response.body.error) {
+                console.log('(messenger) Error: ', response.body.error);
+            }
+        });
     });
 };
 
