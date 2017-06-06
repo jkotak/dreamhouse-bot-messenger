@@ -10,6 +10,7 @@ var express = require('express'),
     app = express();
 
 var stopbot = false;
+var isMenuSet = false;
 var userid;
 
 app.set('port', process.env.PORT || 5000);
@@ -35,6 +36,10 @@ app.get('/authorize', (req, res) => {
 });
 
 app.post('/webhook', (req, res) => {
+    if(!isMenuSet){
+        Menu.createMenu();
+        isMenuSet = true;
+    }
     let events = req.body.entry[0].messaging;
     console.log(events);
     for (let i = 0; i < events.length; i++) {
@@ -86,7 +91,6 @@ app.post('/webhook', (req, res) => {
     
     res.sendStatus(200);
 });
-app.set('menu','./modules/menu');
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
