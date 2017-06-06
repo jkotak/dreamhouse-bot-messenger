@@ -38,7 +38,7 @@ app.get('/authorize', (req, res) => {
 
 app.post('/webhook', (req, res) => {
     if(!isMenuSet){
-        Menu.createMenu();
+        menu.createMenu();
         isMenuSet = true;
     }
     let events = req.body.entry[0].messaging;
