@@ -29,7 +29,9 @@ exports.setMenu = (buttons, disableInput) => {
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_TOKEN},
         method: 'POST',
-        json: buttons
+        json: {
+            persistent_menu:buttons
+        }
     }, (error, response) => {
         if (error) {
             console.log('(messenger) Error sending message: ', error);
