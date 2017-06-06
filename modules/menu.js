@@ -3,9 +3,7 @@
 let messenger = require('./messenger');
 const disableInput = false;
 
-
-
-exports.setPersistentMenu([
+messenger.setMenu([
   {
     title: 'My Account',
     type: 'nested',
@@ -33,3 +31,4 @@ exports.setPersistentMenu([
     url: 'http://purple.com'
   }
 ], disableInput);
+
