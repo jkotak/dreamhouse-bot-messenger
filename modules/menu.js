@@ -22,7 +22,7 @@ exports.createMenu = () => {
       {
         title: 'Contact Support',
         type: 'postback',
-        payload: 'CONTACT_INFO_PAYLOAD'
+        payload: 'contact_support'
       }
     ]
   },
