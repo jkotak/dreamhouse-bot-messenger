@@ -6,7 +6,6 @@ var express = require('express'),
     handlers = require('./modules/handlers'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
-    menu = require('./modules/menu'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
@@ -87,7 +86,7 @@ app.post('/webhook', (req, res) => {
     
     res.sendStatus(200);
 });
-
+app.use('./modules/menu', menu);
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
