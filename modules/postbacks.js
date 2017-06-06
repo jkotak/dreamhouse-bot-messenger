@@ -41,6 +41,20 @@ exports.contact_me = (sender, values) => {
     });
 };
 
+exports.next_payment = (sender, values) => {
+    messenger.getUserInfo(sender).then(response => {
+        messenger.send({text: `Sorry, ${response.first_name}! My creator hasn't gotten to this yet. Please be patient and type "help" for list of commands for other options.`}, sender);
+    });
+};
+
+
+exports.contact_support = (sender, values) => {
+    messenger.getUserInfo(sender).then(response => {
+        messenger.send({text: `Sorry, ${response.first_name}! My creator hasn't gotten to this yet. Please be patient and type "help" for list of commands for other options.`}, sender);
+    });
+};
+
+
 exports.loan_status = (sender,values) =>{
     if(this.userid!=null){
         salesforce.getLoanStatus(userid).then(loans => {
