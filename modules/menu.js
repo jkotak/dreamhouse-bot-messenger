@@ -33,17 +33,17 @@ exports.createMenu = () => {
       {
         title: 'Conventional Fixed-Rate',
         type: 'postback',
-        payload: 'show_rates,Conventional Fixed-Rate'
+        payload: 'show_rates,Conventional Fixed-Rate Mortgages'
       },
       {
         title: 'Adjustable-Rate',
         type: 'postback',
-        payload: 'show_rates,Adjustable-Rate'
+        payload: 'show_rates,Adjustable-Rate Mortgages'
       },
       {
         title: 'FHA',
         type: 'postback',
-        payload: 'show_rates,FHA'
+        payload: 'show_rates,FHA Mortgages'
       }
     ]
   }, 
