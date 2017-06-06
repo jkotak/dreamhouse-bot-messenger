@@ -13,8 +13,14 @@ priceChanges price changes
 searchProducts rates
 searchProducts apr
 getRatesForProduct show rates
+getRatesForProduct What's the current rate
+getRatesForProduct What is the current rate
+getRatesForProduct Show me the current rate
+getRatesForProduct current rates
+getRatesForProduct current rate
 agent agent
 loanStatus loan status
+loanStatus status of my loan
 wakeup wakeup bot
 thankYou thanks
 thankYou thank 
