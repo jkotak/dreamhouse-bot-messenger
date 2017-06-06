@@ -26,7 +26,7 @@ exports.send = (message, recipient) => {
 exports.setMenu = (buttons, disableInput) => {
     console.log(util.inspect(buttons));
     request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
+        url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
         qs: {access_token: FB_PAGE_TOKEN},
         method: 'POST',
         json: {
