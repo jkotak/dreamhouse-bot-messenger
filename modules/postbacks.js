@@ -49,4 +49,12 @@ exports.loan_status = (sender,values) =>{
     }else{
         messenger.send(formatter.formatLoanAccountLinking(), sender);
     }
-}
+};
+
+exports.GET_STARTED_PAYLOAD = (sender, values) => {
+    messenger.getUserInfo(sender).then(response => {
+        messenger.send({text: `Hi, ${response.first_name}! Thanks for getting in touch with us on Messenger. Please type "help" for list of commands to get started.`}, sender);
+    });
+};
+
+
