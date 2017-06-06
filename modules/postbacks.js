@@ -37,5 +37,8 @@ exports.contact_me = (sender, values) => {
     messenger.getUserInfo(sender).then(response => {
         salesforce.createLead(propertyId, response.first_name, response.last_name, sender);
     });
-
 };
+
+exports.loan_status = (sender,values) =>{
+     messenger.send(formatter.formatLoanAccountLinking(), sender);
+}
