@@ -4,6 +4,8 @@ let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
     formatter = require('./formatter');
 
+let userid = null;
+
 exports.schedule_visit = (sender, values) => {
     console.log("Values " + values);
     console.log("Values1 " + values[1]);
