@@ -56,10 +56,8 @@ exports.setMenu = (buttons, disableInput) => {
     }, (error, response) => {
         if (error) {
             console.log('(messenger) Error sending message: ', error);
-            reject(error);
         } else if (response.body.error) {
             console.log('(messenger) Error: ', response.body.error);
-            reject(error);
         }
     });
 };
