@@ -31,9 +31,9 @@ exports.setMenu = (buttons, disableInput) => {
         method: 'POST',
         json: {
             persistent_menu:{[
-                locale:'default',
-                composer_input_disabled:disableInput,
-                call_to_actions:buttons
+                'locale':'default',
+                'composer_input_disabled':disableInput,
+                'call_to_actions':buttons
             ]}
         }
     }, (error, response) => {
