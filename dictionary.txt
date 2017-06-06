@@ -10,6 +10,7 @@ searchHouse looking for house
 searchHouse find house
 searchHouse for sale
 priceChanges price changes
+searchProducts rate
 searchProducts rates
 searchProducts apr
 getRatesForProduct show rates
