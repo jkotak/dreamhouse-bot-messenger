@@ -28,7 +28,6 @@ exports.setMenu = (buttons, disableInput) => {
         qs: {access_token: FB_PAGE_TOKEN},
         method: 'POST',
         json: buttons
-       }
     }, (error, response) => {
         if (error) {
             console.log('Error sending message: ', error);
