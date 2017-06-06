@@ -42,7 +42,7 @@ app.post('/webhook', (req, res) => {
         isMenuSet = true;
     }
     let events = req.body.entry[0].messaging;
-    console.log(events);
+    console.log('User ID:' + this.userid);
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
         let sender = event.sender.id;
