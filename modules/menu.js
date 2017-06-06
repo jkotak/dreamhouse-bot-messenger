@@ -3,7 +3,8 @@
 let messenger = require('./messenger');
 const disableInput = false;
 
-messenger.setMenu([
+exports.createMenu = () => {
+  messenger.setMenu([
   {
     title: 'My Account',
     type: 'nested',
@@ -31,4 +32,5 @@ messenger.setMenu([
     url: 'http://purple.com'
   }
 ], disableInput);
+}
 
