@@ -42,5 +42,11 @@ exports.contact_me = (sender, values) => {
 };
 
 exports.loan_status = (sender,values) =>{
-     messenger.send(formatter.formatLoanAccountLinking(), sender);
+    if(userid!=null){
+        salesforce.getLoanStatus(userid).then(loans => {
+            messenger.send(formatter.formatLoans(loans), sender);
+        });
+    else{
+        messenger.send(formatter.formatLoanAccountLinking(), sender);
+    }
 }
