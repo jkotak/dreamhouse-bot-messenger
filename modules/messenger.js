@@ -41,7 +41,7 @@ exports.setMenu = (buttons, disableInput) => {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
-    }).then({
+    }).then(()=>{
         request({
             url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
             qs: {access_token: FB_PAGE_TOKEN},
