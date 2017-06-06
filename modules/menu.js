@@ -27,6 +27,11 @@ exports.createMenu = () => {
     ]
   },
   {
+    title: 'Show Rates',
+    type: 'postback',
+    payload: 'show_rates'
+  }, 
+  {
     title: 'Provide Feedback',
     type: 'web_url',
     url: 'http://bit.ly/2qOPctw'
