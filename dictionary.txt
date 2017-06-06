@@ -19,6 +19,7 @@ wakeup wakeup bot
 thankYou thanks
 thankYou thank 
 hi hi
+hi hello
 help help
 creator Jigar
 creator kotak
