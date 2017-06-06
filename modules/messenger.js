@@ -30,9 +30,9 @@ exports.setMenu = (buttons, disableInput) => {
         json: buttons
     }, (error, response) => {
         if (error) {
-            console.log('Error sending message: ', error);
+            console.log('(messenger) Error sending message: ', error);
         } else if (response.body.error) {
-            console.log('Error: ', response.body.error);
+            console.log('(messenger) Error: ', response.body.error);
         }
     });
 };
