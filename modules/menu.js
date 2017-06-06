@@ -27,9 +27,9 @@ exports.createMenu = () => {
     ]
   },
   {
-    title: 'Go to Website',
+    title: 'Provide Feedback',
     type: 'web_url',
-    url: 'http://purple.com'
+    url: 'http://bit.ly/2qOPctw'
   }
 ], disableInput);
 }
