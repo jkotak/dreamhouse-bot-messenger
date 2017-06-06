@@ -30,11 +30,11 @@ exports.setMenu = (buttons, disableInput) => {
         qs: {access_token: FB_PAGE_TOKEN},
         method: 'POST',
         json: {
-            persistent_menu:{
+            persistent_menu:{[
                 locale:'default',
                 composer_input_disabled:disableInput,
                 call_to_actions:buttons
-            }
+            ]}
         }
     }, (error, response) => {
         if (error) {
