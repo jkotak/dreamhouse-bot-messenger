@@ -30,7 +30,7 @@ app.get('/webhook', (req, res) => {
 app.get('/authorize', (req, res) => {
     var requestURI = req.param('redirect_uri');
     var token = req.param('authorization_code');
-    userid = token;
+    userid = handlers.userid = postbacks.userid = token;
     console.log(token+' '+ requestURI);
     //handlers.authenticated(token);
     res.redirect(requestURI+'&authorization_code='+token);
