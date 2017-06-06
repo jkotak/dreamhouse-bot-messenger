@@ -27,9 +27,25 @@ exports.createMenu = () => {
     ]
   },
   {
-    title: 'Show Rates',
-    type: 'postback',
-    payload: 'show_rates'
+    title: 'Rates',
+    type: 'nested',
+    call_to_actions: [
+      {
+        title: 'Conventional Fixed-Rate',
+        type: 'postback',
+        payload: 'loan_status,Conventional Fixed-Rate'
+      },
+      {
+        title: 'Adjustable-Rate',
+        type: 'postback',
+        payload: 'loan_status,Adjustable-Rate'
+      },
+      {
+        title: 'FHA',
+        type: 'postback',
+        payload: 'loan_status,FHA'
+      }
+    ]
   }, 
   {
     title: 'Provide Feedback',
