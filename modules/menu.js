@@ -10,9 +10,9 @@ exports.createMenu = () => {
     type: 'nested',
     call_to_actions: [
       {
-        title: 'Pay Bill',
+        title: Loan Stats',
         type: 'postback',
-        payload: 'PAYBILL_PAYLOAD'
+        payload: 'loan_status'
       },
       {
         title: 'History',
