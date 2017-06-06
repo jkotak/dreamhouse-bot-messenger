@@ -46,7 +46,7 @@ exports.loan_status = (sender,values) =>{
         salesforce.getLoanStatus(userid).then(loans => {
             messenger.send(formatter.formatLoans(loans), sender);
         });
-    else{
+    }else{
         messenger.send(formatter.formatLoanAccountLinking(), sender);
     }
 }
