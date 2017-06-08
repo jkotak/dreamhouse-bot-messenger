@@ -96,6 +96,10 @@ exports.authenticated =(sender,userid)=>{
 }
 
 exports.startApplication = (sender,userid,userinfo) =>{
+    messenger.getUserInfo(sender).then(response => {
+        messenger.send({text: `${response.first_name}, happy to help. I will walk you through a series of questions to gather some information. Once we complete these steps, I can send you a preapproval form.`}, sender);
+        
+    });
 }
 
 exports.ContinueWithAgent =(sender)=>{
