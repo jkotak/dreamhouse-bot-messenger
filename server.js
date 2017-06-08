@@ -109,8 +109,8 @@ app.post('/webhook', (req, res) => {
     }
 });
 
-function getUserHistory(userid,handler){
-    console.log('Entering to get user history');
+
+exports.getUserHistory = (userid,handler) => {
     var query = {user_id: userid};
     var update = {
                     user_id: userid,
@@ -126,7 +126,7 @@ function getUserHistory(userid,handler){
             return user;
         }
     });
-}
+};
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
