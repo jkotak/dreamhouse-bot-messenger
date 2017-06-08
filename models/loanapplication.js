@@ -8,7 +8,8 @@ var LoanApplicationSchema = new Schema({
   amount: {type: String},
   coborrower: {type: String},
   occupancy: {type: String},
-  property_type: {type: String}
+  property_type: {type: String},
+  last_keyword:{type:String}
 });
 
 module.exports = mongoose.model("LoanApp", LoanApplicationSchema);
