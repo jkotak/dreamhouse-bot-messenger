@@ -61,7 +61,7 @@ app.post('/webhook', (req, res) => {
                     let handler = handlers[result.handler];
                     if (handler && typeof handler === "function") {
                         if(handler==='startApplication'){
-                            user = getUserHistory(sender);
+                            user = getUserHistory(sender,handler);
                             console.log('User:'+ user);
                         }
                         handler(sender, result.match);
@@ -107,8 +107,13 @@ app.post('/webhook', (req, res) => {
     }
 });
 
-function getUserHistory(userid){
+function getUserHistory(userid,handler){
+    console.log('Entering to get user history');
     var query = {user_id: userid};
+    var update = {
+                    user_id: userid,
+                    last_keyword:handler
+                };
     var options = {upsert: true, returnNewDocument : true};
     UserInfo.findOneAndUpdate(query, update, options, function(err, user) {
         if (err) {
