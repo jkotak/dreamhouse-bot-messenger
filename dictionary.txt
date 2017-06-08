@@ -36,3 +36,5 @@ mortgageApply apply for loan
 mortgageApply apply
 mortgageApply I want loan
 mortgageApply How do I get a loan
+mortgageApply I need a loan
+mortgageApply Loan application
