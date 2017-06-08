@@ -59,11 +59,11 @@ app.post('/webhook', (req, res) => {
                 let result = processor.match(event.message.text);
                 if (result) {
                     let handler = handlers[result.handler];
-                    console.log('handler:'+ handler);
+                    console.log('handler:'+ result.handler);
                     if (handler && typeof handler === "function") {
-                        if(handler==='startApplication'){
+                        if(result.handler==='startApplication'){
                             console.log('Starting Application');
-                            user = getUserHistory(sender,handler);
+                            user = getUserHistory(sender,result.handler);
                             console.log('User:'+ user);
                         }
                         handler(sender, result.match);
