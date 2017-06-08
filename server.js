@@ -109,7 +109,7 @@ app.post('/webhook', (req, res) => {
 });
 
 
-getUserHistory = (userid,handler) => {
+function getUserHistory (userid,handler) {
     var query = {user_id: userid};
     var update = {
                     user_id: userid,
