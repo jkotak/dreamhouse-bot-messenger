@@ -13,7 +13,7 @@ var express = require('express'),
 
 
 var db = mongoose.connect(process.env.MONGODB_URI);
-var Movie = require("./models/loanapplication");
+var UserInfo = require("./models/userinfo");
 
 var stopbot = false;
 var isMenuSet = false;
@@ -48,6 +48,7 @@ app.post('/webhook', (req, res) => {
             isMenuSet = true;
         }
         let events = req.body.entry[0].messaging;
+        let user = null;
         console.log('User ID:' + this.userid);
         for (let i = 0; i < events.length; i++) {
             let event = events[i];
@@ -59,6 +60,10 @@ app.post('/webhook', (req, res) => {
                 if (result) {
                     let handler = handlers[result.handler];
                     if (handler && typeof handler === "function") {
+                        if(handler==='startApplication'){
+                            user = getUserHistory(sender);
+                            console.log('User:'+ user);
+                        }
                         handler(sender, result.match);
                     } else {
                         console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
@@ -101,6 +106,20 @@ app.post('/webhook', (req, res) => {
         res.sendStatus(200);
     }
 });
+
+function getUserHistory(userid){
+    var query = {user_id: userid};
+    var options = {upsert: true, returnNewDocument : true};
+    UserInfo.findOneAndUpdate(query, update, options, function(err, user) {
+        if (err) {
+            console.log("Database error: " + err);
+            return null;
+        } else {
+            return user;
+        }
+    });
+}
+
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
