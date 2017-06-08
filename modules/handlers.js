@@ -4,6 +4,7 @@ let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
     formatter = require('./formatter');
 
+var loanApplication = require("./models/loanapplication");
 let userid = null;
 
 exports.searchHouse = (sender) => {
@@ -96,10 +97,13 @@ exports.authenticated =(sender,userid)=>{
 }
 
 exports.startApplication = (sender,userinfo) =>{
-    
     messenger.getUserInfo(sender).then(response => {
         messenger.send({text: `${response.first_name}, happy to help. I will walk you through a series of questions to gather some information. Once we complete these steps, I can send you a preapproval form.`}, sender);
-        
+         getLoanApplication(userinfo.user_id,{
+                    user_id: userinfo.user_id
+                }).then(application => {
+            console.log(application);
+         });
     });
 }
 
