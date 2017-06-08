@@ -128,7 +128,7 @@ function getUserHistory (userid,handler) {
                 resolve(user);
             }
         });
-    )};
+    });
 };
 
 app.listen(app.get('port'), function () {
