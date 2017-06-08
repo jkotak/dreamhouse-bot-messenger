@@ -122,7 +122,7 @@ function getUserHistory(userid,handler){
             console.log("Database error: " + err);
             return null;
         } else {
-            console.log(user);
+            console.log('User Id is '+user.user_id);
             return user;
         }
     });
