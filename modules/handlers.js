@@ -95,6 +95,9 @@ exports.authenticated =(sender,userid)=>{
     });
 }
 
+exports.startApplication = (sender,userid,userinfo) =>{
+}
+
 exports.ContinueWithAgent =(sender)=>{
     messenger.send({text: `Transfering now...please wait for an agent. If you need me just type "wakeup"`}, sender);
 }
