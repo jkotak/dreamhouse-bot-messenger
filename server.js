@@ -64,9 +64,11 @@ app.post('/webhook', (req, res) => {
                         if(result.handler==='startApplication'){
                             console.log('Starting Application');
                             user = getUserHistory(sender,result.handler);
-                            console.log('User:'+ user);
+                            console.log('User:'+ user.user_id);
+                            handler(user, sender, result.match);
+                        }else{
+                            handler(sender, result.match);
                         }
-                        handler(sender, result.match);
                     } else {
                         console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
                         handlers.catchall(sender);
