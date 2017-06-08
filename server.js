@@ -116,17 +116,19 @@ function getUserHistory (userid,handler) {
                     last_keyword:handler
                 };
     var options = {upsert: true, returnNewDocument : true};
-    UserInfo.findOneAndUpdate(query, update, options, function(err, user) {
-        if (err) {
-            console.log("Database error: " + err);
-            return null;
-        } else {
-            console.log('User Id is '+user.user_id);
-            console.log('User Id is '+user.last_keyword);
-            console.log('User is '+user);
-            return user;
-        }
-    });
+    return new Promise((resolve, reject) => {
+        UserInfo.findOneAndUpdate(query, update, options, function(err, user) {
+            if (err) {
+                console.log("Database error: " + err);
+                 reject("An error as occurred");
+            } else {
+                console.log('User Id is '+user.user_id);
+                console.log('User Id is '+user.last_keyword);
+                console.log('User is '+user);
+                resolve(user);
+            }
+        });
+    )};
 };
 
 app.listen(app.get('port'), function () {
