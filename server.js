@@ -59,6 +59,7 @@ app.post('/webhook', (req, res) => {
                 let result = processor.match(event.message.text);
                 if (result) {
                     let handler = handlers[result.handler];
+                    console.log('handler:'+ handler);
                     if (handler && typeof handler === "function") {
                         if(handler==='startApplication'){
                             console.log('Starting Application');
