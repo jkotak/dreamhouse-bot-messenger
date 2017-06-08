@@ -123,6 +123,7 @@ exports.getUserHistory = (userid,handler) => {
             return null;
         } else {
             console.log('User Id is '+user.user_id);
+            console.log('User Id is '+user.last_keyword);
             return user;
         }
     });
