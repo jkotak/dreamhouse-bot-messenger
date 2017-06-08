@@ -27,7 +27,7 @@ exports.createMenu = () => {
     ]
   },
   {
-    title: 'Today\'s Rates',
+    title: 'Rates',
     type: 'nested',
     call_to_actions: [
       {
