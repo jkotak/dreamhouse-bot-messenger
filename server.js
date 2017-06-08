@@ -64,7 +64,7 @@ app.post('/webhook', (req, res) => {
                         if(result.handler==='startApplication'){
                             console.log('Starting Application');
                             user = getUserHistory(sender,result.handler);
-                            handler(user, sender, result.match);
+                            handler(sender, user);
                         }else{
                             handler(sender, result.match);
                         }
