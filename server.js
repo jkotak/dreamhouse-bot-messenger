@@ -62,7 +62,7 @@ app.post('/webhook', (req, res) => {
                     if (handler && typeof handler === "function") {
                         if(result.handler==='startApplication'){
                             getUserHistory(sender,result.handler).then(user => {
-                                console.log('User ='+ user.user_id);
+                                handler(sender, user);
                             });
                         }else{
                             handler(sender, result.match);
@@ -120,12 +120,8 @@ function getUserHistory (userid,handler) {
     return new Promise((resolve, reject) => {
         UserInfo.findOneAndUpdate(query, update, options, function(err, user) {
             if (err) {
-                console.log("Database error: " + err);
                  reject("An error as occurred");
             } else {
-                console.log('User Id is '+user.user_id);
-                console.log('User Id is '+user.last_keyword);
-                console.log('User is '+user);
                 resolve(user);
             }
         });
