@@ -61,7 +61,8 @@ app.post('/webhook', (req, res) => {
                     console.log('handler:'+ result.handler);
                     if (handler && typeof handler === "function") {
                         if(result.handler==='startApplication'){
-                            
+                            var user = getUserHistory(sender,result.handler);
+                            console.log('User ='+ user);
                         }else{
                             handler(sender, result.match);
                         }
@@ -108,7 +109,7 @@ app.post('/webhook', (req, res) => {
 });
 
 
-exports.getUserHistory = (userid,handler) => {
+getUserHistory = (userid,handler) => {
     var query = {user_id: userid};
     var update = {
                     user_id: userid,
@@ -122,6 +123,7 @@ exports.getUserHistory = (userid,handler) => {
         } else {
             console.log('User Id is '+user.user_id);
             console.log('User Id is '+user.last_keyword);
+            console.log('User is '+user);
             return user;
         }
     });
