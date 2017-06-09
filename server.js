@@ -8,6 +8,7 @@ var express = require('express'),
     uploads = require('./modules/uploads'),
     mongoose = require("mongoose"),
     menu = require('./modules/menu'),
+    emailregex = require('regex-email'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
@@ -90,6 +91,7 @@ app.post('/webhook', (req, res) => {
                                 if (handler && typeof handler === "function") {
                                     handler(sender, user,params);
                                 }
+                            }else if (event.message.quick_reply){
                             }else{
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                                 handlers.catchall(sender); 
