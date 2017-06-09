@@ -9,7 +9,6 @@ mongoose.Promise = global.Promise;
         
 
 exports.createLoanApp = (userid,document) => {
-    console.log(userid + ' ' + update);
     var query = {user_id: userid};
     return new Promise((resolve, reject) => {
         LoanApplication.insertOne(document, (err,loanApp) => {
