@@ -80,7 +80,7 @@ app.post('/webhook', (req, res) => {
                     handlers.ContinueWithoutAgent(sender);
                 }else {
                     console.log(typeof event.message.quick_reply);
-                    if (!"undefined" === typeof event.message.quick_reply){
+                    if (event.message.quick_reply !== null && typeof event.message.quick_reply === 'object'){
                         var payload = event.message.quick_reply.payload; 
                         console.log('Quick Reply'+ payload);
                         var params = payload.split(",");
