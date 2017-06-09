@@ -22,11 +22,11 @@ exports.createLoanApp = (userid,update) => {
 
 exports.createFirstQuestion=()=>{
         var options = [
-            "Primary","Investment"
+            'Primary','Investment'
         ];
-        var postbacks = {
-            "primary","investment"
-        };
+        var postbacks = [
+            'primary','investment'
+        ];
         var question = 'What is this property for?';
         return formatter.formatApplicationQuestions(question,postback,options);
 };
