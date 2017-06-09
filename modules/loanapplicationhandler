@@ -44,5 +44,5 @@ exports.createThirdQuestion=()=>{
 };
 
 exports.createFourthQuestion=()=>{
-        return 'What is your phone number?';
+        return {text: `what is your phone number?`};
 };
