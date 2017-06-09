@@ -96,3 +96,8 @@ exports.processLoanApplicationConfirmation=()=>{
         var question = 'Thank you for confirming that information. I have emailed you a pre-approval email, could you check if you have recieved it?'  ;
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
+exports.approvalComplete=()=>{
+        return {text: `Awesome!`};
+};
+
+
