@@ -8,6 +8,8 @@ var LoanApplicationSchema = new Schema({
   amount: {type: String},
   coborrower: {type: String},
   occupancy_type: {type: String},
+  email_address: {type: mongoose.SchemaTypes.Email},
+  phone_number: {type: String},
   property_type: {type: String}
 });
 
