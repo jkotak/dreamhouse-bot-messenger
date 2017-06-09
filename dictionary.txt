@@ -30,12 +30,13 @@ hi hello
 help help
 creator Jigar
 creator kotak
-mortgageApply want mortgage
-mortgageApply mortgage application
-mortgageApply apply for loan
-mortgageApply apply
-mortgageApply I want loan
-mortgageApply How do I get a loan
-mortgageApply I need a loan
-mortgageApply Loan application
-startApplication prequal
+startApplication want mortgage
+startApplication mortgage application
+startApplication apply for loan
+startApplication apply
+startApplication mortgage
+startApplication I want loan
+startApplication How do I get a loan
+startApplication I need a loan
+startApplication Loan application
+startApplication I need a pre-approval
