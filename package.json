@@ -15,7 +15,8 @@
     "nforce": "^1.4.1",
     "numeral": "^1.5.3",
     "mongoose": "^4.6.2",
-    "regex-email":"^1.0.2", 
+    "regex-email":"^1.0.2",
+    "phone-regex":"^2.0.0",
     "request": "^2.71.0"
   }
 }
