@@ -304,13 +304,13 @@ exports.formatBroker = broker => {
     };
 };
 
-exports.formatApplicationQuestions =(text,options,values)=>{  
+exports.formatApplicationQuestions =(text,postback,options)=>{  
     let elements = [];
     for (i = 0; i < options.length; i++) { 
         elements.push({  
             "content_type":"text",
-            "title":values[i],
-            "payload":options[i] + ',' + values[i]
+            "title":options[i],
+            "payload":postback[i] + ',' + options[i]
         });
     }
     return {
