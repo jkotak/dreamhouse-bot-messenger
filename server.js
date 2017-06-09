@@ -58,7 +58,7 @@ app.post('/webhook', (req, res) => {
                 let result = processor.match(event.message.text);
                 if (result) {
                     let handler = handlers[result.handler];
-                    getUserHistory(sender,result.handler).then(user => {
+                    getSetUserHistory(sender,result.handler).then(user => {
                         console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
                             if(result.handler==='startApplication'){
@@ -79,7 +79,7 @@ app.post('/webhook', (req, res) => {
                     console.log("Asked for Agent" + event.message.quick_reply);
                     handlers.ContinueWithoutAgent(sender);
                 }else {
-                    getUserHistory(sender,handler).then(user => {
+                    getUserHistory(sender).then(user => {
                         console.log(typeof event.message.quick_reply);
                         if(user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && user.last_keyword==='startApplication'){
                             if (event.message.quick_reply !== null && typeof event.message.quick_reply === 'object'){
@@ -125,7 +125,20 @@ app.post('/webhook', (req, res) => {
 });
 
 
-function getUserHistory (userid,handler) {
+function getUserHistory (userid) {
+    var query = {user_id: userid};
+    return new Promise((resolve, reject) => {
+        UserInfo.findOne(query, function(err, user) {
+            if (err) {
+                 reject("An error as occurred");
+            } else {
+                resolve(user);
+            }
+        });
+    });
+};
+
+function getSetUserHistory (userid,handler) {
     var query = {user_id: userid};
     var update = {
                     user_id: userid,
