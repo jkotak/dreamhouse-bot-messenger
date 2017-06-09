@@ -1,8 +1,8 @@
 "use strict";
 
-let db = mongoose.connect(process.env.MONGODB_URI),
-        LoanApplication = require("../models/loanapplication"),
-        mongoose = require("mongoose");
+let mongoose = require("mongoose"),
+        db = mongoose.connect(process.env.MONGODB_URI),
+        LoanApplication = require("../models/loanapplication");
 
 exports.createLoanApp = (userid,update) => {
     coonsole.log(userid + ' ' + update);
