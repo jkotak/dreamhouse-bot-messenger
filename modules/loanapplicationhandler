@@ -39,7 +39,7 @@ exports.updateLoanApp = (userid,update) => {
     });
 };
 
-exports.findLoan = (userid) => {
+exports.findLoanApp = (userid) => {
     var filter = {user_id: userid};
     return new Promise((resolve, reject) => {
         LoanApplication.findOne(filter,(err,loanApp) =>{
