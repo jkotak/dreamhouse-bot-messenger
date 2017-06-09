@@ -9,7 +9,7 @@ var LoanApplicationSchema = new Schema({
   property_type: {type: String}
 });
 
-/*
+
 var getLoanApplication (userid,update) {
     var query = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
@@ -22,7 +22,7 @@ var getLoanApplication (userid,update) {
             }
         });
     });
-};*/
+};
 
 
 
