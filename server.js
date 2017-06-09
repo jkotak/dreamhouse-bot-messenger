@@ -79,21 +79,23 @@ app.post('/webhook', (req, res) => {
                     console.log("Asked for Agent" + event.message.quick_reply);
                     handlers.ContinueWithoutAgent(sender);
                 }else {
-                    console.log(typeof event.message.quick_reply);
-                    if (event.message.quick_reply !== null && typeof event.message.quick_reply === 'object'){
-                        var payload = event.message.quick_reply.payload; 
-                        console.log('Quick Reply'+ payload);
-                        var params = payload.split(",");
-                        let handler = handlers[params[0]];
-                        if (handler && typeof handler === "function") {
-                            getUserHistory(sender,handler).then(user => {
-                                handler(sender, user,params);
-                            });
+                    getUserHistory(sender,handler).then(user => {
+                        console.log(typeof event.message.quick_reply);
+                        if(user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && user.last_keyword==='startApplication'){
+                            if (event.message.quick_reply !== null && typeof event.message.quick_reply === 'object'){
+                                var payload = event.message.quick_reply.payload; 
+                                console.log('Quick Reply'+ payload);
+                                var params = payload.split(",");
+                                let handler = handlers[params[0]];
+                                if (handler && typeof handler === "function") {
+                                    handler(sender, user,params);
+                                }
                         }
-                    }else{
-                        console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
-                        handlers.catchall(sender); 
-                    }
+                        }else{
+                            console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
+                            handlers.catchall(sender); 
+                        }
+                    });
                 }
             }else if(event.message && event.message.text && stopbot){
                 if(event.message.text.toLowerCase()=='wakeup'){
