@@ -114,7 +114,7 @@ exports.startApplication = (sender,userinfo,params) =>{
                 messenger.send(loanapplicationhandler.createThirdQuestion(), sender);
             });
             break;
-        case "askfourthQuestion":
+        case "askFourthQuestion":
             console.log('In fourth')
             loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createFourthQuestion(), sender);
