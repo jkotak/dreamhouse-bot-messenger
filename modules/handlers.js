@@ -2,10 +2,8 @@
 
 let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
-    formatter = require('./formatter');
-
-
-var LoanApplication = require("../models/loanapplication");
+    formatter = require('./formatter'),
+    loanapplicationhandler = require('./loanapplicationhandler');
 
 let userid = null;
 
@@ -104,7 +102,7 @@ exports.startApplication = (sender,userinfo) =>{
          var update = {
                     user_id: userinfo.user_id
                 };
-        LoanApplication.createLoanApp(userinfo.user_id,update).then(application => {
+        loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
             console.log(application);
          });
     });
