@@ -10,7 +10,7 @@ var LoanApplicationSchema = new Schema({
 });
 
 
-var getLoanApplication (userid,update) {
+var getLoanApplication = function(userid,update) {
     var query = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
