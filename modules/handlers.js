@@ -97,12 +97,13 @@ exports.authenticated =(sender,userid)=>{
     });
 }
 
-exports.startApplication = (sender,userinfo,stage) =>{
+exports.startApplication = (sender,userinfo,params) =>{
+    
     var update = {
                 user_id: userinfo.user_id
             };
     
-    switch (stage) {
+    switch (params[1]) {
         case "askSecondQuestion":
             loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createSecondQuestion(), sender);
