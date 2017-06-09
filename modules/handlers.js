@@ -106,7 +106,7 @@ exports.startApplication = (sender,userinfo,params) =>{
             var param1 = params[2];            
             var param1 = params[3];
             var update = {
-              'property_type': params[3]
+              'occupancy_type': params[3]
             }; 
             loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createSecondQuestion(), sender);
@@ -122,7 +122,7 @@ exports.startApplication = (sender,userinfo,params) =>{
             break;
         case "askFourthQuestion":
             var update = {
-              phone: params[3]
+              email: params[3]
             }; 
             loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createFourthQuestion(), sender);
