@@ -40,7 +40,7 @@ exports.createSecondQuestion=()=>{
 };
 
 exports.createThirdQuestion=()=>{
-        return {text: `what is your phone number?`};
+        return {text: `what is your email address?`};
 };
 
 exports.createFourthQuestion=()=>{
