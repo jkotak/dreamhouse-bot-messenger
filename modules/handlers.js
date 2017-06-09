@@ -103,7 +103,7 @@ exports.startApplication = (sender,userinfo) =>{
                     user_id: userinfo.user_id
                 };
         loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
-            console.log(application);
+            messenger.send(loanapplicationhandler.createFirstQuestion(), sender);
          });
     });
 }
