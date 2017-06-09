@@ -232,13 +232,14 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, customer
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
-        c.set('firstname', `Contact ${customerFirstName} (Facebook Customer)`);
+        c.set('firstname', customerFirstName);
         c.set('lastname', customerLastName);
         c.set('description', "Facebook id: " + customerId);
         c.set('LeadSource', 'Facebook Bot');
         c.set('status', 'New');
         c.set('phone', phone);
         c.set('email', email);
+        c.set('Send_Pre_approval__c',true);
 
         org.insert({sobject: c}, err => {
             if (err) {
