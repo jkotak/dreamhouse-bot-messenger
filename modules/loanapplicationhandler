@@ -28,6 +28,6 @@ exports.createFirstQuestion=()=>{
         var postbacks = [
             'primary','investment'
         ];
-        var question = 'What is this property for?';
+        var question = 'I will walk you through a series of questions to gather some information. Once we complete these steps, I can send you a preapproval form. So let's get started, what is this property for?';
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
