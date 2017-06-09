@@ -121,6 +121,7 @@ exports.startApplication = (sender,userinfo,params) =>{
             });
             break;
         case "askFourthQuestion":
+            console.log('Params[3]:'+params[3]);
             var update = {
               'email_address': params[3]
             }; 
