@@ -103,8 +103,7 @@ exports.startApplication = (sender,userinfo,params) =>{
     
     switch (params[1]) {
         case "askSecondQuestion":
-            var param1 = params[2];            
-            var param1 = params[3];
+            console.log('Params[3]:'+params[3]);
             var update = {
               'occupancy_type': params[3]
             }; 
@@ -113,6 +112,7 @@ exports.startApplication = (sender,userinfo,params) =>{
             });
             break;
         case "askThirdQuestion":
+            console.log('Params[3]:'+params[3]);
             var update = {
               'property_type': params[3]
             }; 
