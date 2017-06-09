@@ -79,8 +79,10 @@ app.post('/webhook', (req, res) => {
                     console.log("Asked for Agent" + event.message.quick_reply);
                     handlers.ContinueWithoutAgent(sender);
                 }else {
-                    var quickReply = event.message.quick_reply; 
-                    console.log('Quick Reply'+ quickReply);
+                    if (!"undefined" === typeof event.message.quick_reply){
+                        var payload = event.message.quick_reply.payload; 
+                        console.log('Quick Reply'+ payload);
+                    }
                     console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                     handlers.catchall(sender);
                 }
