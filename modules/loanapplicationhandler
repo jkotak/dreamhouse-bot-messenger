@@ -19,3 +19,14 @@ exports.createLoanApp = (userid,update) => {
         });
     });
 };
+
+exports.createFirstQuestion=()=>{
+        var options = [
+            'Primary','Investment'
+        ];
+        var postbacks = {
+            'primary','investment'
+        };
+        var question = 'What is this property for?';
+        formatter.formatApplicationQuestions(question,postback,options);
+};
