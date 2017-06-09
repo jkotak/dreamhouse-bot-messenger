@@ -29,5 +29,5 @@ exports.createFirstQuestion=()=>{
             'primary','investment'
         ];
         var question = 'What is this property for?';
-        return formatter.formatApplicationQuestions(question,postback,options);
+        return formatter.formatApplicationQuestions(question,postbacks,options);
 };
