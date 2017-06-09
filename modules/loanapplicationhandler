@@ -3,7 +3,9 @@
 let mongoose = require("mongoose"),
         db = mongoose.connect(process.env.MONGODB_URI),
         formatter = require('./formatter'),
+        promise = require("promise"),
         LoanApplication = require("../models/loanapplication");
+        
 
 exports.createLoanApp = (userid,update) => {
     console.log(userid + ' ' + update);
