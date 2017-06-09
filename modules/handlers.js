@@ -138,7 +138,12 @@ exports.startApplication = (sender,userinfo,params) =>{
                     messenger.send(loanapplicationhandler.createFifthQuestion(loanApp), sender);
                 });
             });
-            break;   
+            break;
+         case "processLoanApplication":
+            loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
+                messenger.send(loanapplicationhandler.processLoanApplication(loanApp), sender);
+            });
+            break;
         default:
           var update = {
               user_id: userinfo.user_id
