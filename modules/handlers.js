@@ -105,7 +105,7 @@ exports.startApplication = (sender,userinfo,params) =>{
         case "askSecondQuestion":
             console.log('Params[3]:'+params[3]);
             var update = {
-              'occupancy': params[3]
+              'occupancy_type': params[3]
             }; 
             loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createSecondQuestion(), sender);
