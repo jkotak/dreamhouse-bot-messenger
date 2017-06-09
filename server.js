@@ -83,6 +83,13 @@ app.post('/webhook', (req, res) => {
                     if (!"undefined" === typeof event.message.quick_reply){
                         var payload = event.message.quick_reply.payload; 
                         console.log('Quick Reply'+ payload);
+                        var params = payload.split(",");
+                        let handler = handlers[params[0]];
+                        if (handler && typeof handler === "function") {
+                            getUserHistory(sender,result.handler).then(user => {
+                                handler(sender, user);
+                            });
+                        }
                     }
                     console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                     handlers.catchall(sender);
