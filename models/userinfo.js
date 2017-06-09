@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var UserInfoSchema = new Schema({
   user_id: {type: String},
-  email: {type: mongoose.SchemaTypes.Email},
+  email: {type: Email},
   phone: {type: String},
   last_keyword:{type:String}
 });
