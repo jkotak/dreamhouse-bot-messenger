@@ -79,6 +79,7 @@ app.post('/webhook', (req, res) => {
                     console.log("Asked for Agent" + event.message.quick_reply);
                     handlers.ContinueWithoutAgent(sender);
                 }else {
+                    console.log(event.message.quick_reply);
                     if (!"undefined" === typeof event.message.quick_reply){
                         var payload = event.message.quick_reply.payload; 
                         console.log('Quick Reply'+ payload);
