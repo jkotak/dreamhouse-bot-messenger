@@ -86,7 +86,7 @@ app.post('/webhook', (req, res) => {
                         var params = payload.split(",");
                         let handler = handlers[params[0]];
                         if (handler && typeof handler === "function") {
-                            getUserHistory(sender,result.handler).then(user => {
+                            getUserHistory(sender,handler).then(user => {
                                 handler(sender, user,params);
                             });
                         }
