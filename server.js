@@ -76,7 +76,7 @@ app.post('/webhook', (req, res) => {
                     stopbot = true;
                     handlers.ContinueWithAgent(sender);
                 }else if(event.message.text=='Continue with bot'){
-                    console.log("Asked for Agent");
+                    console.log("Asked for Agent" + event.message.quick_reply);
                     handlers.ContinueWithoutAgent(sender);
                 }else {
                     var quickReply = event.message.quick_reply; 
