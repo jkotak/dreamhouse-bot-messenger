@@ -2,9 +2,9 @@
 
 let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
-    formatter = require('./formatter');
+    formatter = require('./formatter'),
+    loanApplication = require("../models/loanapplication");
 
-var loanApplication = require("../models/loanapplication");
 let userid = null;
 
 exports.searchHouse = (sender) => {
