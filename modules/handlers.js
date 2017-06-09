@@ -103,8 +103,10 @@ exports.startApplication = (sender,userinfo,params) =>{
     
     switch (params[1]) {
         case "askSecondQuestion":
+            var param1 = params[2];            
+            var param1 = params[3];
             var update = {
-              params[2]: params[3]
+              'property_type': params[3]
             }; 
             loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createSecondQuestion(), sender);
@@ -112,7 +114,7 @@ exports.startApplication = (sender,userinfo,params) =>{
             break;
         case "askThirdQuestion":
             var update = {
-              params[2]: params[3]
+              'property_type': params[3]
             }; 
             loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createThirdQuestion(), sender);
