@@ -11,6 +11,7 @@ var LoanApplicationSchema = new Schema({
 
 
 var getLoanApplication = function(userid,update) {
+    coonsole.log(userid + ' ' + update);
     var query = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
