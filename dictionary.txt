@@ -40,3 +40,5 @@ startApplication How do I get a loan
 startApplication I need a loan
 startApplication Loan application
 startApplication I need a pre-approval
+startApplication I want a pre-approval
+startApplication pre-approval
