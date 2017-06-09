@@ -72,7 +72,7 @@ app.post('/webhook', (req, res) => {
                         handlers.catchall(sender);
                     }
                 }else if(event.message.text=='Transfer me'){
-                    console.log("Asked for Agent");
+                    console.log("Asked for Agent" + event.message.quick_reply);
                     stopbot = true;
                     handlers.ContinueWithAgent(sender);
                 }else if(event.message.text=='Continue with bot'){
