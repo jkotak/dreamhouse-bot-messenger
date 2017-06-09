@@ -10,7 +10,7 @@ var LoanApplicationSchema = new Schema({
 });
 
 
-exports.createLoanApp = (userid,update) => {
+let createLoanApp = (userid,update) => {
     coonsole.log(userid + ' ' + update);
     var query = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
@@ -23,10 +23,9 @@ exports.createLoanApp = (userid,update) => {
             }
         });
     });
-}
+};
 
 
 
 module.exports = mongoose.model("LoanApplication", LoanApplicationSchema);
-
-
+exports.createLoanApp = createLoanApp;
