@@ -148,6 +148,9 @@ exports.startApplication = (sender,userinfo,params) =>{
                 });
             });
             break;
+         case "processLoanApplicationConfirmation":
+            messenger.send(loanapplicationhandler.approvalComplete(), sender);
+            break;
         default:
           var update = {
               user_id: userinfo.user_id
