@@ -58,19 +58,19 @@ app.post('/webhook', (req, res) => {
                 let result = processor.match(event.message.text);
                 if (result) {
                     let handler = handlers[result.handler];
-                    console.log('handler:'+ result.handler);
-                    if (handler && typeof handler === "function") {
-                        if(result.handler==='startApplication'){
-                            getUserHistory(sender,result.handler).then(user => {
+                    getUserHistory(sender,result.handler).then(user => {
+                        console.log('handler:'+ result.handler);
+                        if (handler && typeof handler === "function") {
+                            if(result.handler==='startApplication'){
                                 handler(sender, user,['startApplication','askFirstQuestion']);
-                            });
-                        }else{
-                            handler(sender, result.match);
+                            }else{
+                                handler(sender, result.match);
+                            }
+                        } else {
+                            console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
+                            handlers.catchall(sender);
                         }
-                    } else {
-                        console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
-                        handlers.catchall(sender);
-                    }
+                    });
                 }else if(event.message.text=='Transfer me'){
                     console.log("Asked for Agent" + event.message.quick_reply);
                     stopbot = true;
