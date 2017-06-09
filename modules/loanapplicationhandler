@@ -38,3 +38,11 @@ exports.createSecondQuestion=()=>{
         var question = 'What is the type of asset?';
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
+
+exports.createThirdQuestion=()=>{
+        return 'What is your email address?';
+};
+
+exports.createFourthQuestion=()=>{
+        return 'What is your phone number?';
+};
