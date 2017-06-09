@@ -228,6 +228,31 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
 
 };
 
+let createLead = (customerFirstName, customerLastName, phone, email, customerId) => {
+
+    return new Promise((resolve, reject) => {
+         let c = nforce.createSObject('Lead');
+        c.set('firstname', `Contact ${customerFirstName} (Facebook Customer)`);
+        c.set('lastname', customerLastName);
+        c.set('description', "Facebook id: " + customerId);
+        c.set('LeadSource', 'Facebook Bot');
+        c.set('status', 'New');
+        c.set('phone', phone);
+        c.set('email', email);
+
+        org.insert({sobject: c}, err => {
+            if (err) {
+                console.error(err);
+                reject("An error occurred while creating a lead");
+            } else {
+                resolve(c);
+            }
+        });
+    });
+
+};
+
+
 
 login();
 
