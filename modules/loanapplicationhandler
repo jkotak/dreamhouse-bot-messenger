@@ -93,6 +93,6 @@ exports.processLoanApplicationConfirmation=()=>{
             'Yes','No','Not Now'    
         ];
         var postbacks = 'startApplication,processLoanApplicationConfirmation,email_recieved';
-        var question = 'Thank you for confirming that information. I have emailed you a confirmation, could you check if you have recieved it?'  ;
+        var question = 'Thank you for confirming that information. I have emailed you a pre-approval email, could you check if you have recieved it?'  ;
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
