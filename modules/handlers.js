@@ -97,13 +97,32 @@ exports.authenticated =(sender,userid)=>{
     });
 }
 
-exports.startApplication = (sender,userinfo) =>{
+exports.startApplication = (sender,userinfo,stage) =>{
     var update = {
                 user_id: userinfo.user_id
             };
-    loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
-        messenger.send(loanapplicationhandler.createFirstQuestion(), sender);
-     });
+    
+    switch (stage) {
+        case "askSecondQuestion":
+            loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+                messenger.send(loanapplicationhandler.createSecondQuestion(), sender);
+            });
+            break;
+        case "askThirdQuestion":
+            loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+                messenger.send(loanapplicationhandler.createThirdQuestion(), sender);
+            });
+            break;
+        case "askfourthQuestion":
+            loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+                messenger.send(loanapplicationhandler.createFourthQuestion(), sender);
+            });
+            break;
+        default:
+          loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+            messenger.send(loanapplicationhandler.createFirstQuestion(), sender);
+         });
+      }
 
 }
 
