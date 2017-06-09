@@ -91,7 +91,8 @@ app.post('/webhook', (req, res) => {
                                 if (handler && typeof handler === "function") {
                                     handler(sender, user,params);
                                 }
-                            }else if (event.message.quick_reply){
+                            }else if (emailregex.test(event.message.text)){
+                                 user.last_keyword(sender, user,['startApplication','askFourthQuestion']);
                             }else{
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                                 handlers.catchall(sender); 
