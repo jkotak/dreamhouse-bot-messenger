@@ -40,7 +40,7 @@ exports.createSecondQuestion=()=>{
 };
 
 exports.createThirdQuestion=()=>{
-        return 'What is your email address?';
+        return {text: `Ah! You are referring to my creator; makes me very happy. I am his bot and for list of commands please type "help"`};
 };
 
 exports.createFourthQuestion=()=>{
