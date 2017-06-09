@@ -40,7 +40,7 @@ exports.createSecondQuestion=()=>{
 };
 
 exports.createThirdQuestion=()=>{
-        return {text: `Ah! You are referring to my creator; makes me very happy. I am his bot and for list of commands please type "help"`};
+        return {text: `what is your phone number?`};
 };
 
 exports.createFourthQuestion=()=>{
