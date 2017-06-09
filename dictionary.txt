@@ -28,8 +28,6 @@ thankYou thank
 hi hi
 hi hello
 help help
-creator Jigar
-creator kotak
 startApplication want mortgage
 startApplication mortgage application
 startApplication apply for loan
