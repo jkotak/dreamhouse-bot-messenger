@@ -134,7 +134,9 @@ exports.startApplication = (sender,userinfo,params) =>{
               'phone_number': params[3]
             }; 
             loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
-                messenger.send(loanapplicationhandler.createFifthQuestion(application), sender);
+                loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
+                    messenger.send(loanapplicationhandler.createFifthQuestion(loanApp), sender);
+                });
             });
             break;   
         default:
