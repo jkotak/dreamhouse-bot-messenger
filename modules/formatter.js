@@ -306,7 +306,7 @@ exports.formatBroker = broker => {
 
 exports.formatApplicationQuestions =(text,postback,options)=>{  
     let elements = [];
-    for (i = 0; i < options.length; i++) { 
+    for (var i = 0; i < options.length; i++) { 
         elements.push({  
             "content_type":"text",
             "title":options[i],
