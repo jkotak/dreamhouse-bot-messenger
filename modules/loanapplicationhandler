@@ -29,7 +29,6 @@ exports.updateLoanApp = (userid,update) => {
             if (err) {
                  reject("An error as occurred");
             } else {
-                console.log('Loan App User ID is'+ loanApp.user_id);
                 resolve(loanApp);
             }
         });
