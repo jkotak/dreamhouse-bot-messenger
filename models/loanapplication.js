@@ -8,7 +8,7 @@ var LoanApplicationSchema = new Schema({
   amount: {type: String},
   coborrower: {type: String},
   occupancy_type: {type: String},
-  email_address: {type: Email},
+  email_address: {type: String},
   phone_number: {type: String},
   property_type: {type: String}
 });
