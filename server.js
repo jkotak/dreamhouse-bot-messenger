@@ -79,8 +79,10 @@ app.post('/webhook', (req, res) => {
                     console.log("Asked for Agent");
                     handlers.ContinueWithoutAgent(sender);
                 }else {
-                        console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
-                        handlers.catchall(sender);
+                    var quickReply = event.message.quick_reply; 
+                    console.log('Quick Reply'+ quickReply);
+                    console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
+                    handlers.catchall(sender);
                 }
             }else if(event.message && event.message.text && stopbot){
                 if(event.message.text.toLowerCase()=='wakeup'){
