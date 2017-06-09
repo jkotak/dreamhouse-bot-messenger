@@ -8,10 +8,12 @@ let mongoose = require("mongoose"),
 mongoose.Promise = global.Promise;
         
 
-exports.createLoanApp = (userid,document) => {
+exports.createLoanApp = (userid,update) => {
+    console.log(userid + ' ' + update);
     var query = {user_id: userid};
+    var options = {upsert: true};
     return new Promise((resolve, reject) => {
-        LoanApplication.insertOne(document, (err,loanApp) => {
+        LoanApplication.updateOne(query, update, options).then(err,loanApp=> {
             if (err) {
                  reject("An error as occurred");
             } else {
