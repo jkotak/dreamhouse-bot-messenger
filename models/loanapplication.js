@@ -28,5 +28,5 @@ var createLoanApp = function(userid,update) {
 
 
 module.exports = mongoose.model("LoanApplication", LoanApplicationSchema);
-module.exports = createLoanApp;
+exports.createLoanApp = createLoanApp;
 
