@@ -90,7 +90,10 @@ app.post('/webhook', (req, res) => {
                                 if (handler && typeof handler === "function") {
                                     handler(sender, user,params);
                                 }
-                        }
+                            }else{
+                                console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
+                                handlers.catchall(sender); 
+                            }
                         }else{
                             console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                             handlers.catchall(sender); 
