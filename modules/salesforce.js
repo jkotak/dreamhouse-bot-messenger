@@ -228,7 +228,7 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
 
 };
 
-let createLead = (customerFirstName, customerLastName, phone, email, customerId) => {
+let createLeadApp = (customerFirstName, customerLastName, phone, email, customerId) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
@@ -263,5 +263,6 @@ exports.findPriceChanges = findPriceChanges;
 exports.findAllRateTypes = findAllRateTypes;
 exports.findRate = findRate;
 exports.createLead = createLead;
+exports.createLeadApp = createLeadApp;
 exports.createCase = createCase;
 exports.getLoanStatus = getLoanStatus;
