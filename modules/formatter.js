@@ -304,6 +304,21 @@ exports.formatBroker = broker => {
     };
 };
 
+exports.formatApplicationQuestions =(text,options,values)=>{  
+    let elements = [];
+    for (i = 0; i < options.length; i++) { 
+        elements.push({  
+            "content_type":"text",
+            "title":values[i],
+            "payload":options[i] + ',' + values[i]
+        });
+    }
+    return {
+        "text":text,
+        "quick_replies":elements
+    };
+};
+
 exports.contactLoanOfficer = () => {
      return {
             "attachment": {
