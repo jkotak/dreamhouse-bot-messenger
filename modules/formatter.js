@@ -310,7 +310,7 @@ exports.formatApplicationQuestions =(text,postback,options)=>{
         elements.push({  
             "content_type":"text",
             "title":options[i],
-            "payload":postback + ',' + options[i]
+            "payload": 'occupancy_type,' + options[i]
         });
     }
     return {
