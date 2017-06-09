@@ -142,7 +142,7 @@ exports.startApplication = (sender,userinfo,params) =>{
          case "processLoanApplication":
             loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
                 messenger.getUserInfo(sender).then(response => {
-                    salesforce.createLead(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, sender).then(()=>{
+                    salesforce.createLeadApp(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, sender).then(()=>{
                         messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(loanApp), sender);
                     });
                 });
