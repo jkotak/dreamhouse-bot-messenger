@@ -98,14 +98,13 @@ exports.authenticated =(sender,userid)=>{
 }
 
 exports.startApplication = (sender,userinfo) =>{
-    messenger.getUserInfo(sender).then((response) => {
-        var update = {
-                    user_id: userinfo.user_id
-                };
-        loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
-            messenger.send(loanapplicationhandler.createFirstQuestion(), sender);
-         });
-    });
+    var update = {
+                user_id: userinfo.user_id
+            };
+    loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+        messenger.send(loanapplicationhandler.createFirstQuestion(), sender);
+     });
+
 }
 
 exports.ContinueWithAgent =(sender)=>{
