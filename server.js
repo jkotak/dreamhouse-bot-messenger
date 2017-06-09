@@ -157,7 +157,7 @@ function getSetUserHistory (userid,handler) {
                 };
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
-        UserInfo.findOneAndUpdate(query, update, options, function(err, user) {
+        UserInfo.findOneAndUpdate(query, update, options, (err, user) => {
             if (err) {
                  reject("An error as occurred");
             } else {
