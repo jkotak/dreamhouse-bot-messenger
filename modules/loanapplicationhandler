@@ -10,7 +10,7 @@ exports.createLoanApp = (userid,update) => {
     var query = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
-        LoanApplication.findOneAndUpdate(query, update, options, function(err, loanApp) {
+        LoanApplication.findOneAndUpdate(query, update, options).then(application => {
             if (err) {
                  reject("An error as occurred");
             } else {
