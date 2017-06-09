@@ -81,9 +81,6 @@ app.post('/webhook', (req, res) => {
                 }else {
                     console.log(typeof event.message.quick_reply);
                     if (!"undefined" === typeof event.message.quick_reply){
-                        console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
-                        handlers.catchall(sender); 
-                    }else{
                         var payload = event.message.quick_reply.payload; 
                         console.log('Quick Reply'+ payload);
                         var params = payload.split(",");
@@ -93,6 +90,9 @@ app.post('/webhook', (req, res) => {
                                 handler(sender, user,params);
                             });
                         }
+                    }else{
+                        console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
+                        handlers.catchall(sender); 
                     }
                 }
             }else if(event.message && event.message.text && stopbot){
