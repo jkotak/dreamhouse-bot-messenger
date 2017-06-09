@@ -99,32 +99,45 @@ exports.authenticated =(sender,userid)=>{
 
 exports.startApplication = (sender,userinfo,params) =>{
     console.log(params)
-    var update = {
-                user_id: userinfo.user_id
-            };
+    
     
     switch (params[1]) {
         case "askSecondQuestion":
-            loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+            var update = {
+              params[2]: params[3]
+            }; 
+            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createSecondQuestion(), sender);
             });
             break;
         case "askThirdQuestion":
-            loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+            var update = {
+              params[2]: params[3]
+            }; 
+            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createThirdQuestion(), sender);
             });
             break;
         case "askFourthQuestion":
-            loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+            var update = {
+              phone: params[3]
+            }; 
+            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createFourthQuestion(), sender);
             });
             break;
          case "askFifthQuestion":
-            loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+            var update = {
+              phone: params[3]
+            }; 
+            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createFifthQuestion(), sender);
             });
             break;   
         default:
+          var update = {
+              user_id: userinfo.user_id
+          };
           loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
             messenger.send(loanapplicationhandler.createFirstQuestion(), sender);
          });
