@@ -98,7 +98,7 @@ exports.authenticated =(sender,userid)=>{
 }
 
 exports.startApplication = (sender,userinfo,params) =>{
-    
+    console.log(params)
     var update = {
                 user_id: userinfo.user_id
             };
