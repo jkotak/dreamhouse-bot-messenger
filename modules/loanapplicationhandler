@@ -46,3 +46,12 @@ exports.createThirdQuestion=()=>{
 exports.createFourthQuestion=()=>{
         return {text: `what is your phone number?`};
 };
+
+exports.createFifthQuestion=()=>{
+        var options = [
+            'Yes','No'    
+        ];
+        var postbacks = 'startApplication,processLoanApplication';
+        var question = 'Did I get this right?';
+        return formatter.formatApplicationQuestions(question,postbacks,options);
+};
