@@ -66,7 +66,7 @@ exports.createSecondQuestion=()=>{
         var options = [
             'House','Condo','Town House','Multi-Family','Land','Other Type'    
         ];
-        var postbacks = 'startApplication,askThirdQuestion,asset_type';
+        var postbacks = 'startApplication,askThirdQuestion,property_type';
         var question = 'What is the type of asset?';
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
@@ -84,6 +84,6 @@ exports.createFifthQuestion=(loanapp)=>{
             'Yes','No'    
         ];
         var postbacks = 'startApplication,processLoanApplication';
-        var question = 'You want a pre-approval for ' + loanapp.asset_type + ' that you will use as ' + loanapp.occupancy_type + ', correct?'  ;
+        var question = 'You want a pre-approval for ' + loanapp.property_type + ' that you will use as ' + loanapp.occupancy_type + ', correct?'  ;
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
