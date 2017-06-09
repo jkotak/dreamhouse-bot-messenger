@@ -9,6 +9,7 @@ var express = require('express'),
     mongoose = require("mongoose"),
     menu = require('./modules/menu'),
     emailregex = require('regex-email'),
+    phoneregex = require('phone-regex'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
@@ -94,6 +95,9 @@ app.post('/webhook', (req, res) => {
                             }else if (emailregex.test(event.message.text)){
                                  let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askFourthQuestion']);
+                            }else if (phoneregex({ exact: true }).test(event.message.text)){
+                                 let handler = handlers[user.last_keyword];
+                                 handler(sender, user,['startApplication','askFifthQuestion']);
                             }else{
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                                 handlers.catchall(sender); 
