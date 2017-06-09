@@ -10,7 +10,7 @@ var LoanApplicationSchema = new Schema({
 });
 
 
-var getLoanApplication = function(userid,update) {
+var createLoanApp = function(userid,update) {
     coonsole.log(userid + ' ' + update);
     var query = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
@@ -28,4 +28,5 @@ var getLoanApplication = function(userid,update) {
 
 
 module.exports = mongoose.model("LoanApplication", LoanApplicationSchema);
+module.exports = createLoanApp;
 
