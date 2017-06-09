@@ -68,6 +68,6 @@ exports.createFifthQuestion=(loanapp)=>{
             'Yes','No'    
         ];
         var postbacks = 'startApplication,processLoanApplication';
-        var question = 'You want a pre-approval for ' + loanapp.asset_type + ' that you will use as ' + ' occupancy_type + ', correct?'  ;
+        var question = 'You want a pre-approval for ' + loanapp.asset_type + ' that you will use as ' + loanapp.occupancy_type + ', correct?'  ;
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
