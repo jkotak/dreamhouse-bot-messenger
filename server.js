@@ -62,7 +62,7 @@ app.post('/webhook', (req, res) => {
                     if (handler && typeof handler === "function") {
                         if(result.handler==='startApplication'){
                             getUserHistory(sender,result.handler).then(user => {
-                                handler(sender, user,['askFirstQuestion']);
+                                handler(sender, user,['startApplication','askFirstQuestion']);
                             });
                         }else{
                             handler(sender, result.match);
