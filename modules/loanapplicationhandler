@@ -83,7 +83,16 @@ exports.createFifthQuestion=(loanapp)=>{
         var options = [
             'Yes','No'    
         ];
-        var postbacks = 'startApplication,processLoanApplication';
+        var postbacks = 'startApplication,processLoanApplication,information_confirmed';
         var question = 'You want a pre-approval for ' + loanapp.property_type + ' that you will use as ' + loanapp.occupancy_type + ', correct?'  ;
+        return formatter.formatApplicationQuestions(question,postbacks,options);
+};
+
+exports.processLoanApplication=()=>{
+        var options = [
+            'Yes','No','Not Now'    
+        ];
+        var postbacks = 'startApplication,processLoanApplicationConfirmation,email_recieved';
+        var question = 'Thank you for confirming that information. I have emailed you a confirmation, could you check if you have recieved it?'  ;
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
