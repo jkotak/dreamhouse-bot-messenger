@@ -92,7 +92,7 @@ app.post('/webhook', (req, res) => {
                                 if (handler && typeof handler === "function") {
                                     handler(sender, user,params);
                                 }
-                            }else if(typeof event.message.text === "number"){
+                            }else if(!isNaN(event.message.text)){
                                 let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askFourthQuestion','amount',event.message.text]);
                             }else if (emailregex.test(event.message.text)){
