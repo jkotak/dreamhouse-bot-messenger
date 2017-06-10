@@ -103,7 +103,7 @@ exports.processLoanApplicationConfirmation=()=>{
 };
 
 exports.error=()=>{
-        return {text: `I didn't understand that input and I can imagine it could be frustrating to start again. Type /'pre-approval/' to start again or /'agent/' if you want to talk an agent; don't worry, I will transfer eveything you told me so you don't have to repeat yoruself.`};
+        return {text: `I didn't understand that input and I can imagine it could be frustrating to start again. Type 'pre-approval' to start again or 'agent' if you want to talk an agent; don't worry, I will transfer eveything you told me so you don't have to repeat yoruself.`};
 };
 exports.approvalComplete=()=>{
         return {text: `Awesome!`};
