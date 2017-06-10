@@ -102,8 +102,9 @@ app.post('/webhook', (req, res) => {
                                 let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askFourthQuestion','amount',event.message.text]);
                             }else{
+                                let handler = handlers[user.last_keyword];
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
-                                handlers.catchall(sender); 
+                                handler(sender, user,['startApplication','Error']);
                             }
                         }else{
                             console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
