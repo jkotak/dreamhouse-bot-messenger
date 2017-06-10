@@ -160,6 +160,9 @@ exports.startApplication = (sender,userinfo,params) =>{
          case "processLoanApplicationConfirmation":
             messenger.send(loanapplicationhandler.approvalComplete(), sender);
             break;
+         case "Error":
+            messenger.send(loanapplicationhandler.error(), sender);
+            break;
         default:
           var update = {
               user_id: userinfo.user_id
