@@ -92,12 +92,16 @@ app.post('/webhook', (req, res) => {
                                 if (handler && typeof handler === "function") {
                                     handler(sender, user,params);
                                 }
+                            }else if(typeof event.message.text === "number"){
+                                let handler = handlers[user.last_keyword];
+                                 handler(sender, user,['startApplication','askFourthQuestion','amount',event.message.text]);
+                            }
                             }else if (emailregex.test(event.message.text)){
                                  let handler = handlers[user.last_keyword];
-                                 handler(sender, user,['startApplication','askFourthQuestion','email',event.message.text]);
+                                 handler(sender, user,['startApplication','askFifthQuestion','email',event.message.text]);
                             }else if (phoneregex({ exact: true }).test(event.message.text)){
                                  let handler = handlers[user.last_keyword];
-                                 handler(sender, user,['startApplication','askFifthQuestion','phone',event.message.text]);
+                                 handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
                             }else{
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                                 handlers.catchall(sender); 
