@@ -228,7 +228,7 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
 
 };
 
-let createLeadApp = (customerFirstName, customerLastName, phone, email, customerId) => {
+let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,customerId) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
@@ -240,6 +240,7 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, customer
         c.set('phone', phone);
         c.set('email', email);
         c.set('Send_Pre_approval__c',true);
+        c.set('Loan_Amount_Requested__c',amount);
 
         org.insert({sobject: c}, err => {
             if (err) {
