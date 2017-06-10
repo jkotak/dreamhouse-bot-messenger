@@ -101,6 +101,10 @@ exports.processLoanApplicationConfirmation=()=>{
         var question = 'Thank you for confirming that information. I have emailed you a pre-approval email, could you check if you have recieved it?'  ;
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
+
+exports.error=()=>{
+        return {text: `I didn't understand that input and I can imagine it could be frustrating to start again. Type /'pre-approval/' to start again or /'agent/' if you want to talk an agent; don't worry, I will transfer eveything you told me so you don't have to repeat yoruself.`};
+};
 exports.approvalComplete=()=>{
         return {text: `Awesome!`};
 };
