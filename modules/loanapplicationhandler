@@ -67,19 +67,24 @@ exports.createSecondQuestion=()=>{
             'House','Condo','Town House','Multi-Family','Land','Other Type'    
         ];
         var postbacks = 'startApplication,askThirdQuestion,property_type';
-        var question = 'What is the type of asset?';
+        var question = 'Q 2/5:What is the type of asset?';
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
 
+
 exports.createThirdQuestion=()=>{
-        return {text: `what is your email address?`};
+        return {text: `Q 3/5:What is the loan amount?`};
 };
 
 exports.createFourthQuestion=()=>{
-        return {text: `what is your phone number?`};
+        return {text: `Q 4/5:What is your email address?`};
 };
 
-exports.createFifthQuestion=(loanapp)=>{
+exports.createFifthQuestion=()=>{
+        return {text: `Q 5/5:What is your phone number?`};
+};
+
+exports.createSixthQuestion=(loanapp)=>{
         var options = [
             'Yes','No'    
         ];
