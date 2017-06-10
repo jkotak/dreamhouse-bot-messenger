@@ -123,19 +123,28 @@ exports.startApplication = (sender,userinfo,params) =>{
         case "askFourthQuestion":
             console.log('Params[3]:'+params[3]);
             var update = {
-              'email_address': params[3]
+              'amount': params[3]
             }; 
             loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 messenger.send(loanapplicationhandler.createFourthQuestion(), sender);
             });
             break;
-         case "askFifthQuestion":
+        case "askFifthQuestion":
+            console.log('Params[3]:'+params[3]);
+            var update = {
+              'email_address': params[3]
+            }; 
+            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+                messenger.send(loanapplicationhandler.createFifthQuestion(), sender);
+            });
+            break;
+         case "askSixthQuestion":
             var update = {
               'phone_number': params[3]
             }; 
             loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
                 loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
-                    messenger.send(loanapplicationhandler.createFifthQuestion(loanApp), sender);
+                    messenger.send(loanapplicationhandler.createSixthQuestion(loanApp), sender);
                 });
             });
             break;
