@@ -149,16 +149,24 @@ exports.startApplication = (sender,userinfo,params) =>{
             });
             break;
          case "processLoanApplication":
-            loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
-                messenger.getUserInfo(sender).then(response => {
-                    salesforce.createLeadApp(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, loanApp.amount,sender).then(()=>{
-                        messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(loanApp), sender);
+            if('No'===params[3]){
+                messenger.send(loanapplicationhandler.error(), sender);
+            }else{
+                loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
+                    messenger.getUserInfo(sender).then(response => {
+                        salesforce.createLeadApp(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, loanApp.amount,sender).then(()=>{
+                            messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(loanApp), sender);
+                        });
                     });
                 });
-            });
+            }
             break;
          case "processLoanApplicationConfirmation":
-            messenger.send(loanapplicationhandler.approvalComplete(), sender);
+            if('No'===params[3]){
+                messenger.send(loanapplicationhandler.error(), sender);
+            }else{
+                messenger.send(loanapplicationhandler.approvalComplete(), sender);
+            }
             break;
          case "Error":
             messenger.send(loanapplicationhandler.error(), sender);
