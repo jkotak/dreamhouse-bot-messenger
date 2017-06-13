@@ -12,6 +12,7 @@ var LoanApplicationSchema = new Schema({
   phone_number: {type: String},
   amount: {type: Number},
   current_state: {type: String},
+  salesforce_lead_id: {type:String},
   property_type: {type: String}
 });
 
