@@ -11,6 +11,7 @@ var LoanApplicationSchema = new Schema({
   email_address: {type: String},
   phone_number: {type: String},
   amount: {type: Number},
+  current_state: {type: String},
   property_type: {type: String}
 });
 
