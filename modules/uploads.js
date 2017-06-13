@@ -13,7 +13,9 @@ exports.processUpload = (sender, attachments) => {
         if (attachment.type === "image") {
             loanapplicationhandler.findLoanApp(sender).then(loanApp => {
                 if (loanApp && "process_docs"===loanApp.current_state) {
-                     messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
+                     salesforce.createLoanApp(attachment.url,'driver_license',attachment.type,loanApp.salesforce_lead_id).then(response => {
+                        messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
+                     });
                 }else{
                     messenger.send({text: 'OK, let me look at that picture...'}, sender);
                     visionService.classify(attachment.url)
