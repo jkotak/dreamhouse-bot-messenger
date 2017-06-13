@@ -255,6 +255,7 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 };
 
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
+    console.log('File path is :'+fileURL);
     fs.readFile(fileURL, function (err, filedata) {
         if (err){
             console.error(err);
