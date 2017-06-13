@@ -15,7 +15,7 @@ exports.processUpload = (sender, attachments) => {
                 console.log('Sending URL'+attachment.payload.url);
                 console.log('Attachment' + attachment.payload);
                 if (loanApp && "process_docs"===loanApp.current_state) {
-                     salesforce.createLoanApp(attachment.payload.url,'driver_license',attachment.type,loanApp.salesforce_lead_id).then(response => {
+                     salesforce.createLoanApp(attachment.payload.url,'driver_license',attachment.type,loanApp.salesforce_lead_id).then((response,reject) => {
                          messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
                      });
                 }else{
