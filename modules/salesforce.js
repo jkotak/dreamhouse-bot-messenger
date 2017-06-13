@@ -255,14 +255,17 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 };
 
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
-    console.log('File path is :'+fileURL);
-    fs.readFile(fileURL, function (err, filedata) {
-        if (err){
-            console.log('Cannot read the file')
-            console.error(err);
-        }
-        else{
-            var base64data = new Buffer(filedata).toString('base64');
+    
+    var request = http.get(fileURL, function(res){
+        var imagedata = ''
+        res.setEncoding('binary')
+
+        res.on('data', function(chunk){
+            imagedata += chunk
+        })
+
+        res.on('end', function(){
+            var base64data = new Buffer(imagedata).toString('base64');
             jsForceConn.sobject('Attachment').create({ 
                     ParentId: salesforce_lead_id,
                     Name : fileName,
@@ -272,7 +275,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                 function(err, uploadedAttachment) {
                     console.log(err,uploadedAttachment);
             });
-        }
+        });
     });
 };
 
