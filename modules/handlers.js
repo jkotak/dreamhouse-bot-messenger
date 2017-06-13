@@ -160,8 +160,11 @@ exports.startApplication = (sender,userinfo,params) =>{
                 messenger.setTyping ('typing_on', sender);
                 loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
                     messenger.getUserInfo(sender).then(response => {
-                        salesforce.createLeadApp(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, loanApp.amount,sender).then(()=>{
-                            messenger.send(loanapplicationhandler.createExceptionDocs(loanApp), sender);
+                        salesforce.createLeadApp(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, loanApp.amount,sender).then((salesforceLead)=>{
+                            loanapplicationhandler.updateLoanApp(userinfo.user_id,{'salesforce_lead_id':salesforceLead.id}).then(loanApp => {
+                                messenger.send(loanapplicationhandler.createExceptionDocs(), sender);
+                            });
+                            
                         });
                     });
                 });
