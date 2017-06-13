@@ -22,14 +22,14 @@ exports.send = (message, recipient) => {
     });
 };
 
-exports.setTypingOn = (message, recipient) => {
+exports.setTyping = (action, recipient) => {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_TOKEN},
         method: 'POST',
         json: {
             recipient: {id: recipient},
-            sender_action: "typing_on"
+            sender_action: action
         }
     }, (error, response) => {
         if (error) {
