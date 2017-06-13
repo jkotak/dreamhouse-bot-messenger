@@ -261,12 +261,14 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
         res.setEncoding('binary')
 
         res.on('data', function(chunk){
-            imagedata += chunk
+            imagedata += chunk;
+            console.log(imagedata);
         })
 
         res.on('end', function(){
             return new Promise((resolve, reject) => {
                 var base64data = new Buffer(imagedata).toString('base64');
+                console.log(base64data);
                 let c = nforce.createSObject('Attachment',{
                         name: 'test',
                         ParentID : 'a0n41000002IaeV',
