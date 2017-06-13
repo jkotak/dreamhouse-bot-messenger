@@ -266,7 +266,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
 
         res.on('end', function(){
             var base64data = new Buffer(imagedata).toString('base64');
-            jsForceConn.sobject('Attachment').create({ 
+            org.sobject('Attachment').create({ 
                     ParentId: salesforce_lead_id,
                     Name : fileName,
                     Body: base64data,
