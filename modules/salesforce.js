@@ -254,7 +254,7 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 
 };
 
-let createLoanApp = (fileURL, fileName, fileType) => {
+let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     fs.readFile(fileOnServer, function (err, filedata) {
         if (err){
             console.error(err);
@@ -262,7 +262,7 @@ let createLoanApp = (fileURL, fileName, fileType) => {
         else{
             var base64data = new Buffer(filedata).toString('base64');
             jsForceConn.sobject('Attachment').create({ 
-                    ParentId: 'mysalesforceContactID',
+                    ParentId: salesforce_lead_id,
                     Name : fileName,
                     Body: base64data,
                     ContentType : fileType,  
