@@ -281,6 +281,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                         console.error(err);
                         reject("An error occurred while creating a lead");
                     } else {
+                        console.log(c);
                         resolve(c);
                     }
                 });
