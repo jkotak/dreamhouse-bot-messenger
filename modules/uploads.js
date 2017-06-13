@@ -12,10 +12,10 @@ exports.processUpload = (sender, attachments) => {
         let attachment = attachments[0];
         if (attachment.type === "image") {
             loanapplicationhandler.findLoanApp(sender).then(loanApp => {
-                console.log('Sending URL'+attachment.url);
-                console.log('Attachment' + attachment);
+                console.log('Sending URL'+attachment.payload.url);
+                console.log('Attachment' + attachment.payload);
                 if (loanApp && "process_docs"===loanApp.current_state) {
-                     salesforce.createLoanApp(attachment.url,'driver_license',attachment.type,loanApp.salesforce_lead_id).then(response => {
+                     salesforce.createLoanApp(attachment.payload.url,'driver_license',attachment.type,loanApp.salesforce_lead_id).then(response => {
                          messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
                      });
                 }else{
