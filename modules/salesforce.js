@@ -265,21 +265,23 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
         })
 
         res.on('end', function(){
-            var base64data = new Buffer(imagedata).toString('base64');
-            let c = nforce.createSObject('X1003_Application__c',{
-                    name: 'test',
-                    attachment: {
-                        fileName: fileName,
-                        body: base64data
+            return new Promise((resolve, reject) => {
+                var base64data = new Buffer(imagedata).toString('base64');
+                let c = nforce.createSObject('X1003_Application__c',{
+                        name: 'test',
+                        attachment: {
+                            fileName: fileName,
+                            body: base64data
+                        }
+                });
+                org.insert({sobject: c}, err => {
+                    if (err) {
+                        console.error(err);
+                        reject("An error occurred while creating a lead");
+                    } else {
+                        resolve(c);
                     }
-            });
-            org.insert({sobject: c}, err => {
-                if (err) {
-                    console.error(err);
-                    reject("An error occurred while creating a lead");
-                } else {
-                    resolve(c);
-                }
+                });
             });
         });
     });
