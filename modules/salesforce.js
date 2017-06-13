@@ -1,7 +1,7 @@
 "use strict";
 
 let nforce = require('nforce'),
-    http = require('http'),
+    http = require('https'),
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
@@ -256,7 +256,7 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     
-    var request = http.get(fileURL, function(res){
+    var request = https.get(fileURL, function(res){
         var imagedata = ''
         res.setEncoding('binary')
 
