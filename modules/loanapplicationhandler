@@ -98,18 +98,14 @@ exports.createExceptionDocs=()=>{
         var options = [
             'Yes','No'    
         ];
-        var postbacks = 'startApplication,processLoanApplication,docs_needed';
-        var question = 'Based on the information you provided, I need a copy of your driver's license. You can take a picture of it and upload here or email it to us later. Do you want to upload it now?'
+        var postbacks = 'startApplication,process_docs,docs_uploaded';
+        var question = 'Based on the information you provided, I need a copy of your driver/'s license. You can take a picture of it and upload here or email it to us later. Do you want to upload it now?'
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
 
-exports.uploadWait=(loanapp)=>{
-        var options = [
-            'Yes','No'    
-        ];
-        var postbacks = 'startApplication,processLoanApplication,docs_needed';
-        var question = 'OK! Go ahead and upload it. I will wait.'
-        return formatter.formatApplicationQuestions(question,postbacks,options);
+exports.process_docs=(loanapp)=>{
+        
+        return {text: `OK! Go ahead and upload it. I will wait.`}
 };
 
 exports.processLoanApplicationConfirmation=()=>{
