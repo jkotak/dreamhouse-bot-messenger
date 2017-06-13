@@ -3,19 +3,28 @@
 let messenger = require('./messenger'),
     formatter = require('./formatter'),
     salesforce = require('./salesforce'),
+    loanapplicationhandler = require('./loanapplicationhandler'),
     visionService = require('./vision-service-mock');
 
 exports.processUpload = (sender, attachments) => {
+    
     if (attachments.length > 0) {
         let attachment = attachments[0];
         if (attachment.type === "image") {
-            messenger.send({text: 'OK, let me look at that picture...'}, sender);
-            visionService.classify(attachment.url)
-                .then(houseType => {
-                    messenger.send({text: `Looking for houses matching "${houseType}"`}, sender);
-                    return salesforce.findPropertiesByCategory(houseType)
-                })
-                .then(properties => messenger.send(formatter.formatProperties(properties), sender))
+            loanapplicationhandler.findLoanApp(sender).then(loanApp => {
+                if (loanApp && "process_docs"===loanApp.current_state) {
+                     messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
+                }else{
+                    messenger.send({text: 'OK, let me look at that picture...'}, sender);
+                    visionService.classify(attachment.url)
+                        .then(houseType => {
+                            messenger.send({text: `Looking for houses matching "${houseType}"`}, sender);
+                            return salesforce.findPropertiesByCategory(houseType)
+                        })
+                    .then(properties => messenger.send(formatter.formatProperties(properties), sender))
+                }
+            });
+            
         }else if (attachment.type === "location") {
             visionService.address( attachment.payload.coordinates.lat, attachment.payload.coordinates.long)
                 .then(city => {
