@@ -271,7 +271,6 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                         name: 'test',
                         ParentID : 'a0n41000002IaeV',
                         body: base64data
-                    }
                 });
                 org.insert({sobject: c}, err => {
                     if (err) {
