@@ -93,6 +93,25 @@ exports.createSixthQuestion=(loanapp)=>{
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
 
+
+exports.createExceptionDocs=(loanapp)=>{
+        var options = [
+            'Yes','No'    
+        ];
+        var postbacks = 'startApplication,processLoanApplication,docs_needed';
+        var question = 'Based on the information you provided, I need a copy of your driver's license. You can take a picture of it and upload here or email it to us later. Do you want to upload it now?'
+        return formatter.formatApplicationQuestions(question,postbacks,options);
+};
+
+exports.uploadWait=(loanapp)=>{
+        var options = [
+            'Yes','No'    
+        ];
+        var postbacks = 'startApplication,processLoanApplication,docs_needed';
+        var question = 'OK! Go ahead and upload it. I will wait.'
+        return formatter.formatApplicationQuestions(question,postbacks,options);
+};
+
 exports.processLoanApplicationConfirmation=()=>{
         var options = [
             'Yes','No','Not Now'    
@@ -102,8 +121,17 @@ exports.processLoanApplicationConfirmation=()=>{
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
 
+exports.createSixthQuestion=(loanapp)=>{
+        var options = [
+            'Yes','No'    
+        ];
+        var postbacks = 'startApplication,processLoanApplication,information_confirmed';
+        var question = 'You want a pre-approval in the amount of $' + loanapp.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +' to purchase '+ loanapp.property_type + ' that you will use as ' + loanapp.occupancy_type + ', correct?'  ;
+        return formatter.formatApplicationQuestions(question,postbacks,options);
+};
+
 exports.error=()=>{
-        return {text: `I didn't understand that input and I can imagine it could be frustrating to start again. Type 'pre-approval' to start again or 'agent' if you want to talk an agent; don't worry, I will transfer eveything you told me so you don't have to repeat yoruself.`};
+        return {text: `Sorry! I am not sure why I got that wrong; I can understand that it could be frustrating for you. Let me ask a loan officer to contact you. I will pass all the information so you don't have to repeat yourself.`};
 };
 exports.approvalComplete=()=>{
         return {text: `Awesome!`};
