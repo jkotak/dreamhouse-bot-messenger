@@ -258,6 +258,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     console.log('File path is :'+fileURL);
     fs.readFile(fileURL, function (err, filedata) {
         if (err){
+            console.log('Cannot read the file')
             console.error(err);
         }
         else{
