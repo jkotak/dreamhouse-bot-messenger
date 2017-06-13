@@ -157,6 +157,7 @@ exports.startApplication = (sender,userinfo,params) =>{
             if('No'===params[3]){
                 messenger.send(loanapplicationhandler.error(), sender);
             }else{
+                messenger.setTyping ('typing_on', sender);
                 loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
                     messenger.getUserInfo(sender).then(response => {
                         salesforce.createLeadApp(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, loanApp.amount,sender).then(()=>{
