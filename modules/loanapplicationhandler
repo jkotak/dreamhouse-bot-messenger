@@ -113,7 +113,7 @@ exports.processLoanApplicationConfirmation=()=>{
             'Yes','No','Not Now'    
         ];
         var postbacks = 'startApplication,processLoanApplicationConfirmation,email_recieved';
-        var question = 'Thank you for confirming that information. I have emailed you a pre-approval email, could you check if you have recieved it?'  ;
+        var question = 'I have emailed you a pre-approval email, could you check if you have recieved it?'  ;
         return formatter.formatApplicationQuestions(question,postbacks,options);
 };
 
@@ -130,7 +130,7 @@ exports.error=()=>{
         return {text: `Sorry! I am not sure why I got that wrong; I can understand that it could be frustrating for you. Let me ask a loan officer to contact you. I will pass all the information so you don't have to repeat yourself.`};
 };
 exports.approvalComplete=()=>{
-        return {text: `Awesome!`};
+        return {text: `Awesome! Good luck with your house hunting!`};
 };
 
 
