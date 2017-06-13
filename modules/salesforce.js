@@ -1,7 +1,7 @@
 "use strict";
 
 let nforce = require('nforce'),
-    fs = require('fs'),
+    request = require('request'),
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
