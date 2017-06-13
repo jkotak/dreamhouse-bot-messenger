@@ -258,16 +258,23 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     
-        https.get(fileURL, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var data = response.headers["content-type"] + ";base64," + new Buffer(body).toString('base64');
-            console.log(data);
+    var request = https.get(fileURL, function(res){
+        var imagedata = ''
+        res.setEncoding('binary')
+
+        res.on('data', function(chunk){
+            imagedata += chunk;
+            console.log(imagedata);
+        })
+
+        res.on('end', function(){
             return new Promise((resolve, reject) => {
-                console.log(data);
+                var base64data = new Buffer(imagedata).toString('base64');
+                console.log('FINAL DATA'+base64data);
                 let c = nforce.createSObject('Attachment',{
                         name: 'test',
                         ParentID : 'a0n41000002IaeV',
-                        body: data
+                        body: base64data
                 });
                 org.insert({sobject: c}, err => {
                     if (err) {
@@ -278,7 +285,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                     }
                 });
             });
-        }
+        });
     });
 };
 
