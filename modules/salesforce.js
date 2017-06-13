@@ -1,7 +1,7 @@
 "use strict";
 
 let nforce = require('nforce'),
-
+    fs = require('fs'),
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
@@ -254,6 +254,25 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 
 };
 
+let createLoanApp = (fileURL, fileName, fileType) = >{
+    fs.readFile(fileOnServer, function (err, filedata) {
+        if (err){
+            console.error(err);
+        }
+        else{
+            var base64data = new Buffer(filedata).toString('base64');
+            jsForceConn.sobject('Attachment').create({ 
+                    ParentId: 'mysalesforceContactID',
+                    Name : fileName,
+                    Body: base64data,
+                    ContentType : fileType,  
+                }, 
+                function(err, uploadedAttachment) {
+                    console.log(err,uploadedAttachment);
+            });
+        }
+    });
+};
 
 
 login();
@@ -268,3 +287,4 @@ exports.createLead = createLead;
 exports.createLeadApp = createLeadApp;
 exports.createCase = createCase;
 exports.getLoanStatus = getLoanStatus;
+exports.createLoanApp = createLoanApp;
