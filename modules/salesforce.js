@@ -255,7 +255,7 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 };
 
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
-    fs.readFile(fileOnServer, function (err, filedata) {
+    fs.readFile(fileURL, function (err, filedata) {
         if (err){
             console.error(err);
         }
