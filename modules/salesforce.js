@@ -267,12 +267,11 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
         res.on('end', function(){
             return new Promise((resolve, reject) => {
                 var base64data = new Buffer(imagedata).toString('base64');
-                let c = nforce.createSObject('X1003_Application__c',{
+                let c = nforce.createSObject('Attachment',{
                         name: 'test',
-                        attachment: {
-                            fileName: fileName,
-                            body: base64data
-                        }
+                        ParentID : 'a0n41000002IaeV',
+                        body: base64data
+                    }
                 });
                 org.insert({sobject: c}, err => {
                     if (err) {
