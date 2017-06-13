@@ -1,11 +1,13 @@
 "use strict";
 
 let nforce = require('nforce'),
-    https = require('https'),
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
     SF_PASSWORD = process.env.SF_PASSWORD;
+
+let https = require('https').defaults({ encoding: null });
+
 
 let org = nforce.createConnection({
     clientId: SF_CLIENT_ID,
@@ -256,23 +258,16 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     
-    var request = https.get(fileURL, function(res){
-        var imagedata = ''
-        res.setEncoding('binary')
-
-        res.on('data', function(chunk){
-            imagedata += chunk;
-            console.log(imagedata);
-        })
-
-        res.on('end', function(){
+    var request.get(fileURL, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var data = response.headers["content-type"] + ";base64," + new Buffer(body).toString('base64');
+            console.log(data);
             return new Promise((resolve, reject) => {
-                var base64data = new Buffer(imagedata).toString('base64');
-                console.log(base64data);
+                console.log(data);
                 let c = nforce.createSObject('Attachment',{
                         name: 'test',
                         ParentID : 'a0n41000002IaeV',
-                        body: base64data
+                        body: data
                 });
                 org.insert({sobject: c}, err => {
                     if (err) {
@@ -283,7 +278,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                     }
                 });
             });
-        });
+        }
     });
 };
 
