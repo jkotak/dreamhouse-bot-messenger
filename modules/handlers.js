@@ -160,9 +160,23 @@ exports.startApplication = (sender,userinfo,params) =>{
                 loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
                     messenger.getUserInfo(sender).then(response => {
                         salesforce.createLeadApp(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, loanApp.amount,sender).then(()=>{
-                            messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(loanApp), sender);
+                            messenger.send(loanapplicationhandler.createExceptionDocs(loanApp), sender);
                         });
                     });
+                });
+            }
+            break;
+         case "process_docs":
+            var update = {
+              'current_state':params[1]
+            }; 
+            if('No'===params[3]){
+                loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+                    messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
+                });
+            }else{
+                loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+                    messenger.send(loanapplicationhandler.process_docs(), sender);
                 });
             }
             break;
