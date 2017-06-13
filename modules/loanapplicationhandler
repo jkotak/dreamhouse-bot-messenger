@@ -94,7 +94,7 @@ exports.createSixthQuestion=(loanapp)=>{
 };
 
 
-exports.createExceptionDocs=(loanapp)=>{
+exports.createExceptionDocs=()=>{
         var options = [
             'Yes','No'    
         ];
