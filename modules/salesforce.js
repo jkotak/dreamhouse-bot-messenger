@@ -265,7 +265,6 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
 
         res.on('end', function(){
             return new Promise((resolve, reject) => {
-                var base64data = new Buffer(imagedata).toString('base64');
                 console.log(base64data);
                 console.log('res.headers["content-type"] ' + res.headers["content-type"] );
                 var c = nforce.createSObject('Attachment', {
@@ -275,7 +274,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                     attachment: {
                       fileName: 'TestDocument.jpg',
                       ContentType:res.headers["content-type"] ,
-                      body: base64data
+                      body: imagedata
                     }
                 });
                 org.insert({sobject: c}, err => {
