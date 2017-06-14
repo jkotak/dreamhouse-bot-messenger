@@ -276,7 +276,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                     ParentId: 'a0n41000002IaeV',
                     attachment: {
                       fileName: fileName,
-                      body: imagedata
+                      body: new Buffer(imagedata).toString('base64')
                     }
                 });
                 
