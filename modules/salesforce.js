@@ -270,11 +270,8 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
             console.log('DONE');
             return new Promise((resolve, reject) => {
                 console.log('creating image');
-                let c = nforce.createSObject('Attachment',{
-                        name: 'test',
-                        body: '',
-                        parentId: 'a0n41000002IaeV'
-                });
+                let c = nforce.createSObject('Attachment');
+                c.setAttachement(fileName,imagedata);
                 
                 console.log('inserting image');
                 org.insert({sobject: c}, err => {
