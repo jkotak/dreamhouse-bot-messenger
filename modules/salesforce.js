@@ -270,17 +270,17 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
             console.log('DONE');
             return new Promise((resolve, reject) => {
                 console.log('creating image');
-                var att = nforce.createSObject('Attachment', {
+                var c = nforce.createSObject('Attachment', {
                     Name: 'TestDocument',
                     Description: 'This is a test document',
                     ParentId: 'a0n41000002IaeV',
                     attachment: {
-                      fileName: 'testdoc.docx',
-                      body: fs.readFileSync(docPath)
+                      fileName: fileName,
+                      body: imagedata
                     }
                 });
                 
-                org.insert({sobject: att}, err => {
+                org.insert({sobject: c}, err => {
                     if (err) {
                         reject("An error occurred while creating a lead");
                         console.error(err);
