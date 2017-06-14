@@ -276,7 +276,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                     attachment: {
                       fileName: 'TestDocument.jpg',
                       ContentType:res.headers["content-type"] ,
-                      body: data
+                      body: body
                     }
                 });
                 org.insert({sobject: c}, err => {
