@@ -10,6 +10,7 @@ var express = require('express'),
     menu = require('./modules/menu'),
     emailregex = require('regex-email'),
     phoneregex = require('phone-regex'),
+    isMoney = require('is-money-usd'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
@@ -98,7 +99,7 @@ app.post('/webhook', (req, res) => {
                             }else if (phoneregex({ exact: true }).test(event.message.text)){
                                  let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
-                            }else if(!isNaN(event.message.text)){
+                            }else if(isMoney(event.message.text)){
                                 let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askFourthQuestion','amount',event.message.text]);
                             }else{
