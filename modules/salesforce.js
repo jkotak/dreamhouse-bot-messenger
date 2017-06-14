@@ -259,6 +259,8 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     request.get(fileURL, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var data = "data:" + response.headers["content-type"] + ";base64," + new Buffer(body.toString(), 'binary').toString('base64');
+            console.log(response.headers["content-type"] );
+            console.log(data);
             return new Promise((resolve, reject) => {
                 console.log('creating image');
                 var c = nforce.createSObject('Attachment', {
