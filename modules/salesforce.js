@@ -248,6 +248,7 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
                 console.error(err);
                 reject("An error occurred while creating a lead");
             } else {
+                console.log('C'+ + c+ c.id);
                 resolve(c);
             }
         });
