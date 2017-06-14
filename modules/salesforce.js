@@ -217,14 +217,10 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
         c.set('status', 'New');
         c.set('Property__c', propertyId);
 
-        org.insert({sobject: c}, err => {
-            if (err) {
-                console.error(err);
-                reject("An error occurred while creating a lead");
-            } else {
-                resolve(c);
-            }
-        });
+        org.insert({sobject: c}).then(function (data) {
+            console.log(data.id);
+            resolve(data)
+         })
     });
 
 };
