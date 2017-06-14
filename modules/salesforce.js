@@ -1,7 +1,7 @@
 "use strict";
 
 let nforce = require('nforce'),
-    https = require('https'),
+    request = require('request'),
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
@@ -254,6 +254,44 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
     });
 
 };
+
+
+let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
+    var requestSettings = {
+        method: 'GET',
+        url: fileURL,
+        encoding: null
+    };
+    request.get(requestSettings, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var data = body.toString();
+            console.log(response.headers["content-type"] );
+            console.log(data);
+            return new Promise((resolve, reject) => {
+                console.log('creating image');
+               var c = nforce.createSObject('Attachment', {
+                    Name: 'TestDocument.jpg',
+                    Description: 'This is a test document',
+                    ParentId: 'a0n41000002IaeV',
+                    attachment: {
+                      fileName: 'TestDocument.jpg',
+                      ContentType:res.headers["content-type"] ,
+                      body: data
+                    }
+                });
+                org.insert({sobject: c}, err => {
+                    if (err) {
+                        console.error(err);
+                        reject("An error occurred while creating a lead");
+                    } else {
+                        resolve(c);
+                    }
+                });
+            });
+        }
+    });
+};
+
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     
     var request = https.get(fileURL, function(res){
