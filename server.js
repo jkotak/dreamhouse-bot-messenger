@@ -9,6 +9,7 @@ var express = require('express'),
     mongoose = require("mongoose"),
     menu = require('./modules/menu'),
     validator = require('validator'),
+    phoneregex = require('phone-regex'),
     numeral = require('numeral'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
@@ -95,7 +96,7 @@ app.post('/webhook', (req, res) => {
                             }else if (validator.isEmail(event.message.text)){
                                  let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askFifthQuestion','email',event.message.text]);
-                            }else if (validator.isMobilePhone(event.message.text,'en-US')){
+                            }else if (phoneregex({ exact: true }).test(event.message.text)){
                                  let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
                             }else if(validator.isCurrency(event.message.text)){
