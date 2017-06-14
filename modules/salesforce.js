@@ -285,6 +285,8 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                 });
             });
         });
+    }).on('error', (e) => {
+      console.error(e);
     });
 };
 
