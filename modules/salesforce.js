@@ -1,7 +1,7 @@
 "use strict";
 
 let nforce = require('nforce'),
-    https = require('https'),
+    request = require('request'),
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
@@ -256,17 +256,10 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 };
 
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
-    
-    var request = https.get(fileURL, function(res){
-        var imagedata = ''
-
-        res.on('data', function(chunk){
-            imagedata += chunk;
-            console.log('chunking');
-        })
-
-        res.on('end', function(){
-            console.log('DONE');
+    request.defaults({ encoding: null });
+    request.get(fileURL, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var data = "data:" + response.headers["content-type"] + ";base64," + new Buffer(body).toString('base64');
             return new Promise((resolve, reject) => {
                 console.log('creating image');
                 var c = nforce.createSObject('Attachment', {
@@ -275,7 +268,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                     ParentId: 'a0n41000002IaeV',
                     attachment: {
                       fileName: fileName,
-                      body: new Buffer(imagedata).toString('base64')
+                      body: data
                     }
                 });
                 
@@ -289,9 +282,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                     }
                 });
             });
-        });
-    }).on('error', (e) => {
-      console.error(e);
+        }
     });
 };
 
