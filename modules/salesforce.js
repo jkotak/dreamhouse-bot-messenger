@@ -1,7 +1,7 @@
 "use strict";
 
 let nforce = require('nforce'),
-    request = require('request'),
+    https = require('https'),
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
@@ -254,38 +254,42 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
     });
 
 };
-
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
-    request.get(fileURL, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log(response.headers["content-type"] );
-            var data = new Buffer(body).toString('base64');
+    
+    var request = https.get(fileURL, function(res){
+        var imagedata = ''
+        res.setEncoding('binary')
+
+        res.on('data', function(chunk){
+            imagedata += chunk
+        })
+
+        res.on('end', function(){
             return new Promise((resolve, reject) => {
-                console.log('creating image');
+                var base64data = new Buffer(imagedata).toString('base64');
                 var c = nforce.createSObject('Attachment', {
                     Name: 'TestDocument',
                     Description: 'This is a test document',
                     ParentId: 'a0n41000002IaeV',
                     attachment: {
                       fileName: fileName,
-                      ContentType:response.headers["content-type"] ,
-                      body: data
+                      ContentType:res.headers["content-type"] ,
+                      body: base64data
                     }
                 });
-                
                 org.insert({sobject: c}, err => {
                     if (err) {
-                        reject("An error occurred while creating a lead");
                         console.error(err);
+                        reject("An error occurred while creating a lead");
                     } else {
-                        console.log(c);
                         resolve(c);
                     }
                 });
             });
-        }
+        });
     });
 };
+
 
 
 login();
