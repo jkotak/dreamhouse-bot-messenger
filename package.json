@@ -17,6 +17,7 @@
     "mongoose": "^4.6.2",
     "regex-email":"^1.0.2",
     "phone-regex":"^2.0.0",
+    "validator":"^7.0.0",
     "promise":"^7.1.1",
     "request": "^2.71.0"
   }
