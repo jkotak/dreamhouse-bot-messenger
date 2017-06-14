@@ -8,9 +8,7 @@ var express = require('express'),
     uploads = require('./modules/uploads'),
     mongoose = require("mongoose"),
     menu = require('./modules/menu'),
-    emailregex = require('regex-email'),
-    phoneregex = require('phone-regex'),
-    isMoney = require('is-money-usd'),
+    validator = require('validator'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
@@ -93,13 +91,13 @@ app.post('/webhook', (req, res) => {
                                 if (handler && typeof handler === "function") {
                                     handler(sender, user,params);
                                 }
-                            }else if (emailregex.test(event.message.text)){
+                            }else if (validator.isEmail(event.message.text)){
                                  let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askFifthQuestion','email',event.message.text]);
-                            }else if (phoneregex({ exact: true }).test(event.message.text)){
+                            }else if (validator.isMobilePhone(event.message.text,'en-US'){
                                  let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
-                            }else if(isMoney(event.message.text)){
+                            }else if(validator.isCurrency(event.message.text)){
                                 let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askFourthQuestion','amount',event.message.text]);
                             }else{
