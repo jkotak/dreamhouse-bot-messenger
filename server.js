@@ -99,7 +99,7 @@ app.post('/webhook', (req, res) => {
                                  handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
                             }else if(validator.isCurrency(event.message.text)){
                                 let handler = handlers[user.last_keyword];
-                                 handler(sender, user,['startApplication','askFourthQuestion','amount',event.message.text]);
+                                 handler(sender, user,['startApplication','askFourthQuestion','amount',numeral(event.message.text)).value()]);
                             }else{
                                 let handler = handlers[user.last_keyword];
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
