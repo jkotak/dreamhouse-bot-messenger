@@ -292,42 +292,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     });
 };
 
-let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
-    
-    var request = https.get(fileURL, function(res){
-        var imagedata = '';
-        res.setEncoding(null);
 
-        res.on('data', function(chunk){
-            imagedata += chunk
-        })
-
-        res.on('end', function(){
-            return new Promise((resolve, reject) => {
-                console.log(imagedata);
-                console.log('res.headers["content-type"] ' + res.headers["content-type"] );
-                var c = nforce.createSObject('Attachment', {
-                    Name: 'TestDocument.jpg',
-                    Description: 'This is a test document',
-                    ParentId: 'a0n41000002IaeV',
-                    attachment: {
-                      fileName: 'TestDocument.jpg',
-                      ContentType:res.headers["content-type"] ,
-                      body: imagedata
-                    }
-                });
-                org.insert({sobject: c}, err => {
-                    if (err) {
-                        console.error(err);
-                        reject("An error occurred while creating a lead");
-                    } else {
-                        resolve(c);
-                    }
-                });
-            });
-        });
-    });
-};
 
 
 
