@@ -1,12 +1,11 @@
 "use strict";
 
 let nforce = require('nforce'),
+    https = require('https'),
     SF_CLIENT_ID = process.env.SF_CLIENT_ID,
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
     SF_PASSWORD = process.env.SF_PASSWORD;
-
-let https = require('https').defaults({ encoding: null });
 
 
 let org = nforce.createConnection({
