@@ -279,8 +279,8 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                 console.log('inserting image');
                 org.insert({sobject: c}, err => {
                     if (err) {
-                        console.error(err);
                         reject("An error occurred while creating a lead");
+                        console.error(err);
                     } else {
                         console.log(c);
                         resolve(c);
