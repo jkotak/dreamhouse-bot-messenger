@@ -263,9 +263,11 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
 
         res.on('data', function(chunk){
             imagedata += chunk;
+            console.log('chunking');
         })
 
         res.on('end', function(){
+            console.log('DONE');
             return new Promise((resolve, reject) => {
                 console.log('creating image');
                 let c = nforce.createSObject('Attachment',{
