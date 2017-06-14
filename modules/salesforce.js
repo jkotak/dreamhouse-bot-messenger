@@ -268,6 +268,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
             return new Promise((resolve, reject) => {
                 var base64data = imagedata;
                 console.log(base64data);
+                console.log('res.headers["content-type"] ' + res.headers["content-type"] );
                 var c = nforce.createSObject('Attachment', {
                     Name: 'TestDocument',
                     Description: 'This is a test document',
