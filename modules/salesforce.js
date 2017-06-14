@@ -258,9 +258,8 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
 let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     request.get(fileURL, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var data = new Buffer(body.toString(), 'binary').toString('base64');
             console.log(response.headers["content-type"] );
-            console.log(data);
+            console.log(body);
             return new Promise((resolve, reject) => {
                 console.log('creating image');
                 var c = nforce.createSObject('Attachment', {
@@ -269,7 +268,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                     ParentId: 'a0n41000002IaeV',
                     attachment: {
                       fileName: fileName,
-                      body: data
+                      body: body
                     }
                 });
                 
