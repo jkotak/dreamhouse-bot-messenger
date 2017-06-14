@@ -272,7 +272,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                 console.log('creating image');
                 let c = nforce.createSObject('Attachment');
                 c.setAttachement(fileName,imagedata);
-                c.set('parentId','a0n41000002IaeV');
+                c.set('ParentId','a0n41000002IaeV');
                 console.log('inserting image');
                 org.insert({sobject: c}, err => {
                     if (err) {
