@@ -258,7 +258,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     
     var request = https.get(fileURL, function(res){
         var imagedata = ''
-        res.setEncoding('utf8')
+        res.setEncoding('binary')
 
         res.on('data', function(chunk){
             imagedata += chunk
@@ -270,11 +270,11 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                 console.log(base64data);
                 console.log('res.headers["content-type"] ' + res.headers["content-type"] );
                 var c = nforce.createSObject('Attachment', {
-                    Name: 'TestDocument',
+                    Name: 'TestDocument.jpg',
                     Description: 'This is a test document',
                     ParentId: 'a0n41000002IaeV',
                     attachment: {
-                      fileName: fileName,
+                      fileName: 'TestDocument.jpg',
                       ContentType:res.headers["content-type"] ,
                       body: base64data
                     }
