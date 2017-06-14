@@ -217,13 +217,19 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
         c.set('status', 'New');
         c.set('Property__c', propertyId);
 
-        org.insert({sobject: c}).then(function (data) {
-            console.log(data.id);
-            resolve(data)
-         })
+        org.insert({sobject: c}, err => {
+            if (err) {
+                console.error(err);
+                reject("An error occurred while creating a lead");
+            } else {
+                resolve(c);
+            }
+        });
     });
 
 };
+
+
 
 let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,customerId) => {
 
@@ -239,15 +245,10 @@ let createLeadApp = (customerFirstName, customerLastName, phone, email, amount,c
         c.set('Send_Pre_approval__c',true);
         c.set('Loan_Amount_Requested__c',amount);
 
-        org.insert({sobject: c}, err => {
-            if (err) {
-                console.error(err);
-                reject("An error occurred while creating a lead");
-            } else {
-                console.log('C'+ + c+ c.id);
-                resolve(c);
-            }
-        });
+        org.insert({sobject: c}).then(function (data) {
+            console.log(data.id);
+            resolve(data)
+         });
     });
 
 };
