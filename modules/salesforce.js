@@ -267,7 +267,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
                var c = nforce.createSObject('Attachment', {
                     Name: 'TestDocument.jpg',
                     Description: 'This is a test document',
-                    ParentId: 'a0n41000002IaeV',
+                    ParentId: salesforce_lead_id,
                     attachment: {
                       fileName: 'TestDocument.jpg',
                       ContentType:response.headers["content-type"] ,
