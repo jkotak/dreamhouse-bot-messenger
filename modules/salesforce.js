@@ -263,7 +263,6 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
 
         res.on('data', function(chunk){
             imagedata += chunk;
-            console.log(imagedata);
         })
 
         res.on('end', function(){
