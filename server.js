@@ -9,6 +9,7 @@ var express = require('express'),
     mongoose = require("mongoose"),
     menu = require('./modules/menu'),
     validator = require('validator'),
+    numeral = require('numeral'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
