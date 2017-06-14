@@ -94,7 +94,7 @@ app.post('/webhook', (req, res) => {
                             }else if (validator.isEmail(event.message.text)){
                                  let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askFifthQuestion','email',event.message.text]);
-                            }else if (validator.isMobilePhone(event.message.text,'en-US'){
+                            }else if (validator.isMobilePhone(event.message.text,'en-US')){
                                  let handler = handlers[user.last_keyword];
                                  handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
                             }else if(validator.isCurrency(event.message.text)){
