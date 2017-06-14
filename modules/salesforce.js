@@ -258,7 +258,7 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
     
     var request = https.get(fileURL, function(res){
         var imagedata = '';
-        res.setEncoding('utf8');
+        res.setEncoding('binary');
 
         res.on('data', function(chunk){
             imagedata += chunk
