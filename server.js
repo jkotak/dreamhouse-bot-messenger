@@ -103,12 +103,9 @@ app.post('/webhook', (req, res) => {
                         }
                     }
                 }else if(event.account_linking){
-                    console.log('status'+event.account_linking.status);
                     handlers.authenticated(sender,event.account_linking.authorization_code);
                 }else if (event.postback) {
-                    console.log('Payload:'+ event.postback.payload);
                     let payload = event.postback.payload.split(",");
-                    console.log('Payload:'+ payload);
                     let postback = postbacks[payload[0]];
                     if (postback && typeof postback === "function") {
                         postback(sender, payload);
