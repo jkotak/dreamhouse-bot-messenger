@@ -59,50 +59,48 @@ app.post('/webhook', (req, res) => {
                     let result = processor.match(event.message.text);
                     if (result) {
                         let handler = handlers[result.handler];
-                        userinfohandler.getSetUserHistory(sender,result.handler).then(user => {
-                            console.log('handler:'+ result.handler);
-                            if (handler && typeof handler === "function") {
+                        console.log('handler:'+ result.handler);
+                        if (handler && typeof handler === "function") {
+                            userinfohandler.getSetUserHistory(sender,result.handler).then(updateduser => {
                                 if(result.handler==='startApplication'){
-                                    handler(sender, user,['startApplication','askFirstQuestion']);
+                                    handler(sender, updateduser,['startApplication','askFirstQuestion']);
                                 }else{
                                     handler(sender, result.match);
                                 }
-                            } else {
-                                console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
-                                handlers.catchall(sender);
-                            }
-                        });
+                            });
+                        } else {
+                            console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
+                            handlers.catchall(sender);
+                        }
                     }else {
-                        userinfohandler.getUserHistory(sender).then(user => {
-                            console.log(typeof event.message.quick_reply);
-                            if(user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && user.last_keyword==='startApplication'){
-                                if (event.message.quick_reply !== null && typeof event.message.quick_reply === 'object'){
-                                    var payload = event.message.quick_reply.payload; 
-                                    console.log('Quick Reply'+ payload);
-                                    var params = payload.split(",");
-                                    let handler = handlers[params[0]];
-                                    if (handler && typeof handler === "function") {
-                                        handler(sender, user,params);
-                                    }
-                                }else if (validator.isEmail(event.message.text)){
-                                     let handler = handlers[user.last_keyword];
-                                     handler(sender, user,['startApplication','askFifthQuestion','email',event.message.text]);
-                                }else if (phoneregex({ exact: true }).test(event.message.text)){
-                                     let handler = handlers[user.last_keyword];
-                                     handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
-                                }else if(validator.isCurrency(event.message.text)){
-                                    let handler = handlers[user.last_keyword];
-                                     handler(sender, user,['startApplication','askFourthQuestion','amount',numeral(event.message.text).value()]);
-                                }else{
-                                    let handler = handlers[user.last_keyword];
-                                    console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
-                                    handler(sender, user,['startApplication','Error']);
+                        console.log(typeof event.message.quick_reply);
+                        if(user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && user.last_keyword==='startApplication'){
+                            if (event.message.quick_reply !== null && typeof event.message.quick_reply === 'object'){
+                                var payload = event.message.quick_reply.payload; 
+                                console.log('Quick Reply'+ payload);
+                                var params = payload.split(",");
+                                let handler = handlers[params[0]];
+                                if (handler && typeof handler === "function") {
+                                    handler(sender, user,params);
                                 }
+                            }else if (validator.isEmail(event.message.text)){
+                                 let handler = handlers[user.last_keyword];
+                                 handler(sender, user,['startApplication','askFifthQuestion','email',event.message.text]);
+                            }else if (phoneregex({ exact: true }).test(event.message.text)){
+                                 let handler = handlers[user.last_keyword];
+                                 handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
+                            }else if(validator.isCurrency(event.message.text)){
+                                let handler = handlers[user.last_keyword];
+                                 handler(sender, user,['startApplication','askFourthQuestion','amount',numeral(event.message.text).value()]);
                             }else{
+                                let handler = handlers[user.last_keyword];
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
-                                handlers.catchall(sender); 
+                                handler(sender, user,['startApplication','Error']);
                             }
-                        });
+                        }else{
+                            console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
+                            handlers.catchall(sender); 
+                        }
                     }
                 }else if(event.account_linking){
                     console.log('status'+event.account_linking.status);
