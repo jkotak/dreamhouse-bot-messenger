@@ -84,8 +84,13 @@ exports.thankYou = (sender) => {
 };
 
 exports.wakeup = (sender) => {
-    messenger.getUserInfo(sender).then(response => {
-        messenger.send({text: `Hello, ${response.first_name}! I am back. How can I help you?`}, sender);
+    var update = {
+      'stop_bot':false
+    }; 
+    userinfohandler.updateUserInfo(sender,update).then(user => {
+        messenger.getUserInfo(sender).then(response => {
+            messenger.send({text: `Hello, ${response.first_name}! I am back. How can I help you?`}, sender);
+        });
     });
 };
 exports.authenticated =(sender,userid)=>{
@@ -208,7 +213,12 @@ exports.startApplication = (sender,userinfo,params) =>{
 }
 
 exports.ContinueWithAgent =(sender)=>{
-    messenger.send({text: `Transfering now...please wait for an agent. If you need me just type "wakeup"`}, sender);
+    var update = {
+      'stop_bot':true
+    }; 
+    userinfohandler.updateUserInfo(sender,update).then(user => {
+        messenger.send({text: `Transfering now...please wait for an agent. If you need me just type "wakeup"`}, sender);
+    });
 }
 exports.ContinueWithoutAgent =(sender)=>{
     messenger.send({text: `Sorry, my bad. Type "Help" for a list of commands.`}, sender);
