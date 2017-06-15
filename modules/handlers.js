@@ -103,7 +103,7 @@ exports.authenticated =(sender,userid)=>{
     });
 }
 
-exports.startApplication = (sender,userinfo,params) =>{
+exports.startApplication = (sender,params) =>{
     console.log(params)
     
     
@@ -114,7 +114,7 @@ exports.startApplication = (sender,userinfo,params) =>{
               'occupancy_type': params[3],
               'current_state':params[1]
             }; 
-            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+            loanapplicationhandler.updateLoanApp(sender,update).then(application => {
                 messenger.send(loanapplicationhandler.createSecondQuestion(), sender);
             });
             break;
@@ -124,7 +124,7 @@ exports.startApplication = (sender,userinfo,params) =>{
               'property_type': params[3],
               'current_state':params[1]
             }; 
-            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+            loanapplicationhandler.updateLoanApp(sender,update).then(application => {
                 messenger.send(loanapplicationhandler.createThirdQuestion(), sender);
             });
             break;
@@ -134,7 +134,7 @@ exports.startApplication = (sender,userinfo,params) =>{
               'amount': params[3],
               'current_state':params[1]
             }; 
-            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+            loanapplicationhandler.updateLoanApp(sender,update).then(application => {
                 messenger.send(loanapplicationhandler.createFourthQuestion(), sender);
             });
             break;
@@ -144,7 +144,7 @@ exports.startApplication = (sender,userinfo,params) =>{
               'email_address': params[3],
               'current_state':params[1]
             }; 
-            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+            loanapplicationhandler.updateLoanApp(sender,update).then(application => {
                 messenger.send(loanapplicationhandler.createFifthQuestion(), sender);
             });
             break;
@@ -153,8 +153,8 @@ exports.startApplication = (sender,userinfo,params) =>{
               'phone_number': params[3],
               'current_state':params[1]
             }; 
-            loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
-                loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
+            loanapplicationhandler.updateLoanApp(sender,update).then(application => {
+                loanapplicationhandler.findLoanApp(sender).then(loanApp => {
                     messenger.send(loanapplicationhandler.createSixthQuestion(loanApp), sender);
                 });
             });
@@ -164,10 +164,10 @@ exports.startApplication = (sender,userinfo,params) =>{
                 messenger.send(loanapplicationhandler.error(), sender);
             }else{
                 messenger.setTyping ('typing_on', sender);
-                loanapplicationhandler.findLoanApp(userinfo.user_id).then(loanApp => {
+                loanapplicationhandler.findLoanApp(sender).then(loanApp => {
                     messenger.getUserInfo(sender).then(response => {
                         salesforce.createLeadApp(response.first_name, response.last_name,loanApp.phone_number, loanApp.email_address, loanApp.amount,sender).then((salesforceLead)=>{
-                            loanapplicationhandler.updateLoanApp(userinfo.user_id,{'salesforce_lead_id':salesforceLead.id}).then(loanApp => {
+                            loanapplicationhandler.updateLoanApp(sender,{'salesforce_lead_id':salesforceLead.id}).then(loanApp => {
                                 messenger.send(loanapplicationhandler.createExceptionDocs(), sender);
                             });
                             
@@ -181,11 +181,11 @@ exports.startApplication = (sender,userinfo,params) =>{
               'current_state':params[1]
             }; 
             if('No'===params[3]){
-                loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+                loanapplicationhandler.updateLoanApp(sender,update).then(application => {
                     messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
                 });
             }else{
-                loanapplicationhandler.updateLoanApp(userinfo.user_id,update).then(application => {
+                loanapplicationhandler.updateLoanApp(sender,update).then(application => {
                     messenger.send(loanapplicationhandler.process_docs(), sender);
                 });
             }
@@ -202,10 +202,10 @@ exports.startApplication = (sender,userinfo,params) =>{
             break;
         default:
           var update = {
-              user_id: userinfo.user_id,
+              user_id: sender,
               'current_state':params[1]
           };
-          loanapplicationhandler.createLoanApp(userinfo.user_id,update).then(application => {
+          loanapplicationhandler.createLoanApp(sender,update).then(application => {
             messenger.send(loanapplicationhandler.createFirstQuestion(), sender);
          });
       }
