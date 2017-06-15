@@ -42,4 +42,5 @@ startApplication I want a pre-approval
 startApplication pre-approval
 startApplication preapproval
 ContinueWithAgent transfer me
+ContinueWithoutAgent Continue with bot
 wakeup wake up
