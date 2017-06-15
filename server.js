@@ -54,7 +54,7 @@ app.post('/webhook', (req, res) => {
             let sender = event.sender.id;
             if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
                 sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
-            } else if (event.message && event.message.text && !stopbot) {
+            } else if (event.message && event.message.text) {
                 let result = processor.match(event.message.text);
                 if (result) {
                     let handler = handlers[result.handler];
@@ -71,13 +71,6 @@ app.post('/webhook', (req, res) => {
                             handlers.catchall(sender);
                         }
                     });
-                }else if(event.message.text=='Transfer me'){
-                    console.log("Asked for Agent" + event.message.quick_reply);
-                    stopbot = true;
-                    handlers.ContinueWithAgent(sender);
-                }else if(event.message.text=='Continue with bot'){
-                    console.log("Asked for Agent" + event.message.quick_reply);
-                    handlers.ContinueWithoutAgent(sender);
                 }else {
                     userinfohandler.getUserHistory(sender).then(user => {
                         console.log(typeof event.message.quick_reply);
@@ -109,11 +102,6 @@ app.post('/webhook', (req, res) => {
                             handlers.catchall(sender); 
                         }
                     });
-                }
-            }else if(event.message && event.message.text && stopbot){
-                if(event.message.text.toLowerCase()=='wakeup'){
-                    stopbot = false;
-                    handlers.wakeup(sender);
                 }
             }else if(event.account_linking){
                 console.log('status'+event.account_linking.status);
