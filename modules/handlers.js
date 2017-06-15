@@ -3,7 +3,8 @@
 let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
     formatter = require('./formatter'),
-    loanapplicationhandler = require('./loanapplicationhandler');
+    loanapplicationhandler = require('./loanapplicationhandler'),
+    userinfohandler = require('./userinfohandler');
 
 let userid = null;
 
