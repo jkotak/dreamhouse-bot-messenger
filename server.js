@@ -63,7 +63,7 @@ app.post('/webhook', (req, res) => {
                         if (handler && typeof handler === "function") {
                             userinfohandler.getSetUserHistory(sender,result.handler).then(updateduser => {
                                 if(result.handler==='startApplication'){
-                                    handler(sender, updateduser,['startApplication','askFirstQuestion']);
+                                    handler(sender,['startApplication','askFirstQuestion']);
                                 }else{
                                     handler(sender, result.match);
                                 }
@@ -85,17 +85,17 @@ app.post('/webhook', (req, res) => {
                                 }
                             }else if (validator.isEmail(event.message.text)){
                                  let handler = handlers[user.last_keyword];
-                                 handler(sender, user,['startApplication','askFifthQuestion','email',event.message.text]);
+                                 handler(sender, ['startApplication','askFifthQuestion','email',event.message.text]);
                             }else if (phoneregex({ exact: true }).test(event.message.text)){
                                  let handler = handlers[user.last_keyword];
-                                 handler(sender, user,['startApplication','askSixthQuestion','phone',event.message.text]);
+                                 handler(sender, ['startApplication','askSixthQuestion','phone',event.message.text]);
                             }else if(validator.isCurrency(event.message.text)){
                                 let handler = handlers[user.last_keyword];
-                                 handler(sender, user,['startApplication','askFourthQuestion','amount',numeral(event.message.text).value()]);
+                                 handler(sender, ['startApplication','askFourthQuestion','amount',numeral(event.message.text).value()]);
                             }else{
                                 let handler = handlers[user.last_keyword];
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
-                                handler(sender, user,['startApplication','Error']);
+                                handler(sender, ['startApplication','Error']);
                             }
                         }else{
                             console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
