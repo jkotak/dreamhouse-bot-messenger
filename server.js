@@ -6,7 +6,7 @@ var express = require('express'),
     handlers = require('./modules/handlers'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
-    mongoose = require("mongoose"),
+    userinfohandler = require("./modules/userinfohandler"),
     menu = require('./modules/menu'),
     validator = require('validator'),
     phoneregex = require('phone-regex'),
@@ -14,9 +14,6 @@ var express = require('express'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
-
-var db = mongoose.connect(process.env.MONGODB_URI);
-var UserInfo = require("./models/userinfo");
 
 var stopbot = false;
 var isMenuSet = false;
@@ -61,7 +58,7 @@ app.post('/webhook', (req, res) => {
                 let result = processor.match(event.message.text);
                 if (result) {
                     let handler = handlers[result.handler];
-                    getSetUserHistory(sender,result.handler).then(user => {
+                    userinfohandler.getSetUserHistory(sender,result.handler).then(user => {
                         console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
                             if(result.handler==='startApplication'){
@@ -82,7 +79,7 @@ app.post('/webhook', (req, res) => {
                     console.log("Asked for Agent" + event.message.quick_reply);
                     handlers.ContinueWithoutAgent(sender);
                 }else {
-                    getUserHistory(sender).then(user => {
+                    userinfohandler.getUserHistory(sender).then(user => {
                         console.log(typeof event.message.quick_reply);
                         if(user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && user.last_keyword==='startApplication'){
                             if (event.message.quick_reply !== null && typeof event.message.quick_reply === 'object'){
@@ -141,36 +138,7 @@ app.post('/webhook', (req, res) => {
 });
 
 
-function getUserHistory (userid) {
-    var query = {user_id: userid};
-    return new Promise((resolve, reject) => {
-        UserInfo.findOne(query, function(err, user) {
-            if (err) {
-                 reject("An error as occurred");
-            } else {
-                resolve(user);
-            }
-        });
-    });
-};
 
-function getSetUserHistory (userid,handler) {
-    var query = {user_id: userid};
-    var update = {
-                    user_id: userid,
-                    last_keyword:handler
-                };
-    var options = {upsert: true, returnNewDocument : true};
-    return new Promise((resolve, reject) => {
-        UserInfo.findOneAndUpdate(query, update, options, (err, user) => {
-            if (err) {
-                 reject("An error as occurred");
-            } else {
-                resolve(user);
-            }
-        });
-    });
-};
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
