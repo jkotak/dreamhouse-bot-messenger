@@ -105,7 +105,7 @@ exports.createExceptionDocs=()=>{
 
 exports.process_docs=(loanapp)=>{
         
-        return {text: `OK! Go ahead and upload it. I will wait.`}
+        return {text: `OK! Go ahead and upload it, I will wait.`}
 };
 
 exports.processLoanApplicationConfirmation=()=>{
@@ -127,7 +127,7 @@ exports.createSixthQuestion=(loanapp)=>{
 };
 
 exports.error=()=>{
-        return {text: `Sorry! I am not sure why I got that wrong; I can understand that it could be frustrating for you. Let me ask a loan officer to contact you. I will pass all the information so you don't have to repeat yourself.`};
+        return {text: `I am sorry, but for some reason I am unable to process your request. You can try answering the previous question again, however, I have asked a loan office to contact you.`};
 };
 exports.approvalComplete=()=>{
         return {text: `Awesome! Good luck with your house hunting!`};
