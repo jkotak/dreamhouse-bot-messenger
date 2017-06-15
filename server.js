@@ -81,7 +81,7 @@ app.post('/webhook', (req, res) => {
                                 var params = payload.split(",");
                                 let handler = handlers[params[0]];
                                 if (handler && typeof handler === "function") {
-                                    handler(sender, user,params);
+                                    handler(sender,params);
                                 }
                             }else if (validator.isEmail(event.message.text)){
                                  let handler = handlers[user.last_keyword];
