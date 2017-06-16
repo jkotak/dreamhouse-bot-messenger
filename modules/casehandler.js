@@ -63,7 +63,7 @@ var caseQuestions = [
 
 
 exports.updateCase = (userid,update) => {
-    console.log('Update Case':JSON.stringify(update, null, 4));
+    console.log('Update Case:'+JSON.stringify(update, null, 4));
     var filter = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
