@@ -117,8 +117,8 @@ exports.startCase = (sender,params) =>{
            update["current_stage"]=thiscase.current_stage+1;
            current_stage = thiscase.current_stage+1;
            if(params[0]==='Yes'){
-                update["current_stage"]=thiscase.current_stage+1;
-                current_stage = thiscase.current_stage+1;
+                update["current_stage"]=thiscase.current_stage+2;
+                current_stage = thiscase.current_stage+2;
            }
            if(current_stage==4){
                moreparams[casehandler.getFieldName(0)]=thiscase[casehandler.getFieldName(0)];
