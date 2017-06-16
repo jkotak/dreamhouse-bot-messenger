@@ -62,11 +62,7 @@ app.post('/webhook', (req, res) => {
                         console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
                             userinfohandler.getSetUserHistory(sender,result.handler).then(updateduser => {
-                                if(result.handler==='startApplication'){
-                                    handler(sender,['startApplication','askFirstQuestion']);
-                                }else{
-                                    handler(sender, result.match);
-                                }
+                                handler(sender, result.match);
                             });
                         } else {
                             console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
