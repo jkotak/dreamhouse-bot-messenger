@@ -63,6 +63,7 @@ var caseQuestions = [
 
 
 exports.updateCase = (userid,update) => {
+    coonsole.log('Update Case');
     var filter = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
