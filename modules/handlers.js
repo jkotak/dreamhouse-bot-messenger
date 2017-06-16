@@ -113,10 +113,11 @@ exports.startCase = (sender,params) =>{
            if(fieldName!=null && fieldName!=undefined){
                 update[casehandler.getFieldName(thiscase.current_stage)]=params[0];
            }
-           update[casehandler.current_stage]=current_stage+1;
+           update["current_stage"]=current_stage+1;
         }else{
-           update[casehandler.current_stage]=0;
+           update["current_stage"]=0;
         }
+        console.log(update.current_stage);
         casehandler.updateCase(sender,update).then(thiscase => { 
             messenger.send(casehandler.createQuestion(current_stage,params[0]), sender);
         });
