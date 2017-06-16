@@ -60,7 +60,7 @@ exports.createCase = (userid,update) => {
     var query = {user_id: userid};
     var options = {upsert: true};
     return new Promise((resolve, reject) => {
-        Case.updateOne(query, update, options,(err,newcase)=> {
+        Case.updateOne(query, update, options,(newcase=> {
             if (err) {
                  reject("An error as occurred");
             } else {
