@@ -61,7 +61,7 @@ var caseQuestions = [
         
 
 
-/*
+
 exports.updateCase = (userid,update) => {
     var filter = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
@@ -76,7 +76,7 @@ exports.updateCase = (userid,update) => {
         });
     });
 };
-*/
+
 exports.findCase = (userid) => {
     var filter = {user_id: userid};
     return new Promise((resolve, reject) => {
