@@ -108,6 +108,7 @@ exports.startCase = (sender,params) =>{
     casehandler.findCase(sender).then(thiscase => {
         var current_stage = 0;
         var update = {};
+        console.log('1'+current_stage);
         if(thiscase!==null){
            let fieldName = casehandler.getFieldName(thiscase.current_stage);
            if(fieldName!=null && fieldName!=undefined){
@@ -115,11 +116,14 @@ exports.startCase = (sender,params) =>{
            }
            update["current_stage"]=thiscase.current_stage+1;
            current_stage = thiscase.current_stage;
+            console.log('2'+current_stage);
         }else{
            update["current_stage"]=0;
         }
         console.log(update.current_stage);
+        console.log('3'+current_stage);
         casehandler.updateCase(sender,update).then(thiscase => { 
+            console.log('4'+current_stage);
             messenger.send(casehandler.createQuestion(current_stage++,params[0]), sender);
         });
      });
