@@ -91,12 +91,8 @@ exports.findOneAndUpdateCase = (userid,update) => {
     var query = {user_id: userid};
     var options = {upsert: true,returnNewDocument:true};
     return new Promise((resolve, reject) => {
-        Service.findOneAndUpdate(query, update, options).then((err,newcase)=> {
-            if (err) {
-                 reject("An error as occurred");
-            } else {
-                resolve(newcase);
-            }
+        Service.findOneAndUpdate(query, update, options).then(function(newcase) {
+            resolve(newcase);
         });
     });
 };
