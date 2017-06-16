@@ -4,7 +4,8 @@ let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
     formatter = require('./formatter'),
     loanapplicationhandler = require('./loanapplicationhandler'),
-    userinfohandler = require('./userinfohandler');
+    userinfohandler = require('./userinfohandler'),
+    casehandler = require('./casehandler');
 
 let userid = null;
 
@@ -101,6 +102,13 @@ exports.authenticated =(sender,userid)=>{
             });
         });
     });
+}
+
+exports.startCase = (sender,params) =>{
+    casehandler.findOneAndUpdateCase(sender,{}).then(thiscase => {
+        let current_stage = thiscase.current_stage===(null||undefined)?0:thiscase.current_stage+1;
+        messenger.send(casehandler.createQuestion(current_stage,params[0]), sender);
+     });
 }
 
 exports.startApplication = (sender,params) =>{
