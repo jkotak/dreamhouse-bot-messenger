@@ -3,7 +3,8 @@
 let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
     formatter = require('./formatter'),
-    loanapplicationhandler = require('./loanapplicationhandler');
+    loanapplicationhandler = require('./loanapplicationhandler'),
+    casehandler = require('./casehandler');
 
 let userid = null;
 
@@ -51,7 +52,13 @@ exports.next_payment = (sender, values) => {
 
 exports.contact_support = (sender, values) => {
     messenger.getUserInfo(sender).then(response => {
-        messenger.send({text: `Sorry, ${response.first_name}! My creator hasn't gotten to this yet. Please be patient and type "help" for list of commands for other options.`}, sender);
+        var current_stage = 0;
+        var update = {
+            "current_stage":0
+        };
+        casehandler.updateCase(sender,update).then(thiscase => { 
+            messenger.send(casehandler.createQuestion(current_stage,values[0]), sender);
+        });
     });
 };
 
