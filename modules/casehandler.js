@@ -11,11 +11,13 @@ mongoose.Promise = global.Promise;
                     
 var caseQuestions = [
 	    {
+	      "field":"type",
               "question":"What is this issue regarding?",
               "optiontype":"List",
               "options":['New Loan','Existing Loan','Other']
             },
             {
+              "field":"sub_type",
               "question":"Can you pick an option to narrow it down for me?",
               "optiontype":"DependentList",
               "options":{
@@ -24,32 +26,39 @@ var caseQuestions = [
             		}
             },
             {
+              "field":"description",
               "question":"Could you describe the issue for me?",
               "optiontype":"Text"
             },
             {
+              "field":"email_address",
               "question":"What is your emmail address?",
               "optiontype":"Text"
             },
             {
+              "field":"type",
               "question":"Just to confirm, your issue is that of %1% related to a %2%. Specifically %3%?",
               "optiontype":"confirmation",
               "options":['Yes','No']
             },
             {
+              "field":"type",
               "question":"I am sorry. I have contacted a service agent to support you",
               "optiontype":"Text"
             },
             {
+              "field":"type",
               "question":"Would you like to upload any attachments?",
               "optiontype":"List",
               "options":['Yes','No']
             },
             {
+              "field":"type",
               "question":"Your case has been create",
               "optiontype":"Finish"
             },
             {
+              "field":"type",
               "question":"OK, go ahead. I will wait",
               "optiontype":"Text"
             }
