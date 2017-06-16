@@ -319,6 +319,21 @@ exports.formatApplicationQuestions =(text,postback,options)=>{
     };
 };
 
+exports.formatQuestions =(text,postback,options)=>{  
+    let elements = [];
+    for (var i = 0; i < options.length; i++) { 
+        elements.push({  
+            "content_type":"text",
+            "title":options[i],
+            "payload": postback +',' + options[i]
+        });
+    }
+    return {
+        "text":text,
+        "quick_replies":elements
+    };
+};
+
 exports.contactLoanOfficer = () => {
      return {
             "attachment": {
