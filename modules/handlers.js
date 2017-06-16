@@ -115,6 +115,10 @@ exports.startCase = (sender,params) =>{
            }
            update["current_stage"]=thiscase.current_stage+1;
            current_stage = thiscase.current_stage+1;
+           if(params[0]==='yes'){
+                update["current_stage"]=thiscase.current_stage+1;
+                current_stage = thiscase.current_stage+1;
+           }
         }else{
            update["current_stage"]=0;
         }
