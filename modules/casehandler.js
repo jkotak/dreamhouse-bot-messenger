@@ -135,7 +135,7 @@ exports.createQuestion=(i,utterance,params)=>{
         return nextQuestion;
 };
 
-exports.getFieldName(i){
+exports.getFieldName = (i) => {
 	return caseQuestions[i].field;
 }
 
