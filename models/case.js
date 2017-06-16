@@ -10,7 +10,9 @@ var CaseSchema = new Schema({
   type: {type: String},
   sub_type: {type: String},
   email_address: {type: String},
-  phone_number: {type: String}
+  phone_number: {type: String},
+  status: {type: String},
+  number: {type: Number}
 });
 
 module.exports = mongoose.model("Case", CaseSchema);
