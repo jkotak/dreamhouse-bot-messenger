@@ -116,7 +116,7 @@ exports.startCase = (sender,params) =>{
            }
            update["current_stage"]=thiscase.current_stage+1;
            current_stage = thiscase.current_stage+1;
-           if(params[0]==='yes'){
+           if(params[0]==='Yes'){
                 update["current_stage"]=thiscase.current_stage+1;
                 current_stage = thiscase.current_stage+1;
            }
@@ -124,9 +124,7 @@ exports.startCase = (sender,params) =>{
                moreparams[casehandler.getFieldName(0)]=thiscase[casehandler.getFieldName(0)];
                moreparams[casehandler.getFieldName(1)]=thiscase[casehandler.getFieldName(1)];
                moreparams[casehandler.getFieldName(2)]=thiscase[casehandler.getFieldName(2)];
-               moreparams[casehandler.getFieldName(3)]=params[0];
            }
-               
         }else{
            update["current_stage"]=0;
         }
