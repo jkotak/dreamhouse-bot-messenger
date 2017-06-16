@@ -93,7 +93,7 @@ app.post('/webhook', (req, res) => {
                                 console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
                                 handler(sender, ['startApplication','Error']);
                             }
-                        }else if (user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && user.last_keyword==='createCase'){
+                        }else if (user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && user.last_keyword==='startCase'){
                             let handler = handlers[user.last_keyword];
                             handler(sender, [event.message.text]);
                         }else{
