@@ -68,7 +68,7 @@ exports.updateCase = (userid,update) => {
     var filter = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
-        Service.updateOne(filter, update,(err,newcase) =>{
+        Service.updateOne(filter, update, options,(err,newcase) =>{
             if (err) {
                  reject("An error as occurred");
             } else {
