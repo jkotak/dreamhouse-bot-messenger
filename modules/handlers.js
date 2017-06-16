@@ -113,7 +113,8 @@ exports.startCase = (sender,params) =>{
            if(fieldName!=null && fieldName!=undefined){
                 update[casehandler.getFieldName(thiscase.current_stage)]=params[0];
            }
-           update["current_stage"]=current_stage+1;
+           update["current_stage"]=thiscase.current_stage+1;
+           current_stage = thiscase.current_stage;
         }else{
            update["current_stage"]=0;
         }
