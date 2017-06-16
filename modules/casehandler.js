@@ -99,19 +99,7 @@ exports.findCase = (userid) => {
     });
 };
 
-exports.findOneAndUpdateCase = (userid,update) => {
-    var query = {user_id: userid};
-    var options = {upsert: true,returnNewDocument:true};
-    return new Promise((resolve, reject) => {
-        Case.findOneAndUpdate(query, update, options).then((err,newcase)=> {
-            if (err) {
-                 reject("An error as occurred");
-            } else {
-                resolve(newcase);
-            }
-        });
-    });
-};
+
 
 exports.createQuestion=(i,utterance,params)=>{
         var optiontype =  caseQuestions[i].optiontype,
