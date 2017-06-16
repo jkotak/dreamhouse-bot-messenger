@@ -3,7 +3,7 @@
 let mongoose = require("mongoose"),
         db = mongoose.connect(process.env.MONGODB_URI),
         formatter = require('./formatter'),
-        Case = require("../models/case");
+        Service = require("../models/case");
         
 mongoose.Promise = global.Promise;
 
@@ -56,25 +56,13 @@ var caseQuestions = [
 		];
         
 
-exports.createCase = (userid,update) => {
-    var query = {user_id: userid};
-    var options = {upsert: true};
-    return new Promise((resolve, reject) => {
-        Case.updateOne(query, update, options,(newcase=> {
-            if (err) {
-                 reject("An error as occurred");
-            } else {
-                resolve(newcase);
-            }
-        });
-    });
-};
 
+/*
 exports.updateCase = (userid,update) => {
     var filter = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
-        Case.updateOne(filter, update,(err,newcase) =>{
+        Service.updateOne(filter, update,(err,newcase) =>{
             if (err) {
                  reject("An error as occurred");
             } else {
@@ -88,7 +76,7 @@ exports.updateCase = (userid,update) => {
 exports.findCase = (userid) => {
     var filter = {user_id: userid};
     return new Promise((resolve, reject) => {
-        Case.findOne(filter,(err,newcase) =>{
+        Service.findOne(filter,(err,newcase) =>{
             if (err) {
                  reject("An error as occurred");
             } else {
@@ -98,8 +86,20 @@ exports.findCase = (userid) => {
         });
     });
 };
-
-
+*/
+exports.findOneAndUpdateCase = (userid,update) => {
+    var query = {user_id: userid};
+    var options = {upsert: true,returnNewDocument:true};
+    return new Promise((resolve, reject) => {
+        Service.findOneAndUpdate(query, update, options).then((err,newcase)=> {
+            if (err) {
+                 reject("An error as occurred");
+            } else {
+                resolve(newcase);
+            }
+        });
+    });
+};
 
 exports.createQuestion=(i,utterance,params)=>{
         var optiontype =  caseQuestions[i].optiontype,
