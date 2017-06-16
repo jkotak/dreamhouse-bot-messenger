@@ -28,6 +28,8 @@ thankYou thank
 hi hi
 hi hello
 help help
+startCase complaint
+startCase issue
 startApplication want mortgage
 startApplication mortgage application
 startApplication apply for loan
