@@ -108,6 +108,7 @@ exports.startCase = (sender,params) =>{
     casehandler.findCase(sender).then(thiscase => {
         var current_stage = 0;
         var update = {};
+        var moreparams = {};
         if(thiscase!==null){
            let fieldName = casehandler.getFieldName(thiscase.current_stage);
            if(fieldName!=null && fieldName!=undefined){
@@ -119,11 +120,18 @@ exports.startCase = (sender,params) =>{
                 update["current_stage"]=thiscase.current_stage+1;
                 current_stage = thiscase.current_stage+1;
            }
+           if(current_stage==4){
+               moreparams[casehandler.getFieldName(0)]=thiscase[casehandler.getFieldName(0)];
+               moreparams[casehandler.getFieldName(1)]=thiscase[casehandler.getFieldName(1)];
+               moreparams[casehandler.getFieldName(2)]=thiscase[casehandler.getFieldName(2)];
+               moreparams[casehandler.getFieldName(3)]=params[0];
+           }
+               
         }else{
            update["current_stage"]=0;
         }
         casehandler.updateCase(sender,update).then(thiscase => { 
-            messenger.send(casehandler.createQuestion(current_stage,params[0]), sender);
+            messenger.send(casehandler.createQuestion(current_stage,params[0],moreparams), sender);
         });
      });
 }
