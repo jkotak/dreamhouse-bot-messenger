@@ -84,7 +84,6 @@ exports.findCase = (userid) => {
             if (err) {
                  reject("An error as occurred");
             } else {
-                console.log(newcase.user_id);
                 resolve(newcase);
             }
         });
