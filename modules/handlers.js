@@ -105,8 +105,15 @@ exports.authenticated =(sender,userid)=>{
 }
 
 exports.startCase = (sender,params) =>{
-    casehandler.findOneAndUpdateCase(sender,{}).then(thiscase => {
-        let current_stage = thiscase.current_stage===(null||undefined)?0:thiscase.current_stage+1;
+    casehandler.findCase(sender).then(thiscase => {
+        var current_stage = 0;
+        var update = {};
+        if(thiscase!==null){
+           update[casehandler.getFieldName(thiscase.current_stage)]=params[0];
+           update[casehandler.current_stage]=current_stage+1;
+        }else{
+           update[casehandler.current_stage]=0;
+        }
         messenger.send(casehandler.createQuestion(current_stage,params[0]), sender);
      });
 }
