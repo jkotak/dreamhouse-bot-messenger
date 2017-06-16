@@ -109,7 +109,10 @@ exports.startCase = (sender,params) =>{
         var current_stage = 0;
         var update = {};
         if(thiscase!==null){
-           update[casehandler.getFieldName(thiscase.current_stage)]=params[0];
+           let fieldName = casehandler.getFieldName(thiscase.current_stage);
+           if(fieldName!=null && fieldName!=undefined){
+                update[casehandler.getFieldName(thiscase.current_stage)]=params[0];
+           }
            update[casehandler.current_stage]=current_stage+1;
         }else{
            update[casehandler.current_stage]=0;
