@@ -60,11 +60,11 @@ exports.createCase = (userid,update) => {
     var query = {user_id: userid};
     var options = {upsert: true};
     return new Promise((resolve, reject) => {
-        Case.updateOne(query, update, options,(err,case)=> {
+        Case.updateOne(query, update, options,(err,newcase)=> {
             if (err) {
                  reject("An error as occurred");
             } else {
-                resolve(case);
+                resolve(newcase);
             }
         });
     });
@@ -74,12 +74,12 @@ exports.updateCase = (userid,update) => {
     var filter = {user_id: userid};
     var options = {upsert: true, returnNewDocument : true};
     return new Promise((resolve, reject) => {
-        Case.updateOne(filter, update,(err,case) =>{
+        Case.updateOne(filter, update,(err,newcase) =>{
             if (err) {
                  reject("An error as occurred");
             } else {
-                console.log(loanApp.user_id);
-                resolve(loanApp);
+                console.log(newcase.user_id);
+                resolve(newcase);
             }
         });
     });
@@ -88,12 +88,12 @@ exports.updateCase = (userid,update) => {
 exports.findCase = (userid) => {
     var filter = {user_id: userid};
     return new Promise((resolve, reject) => {
-        Case.findOne(filter,(err,case) =>{
+        Case.findOne(filter,(err,newcase) =>{
             if (err) {
                  reject("An error as occurred");
             } else {
-                console.log(case.user_id);
-                resolve(loanApp);
+                console.log(newcase.user_id);
+                resolve(newcase);
             }
         });
     });
@@ -103,11 +103,11 @@ exports.findOneAndUpdateCase = (userid,update) => {
     var query = {user_id: userid};
     var options = {upsert: true,returnNewDocument:true};
     return new Promise((resolve, reject) => {
-        Case.findOneAndUpdate(query, update, options,(err,user)=> {
+        Case.findOneAndUpdate(query, update, options,(err,newcase)=> {
             if (err) {
                  reject("An error as occurred");
             } else {
-                resolve(user);
+                resolve(newcase);
             }
         });
     });
