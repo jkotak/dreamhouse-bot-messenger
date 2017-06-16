@@ -124,7 +124,7 @@ exports.createQuestion=(i,utterance,params)=>{
             break;
           case "Confirmation":
             var parts = question.split(/(\$\w+?\$)/g).map(function(v) {
-                replaced = v.replace(/\$/g,"");
+                var replaced = v.replace(/\$/g,"");
                 return params[replaced] || replaced; 
             });
             question = parts.join("");
