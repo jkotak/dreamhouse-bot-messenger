@@ -66,7 +66,7 @@ var caseQuestions = [
             }
 		];
         
-exports.deleteCase = (userid,update) => {
+exports.deleteCase = (userid) => {
     var filter = {user_id: userid};
     return new Promise((resolve, reject) => {
         Service.findOneAndDelete(filter,(err,deletedCase) =>{
