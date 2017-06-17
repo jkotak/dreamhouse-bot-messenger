@@ -162,7 +162,7 @@ exports.getFieldName = (i) => {
 }
 
 exports.isMergeField = (i) => {
-	return caseQuestions[i].mergefields==null:undefined?false:true;
+	return caseQuestions[i].mergefields===(null||undefined)?false:true;
 }
 
 exports.getMergeFieldNames = (i) =>{
