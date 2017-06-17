@@ -36,9 +36,10 @@ var caseQuestions = [
               "optiontype":"Text"
             },
             {
-              "question":"Just to confirm, your issue is that of $1$ related to a $2$. Specifically $3$?",
+              "question":"Just to confirm, your issue is that of $1$ related to a $2$, specifically $3$, correct?",
               "optiontype":"Confirmation",
-              "options":['Yes','No']
+              "options":['Yes','No'],
+	      "mergefields" : ['sub_type','type','description']
             },
             {
               "question":"I am sorry. I have contacted a service agent to support you",
@@ -156,6 +157,14 @@ exports.createQuestion=(sender, i,utterance,params)=>{
 
 exports.getFieldName = (i) => {
 	return caseQuestions[i].field;
+}
+
+exports.isMergeField = (i) = > {
+	return caseQuestions[i].mergefields==null:undefined?false:true;
+}
+
+exports.getMergeFieldNames = (i) =>{
+	return caseQuestions[i].mergefields;
 }
 
 
