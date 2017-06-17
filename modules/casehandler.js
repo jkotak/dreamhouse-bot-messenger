@@ -50,16 +50,32 @@ var caseQuestions = [
               "options":['Yes','No']
             },
             {
-              "question":"Your case has been create",
+              "question":"Your case has been created",
               "optiontype":"Finish"
             },
             {
               "question":"OK, go ahead. I will wait",
               "optiontype":"Text"
+            },
+            {
+              "question":"Your case has been created",
+              "optiontype":"Finish"
             }
 		];
         
-
+exports.deleteCase = (userid,update) => {
+    var filter = {user_id: userid};
+    return new Promise((resolve, reject) => {
+        Service.findOneAndDelete(filter,(err,deletedCase) =>{
+            if (err) {
+                 reject("An error as occurred");
+            } else {
+                console.log(deletedCase.user_id);
+                resolve(deletedCase);
+            }
+        });
+    });
+};
 
 
 exports.updateCase = (userid,update) => {
@@ -103,7 +119,7 @@ exports.findOneAndUpdateCase = (userid,update) => {
     });
 };
 
-exports.createQuestion=(i,utterance,params)=>{
+exports.createQuestion=(sender, i,utterance,params)=>{
         var optiontype =  caseQuestions[i].optiontype,
             question = caseQuestions[i].question,
             postbacks = 'createCase',
@@ -119,7 +135,7 @@ exports.createQuestion=(i,utterance,params)=>{
             nextQuestion = {text: question};
             break;
           case "Finish":
-            //cleanup
+            //deleteCase(sender);
             nextQuestion = {text: question};
             break;
           case "Confirmation":
