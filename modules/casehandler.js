@@ -52,7 +52,8 @@ var caseQuestions = [
             },
             {
               "question":"Your case has been created",
-              "optiontype":"Finish"
+              "optiontype":"Text",
+	      "Status":"Finish"
             },
             {
               "question":"OK, go ahead. I will wait",
@@ -60,7 +61,8 @@ var caseQuestions = [
             },
             {
               "question":"Your case has been created",
-              "optiontype":"Finish"
+              "optiontype":"Text",
+	      "Status":"Finish"
             }
 		];
         
@@ -159,12 +161,19 @@ exports.getFieldName = (i) => {
 	return caseQuestions[i].field;
 }
 
-exports.isMergeField = (i) = > {
+exports.isMergeField = (i) => {
 	return caseQuestions[i].mergefields==null:undefined?false:true;
 }
 
 exports.getMergeFieldNames = (i) =>{
 	return caseQuestions[i].mergefields;
+}
+
+exports.isTheEnd=(i)=>{
+	if(caseQuestions[i].Status!==(null||undefined) && caseQuestions[i].Status === "Finish"){
+		return true;
+	}
+	return false;
 }
 
 
