@@ -184,15 +184,16 @@ let findRate = (params) => {
 }
     
 
-let createCase = (propertyId, customerName, customerId) => {
+let createCase = (customerId, customerEmail,type,sub_type,description) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
-        c.set('lastname', `Contact ${customerName} (Facebook Customer)`);
-        c.set('description', "Facebook id: " + customerId);
-        c.set('LeadSource', 'Facebook Bot');
+        c.set('description', description);
+        c.set('source', 'Facebook Bot');
         c.set('status', 'New');
-        c.set('Property__c', propertyId);
+        c.set('type', type);
+        c.set('SuppliedEmail', customerEmail);
+        c.set('Sub_Type__c', sub_type);
 
         org.insert({sobject: c}, err => {
             if (err) {
