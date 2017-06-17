@@ -121,16 +121,22 @@ exports.startCase = (sender,params) =>{
                 current_stage = thiscase.current_stage+2;
            }
            if(current_stage==4){
-               moreparams["1"]=thiscase[casehandler.getFieldName(0)];
-               moreparams["2"]=thiscase[casehandler.getFieldName(1)];
+               moreparams["1"]=thiscase[casehandler.getFieldName(1)];
+               moreparams["2"]=thiscase[casehandler.getFieldName(0)];
                moreparams["3"]=thiscase[casehandler.getFieldName(2)];
            }
         }else{
            update["current_stage"]=0;
         }
-        casehandler.updateCase(sender,update).then(thiscase => { 
-            messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender);
-        });
+        if(casehandler.isTheEnd(i)){
+            casehandler.delete(sender).then(thiscase => { 
+                messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender);
+            });
+        }else{
+            casehandler.updateCase(sender,update).then(thiscase => { 
+                messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender);
+            });
+        }
      });
 }
 
