@@ -121,9 +121,9 @@ exports.startCase = (sender,params) =>{
                 current_stage = thiscase.current_stage+2;
            }
            if(current_stage==4){
-               moreparams["$1$"]=thiscase[casehandler.getFieldName(0)];
-               moreparams["$2$"]=thiscase[casehandler.getFieldName(1)];
-               moreparams["$3$"]=thiscase[casehandler.getFieldName(2)];
+               moreparams["1"]=thiscase[casehandler.getFieldName(0)];
+               moreparams["2"]=thiscase[casehandler.getFieldName(1)];
+               moreparams["3"]=thiscase[casehandler.getFieldName(2)];
            }
         }else{
            update["current_stage"]=0;
