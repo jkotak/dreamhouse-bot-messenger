@@ -129,7 +129,7 @@ exports.startCase = (sender,params) =>{
            update["current_stage"]=0;
         }
         casehandler.updateCase(sender,update).then(thiscase => { 
-            messenger.send(casehandler.createQuestion(current_stage,params[0],moreparams), sender);
+            messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender);
         });
      });
 }
