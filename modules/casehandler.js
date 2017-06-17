@@ -32,7 +32,7 @@ var caseQuestions = [
             },
             {
               "field":"email_address",
-              "question":"What is your emmail address?",
+              "question":"What is your email address?",
               "optiontype":"Text"
             },
             {
@@ -139,7 +139,7 @@ exports.createQuestion=(sender, i,utterance,params)=>{
             nextQuestion = {text: question};
             break;
           case "Confirmation":
-	    console.log(params);
+	    console.log('PARAMS'+params);
             var parts = question.split(/(\$\w+?\$)/g).map(function(v) {
                 var replaced = v.replace(/\$/g,"");
                 return params[replaced] || replaced; 
