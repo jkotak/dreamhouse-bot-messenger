@@ -36,7 +36,7 @@ var caseQuestions = [
               "optiontype":"Text"
             },
             {
-              "question":"Just to confirm, your issue is that of %1% related to a %2%. Specifically %3%?",
+              "question":"Just to confirm, your issue is that of $1$ related to a $2$. Specifically $3$?",
               "optiontype":"Confirmation",
               "options":['Yes','No']
             },
