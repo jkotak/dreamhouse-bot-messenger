@@ -69,7 +69,7 @@ var caseQuestions = [
 exports.deleteCase = (userid) => {
     var filter = {user_id: userid};
     return new Promise((resolve, reject) => {
-        Service.findOneAndDelete(filter,(err,deletedCase) =>{
+        Service.deleteOne(filter,(err,deletedCase) =>{
             if (err) {
                  reject("An error as occurred");
             } else {
