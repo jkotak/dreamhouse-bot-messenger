@@ -140,8 +140,9 @@ exports.createQuestion=(sender, i,utterance,params)=>{
             break;
           case "Confirmation":
 	    console.log('Params:'+JSON.stringify(params, null, 4));
+	    let replaced = "";
             var parts = question.split(/(\$\w+?\$)/g).map(function(v) {
-                var replaced = v.replace(/\$/g,"");
+                replaced = v.replace(/\$/g,"");
                 return params[replaced] || replaced; 
             });
             question = parts.join("");
