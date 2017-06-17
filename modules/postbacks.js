@@ -57,7 +57,7 @@ exports.contact_support = (sender, values) => {
             "current_stage":0
         };
         casehandler.updateCase(sender,update).then(thiscase => { 
-            messenger.send(casehandler.createQuestion(current_stage,values[0]), sender);
+            messenger.send(casehandler.createQuestion(sender,current_stage,values[0]), sender);
         });
     });
 };
