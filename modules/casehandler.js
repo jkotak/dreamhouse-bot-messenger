@@ -123,6 +123,7 @@ exports.createQuestion=(i,utterance,params)=>{
             nextQuestion = {text: question};
             break;
           case "Confirmation":
+	    console.log(params);
             var parts = question.split(/(\$\w+?\$)/g).map(function(v) {
                 var replaced = v.replace(/\$/g,"");
                 return params[replaced] || replaced; 
