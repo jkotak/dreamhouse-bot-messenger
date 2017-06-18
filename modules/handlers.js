@@ -106,7 +106,7 @@ exports.authenticated =(sender,userid)=>{
 
 exports.startCase = (sender,params) =>{
     casehandler.findCase(sender).then(thiscase => {
-        var current_stage = 0;
+        var current_stage,rollback_stage = 0;
         var update = {};
         var moreparams = {};
         if(thiscase!==null){
@@ -114,8 +114,8 @@ exports.startCase = (sender,params) =>{
            if(fieldName!=null && fieldName!=undefined){
                 update[casehandler.getFieldName(thiscase.current_stage)]=params[0];
            }
-           update["current_stage"]=thiscase.current_stage+1;
-           current_stage = thiscase.current_stage+1;
+           rollback_stage = =thiscase.current_stage;
+           update["current_stage"]=current_stage=thiscase.current_stage+1;
            if(params[0]==='Yes'){
                 update["current_stage"]=thiscase.current_stage+2;
                 current_stage = thiscase.current_stage+2;
@@ -128,7 +128,6 @@ exports.startCase = (sender,params) =>{
         }else{
            update["current_stage"]=0;
         }
-        console.log('casehandler.isTheEnd(current_stage):'+casehandler.isTheEnd(current_stage));
         if(casehandler.isTheEnd(current_stage)){
             casehandler.deleteCase (sender).then((thiscase) =>{ 
                 userinfohandler.getSetUserHistory(sender,"help").then(() => {
@@ -136,15 +135,18 @@ exports.startCase = (sender,params) =>{
                 });
             });
         }else{
-            casehandler.createQuestion(sender,current_stage,params[0],moreparams).then((nextQuestion) => {
+            try{
+                let nextQuestion =  casehandler.createQuestion(sender,current_stage,params[0],moreparams);
                 casehandler.updateCase(sender,update).then(thiscase => { 
                     messenger.send(nextQuestion, sender);
-                }).catch(function(e){
-                    messenger.send({text: `Humm...something went wrong. Let me do some introspection. Please type "Help" for other options`}, sender);
+                });    
+            }catch(err){
+                casehandler.deleteCase (sender).then((thiscase) =>{ 
+                    userinfohandler.getSetUserHistory(sender,"help").then(() => {
+                       messenger.send({text: `Humm...something went wrong. Let me do some introspection. Please type "Help" for other options`},sender);
+                    });
                 });
-            }).catch(function(e){
-                    messenger.send({text: `Humm...that was not a valid option.`}, sender);
-            });      
+            }
         }
      });
 }
