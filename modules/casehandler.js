@@ -31,8 +31,8 @@ var caseQuestions = [
               "optiontype":"Text"
             },
             {
-              "field":"email_address",
-              "question":"What is your email address?",
+              "field":"phone_number",
+              "question":"What is your phone number?",
               "optiontype":"Text"
             },
             {
