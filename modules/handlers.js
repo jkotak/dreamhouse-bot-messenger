@@ -106,7 +106,7 @@ exports.authenticated =(sender,userid)=>{
 
 exports.startCase = (sender,params) =>{
     casehandler.findCase(sender).then(thiscase => {
-        var current_stage,rollback_stage = 0;
+        var current_stage = 0;
         var update = {};
         var moreparams = {};
         if(thiscase!==null){
