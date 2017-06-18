@@ -18,8 +18,8 @@ var express = require('express'),
 
 var isMenuSet = false;
 var userid;
-var apps = ["startApplication",
-            "startCase"];
+var apps = ["startapplication",
+            "startaase"];
 
 app.set('port', process.env.PORT || 5000);
 
@@ -61,10 +61,10 @@ app.post('/webhook', (req, res) => {
                     let result = processor.match(event.message.text);
                     if(result){
                         console.log(user.last_keyword)
-                        console.log(apps.indexOf(user.last_keyword));
+                        console.log(apps.indexOf(user.last_keyword.toLowerCase()));
                         console.log(result.handler==='Help');
                     }
-                    if (result && (apps.indexOf(user.last_keyword) ===-1 || result.handler==='Help' )) {
+                    if (result && (apps.indexOf(user.last_keyword.toLowerCase()) ===-1 || result.handler==='Help' )) {
                         let handler = handlers[result.handler];
                         console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
