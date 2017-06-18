@@ -192,8 +192,9 @@ let createCase = (customerId, customerEmail,type,sub_type,description) => {
         c.set('source', 'Facebook Bot');
         c.set('status', 'New');
         c.set('type', type);
-        c.set('SuppliedEmail', customerEmail);
+        c.set('ContactEmail', customerEmail);
         c.set('Sub_Type__c', sub_type);
+        c.set('subject', 'Issue with '+ type);
 
         org.insert({sobject: c}, err => {
             if (err) {
