@@ -133,19 +133,11 @@ exports.createQuestion=(sender, i,utterance,params)=>{
             nextQuestion = formatter.formatQuestions(question,postbacks,caseQuestions[i].options);
             break;
           case "DependentList":
-	    if(caseQuestions[i].options[utterance]==-1){
-		    {text: utterance+ ' is not a valid option'}
-	    }
-            nextQuestion = formatter.formatQuestions(question,postbacks,caseQuestions[i].options[utterance]);
+	    nextQuestion = formatter.formatQuestions(question,postbacks,caseQuestions[i].options[utterance]);
             break;
           case "Text":
             nextQuestion = {text: question};
-            break;
-          case "Finish":
-            //deleteCase(sender);
-            nextQuestion = {text: question};
-            break;
-          case "Confirmation":
+            break;case "Confirmation":
 	    console.log('Params:'+JSON.stringify(params, null, 4));
 	    let replaced = "";
             var parts = question.split(/(\$\w+?\$)/g).map(function(v) {
