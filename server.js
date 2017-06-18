@@ -59,9 +59,12 @@ app.post('/webhook', (req, res) => {
                     sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
                 } else if (event.message && event.message.text) {
                     let result = processor.match(event.message.text);
-                    console.log(apps.indexOf(user.last_keyword.toLowerCase()));
-                    console.log(result.handlerName==='Help');
-                    if (result && (apps.indexOf(user.last_keyword) ===-1 || result.handlerName==='Help' )) {
+                    if(result){
+                        console.log(user.last_keyword)
+                        console.log(apps.indexOf(user.last_keyword));
+                        console.log(result.handler==='Help');
+                    }
+                    if (result && (apps.indexOf(user.last_keyword) ===-1 || result.handler==='Help' )) {
                         let handler = handlers[result.handler];
                         console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
