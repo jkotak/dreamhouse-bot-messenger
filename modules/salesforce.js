@@ -189,7 +189,6 @@ let createCase = (customerId, customerEmail,type,sub_type,description) => {
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Case');
         c.set('description', description);
-        c.set('source', 'Facebook Bot');
         c.set('status', 'New');
         c.set('type', type);
         c.set('ContactEmail', customerEmail);
