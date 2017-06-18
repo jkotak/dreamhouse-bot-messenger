@@ -132,6 +132,9 @@ exports.createQuestion=(sender, i,utterance,params)=>{
             nextQuestion = formatter.formatQuestions(question,postbacks,caseQuestions[i].options);
             break;
           case "DependentList":
+	    if(caseQuestions[i].options[utterance]==-1){
+		    {text: utterance+ ' is not a valid option'}
+	    }
             nextQuestion = formatter.formatQuestions(question,postbacks,caseQuestions[i].options[utterance]);
             break;
           case "Text":
