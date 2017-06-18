@@ -130,7 +130,9 @@ exports.startCase = (sender,params) =>{
         }
         if(casehandler.isTheEnd(current_stage)){
             casehandler.deleteCase (sender).then(thiscase => { 
-                messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender);
+                messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender).then(() => {
+                  userinfohandler.getSetUserHistory(sender,"help");
+                })
             });
         }else{
             casehandler.updateCase(sender,update).then(thiscase => { 
