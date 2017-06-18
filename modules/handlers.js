@@ -114,7 +114,6 @@ exports.startCase = (sender,params) =>{
            if(fieldName!=null && fieldName!=undefined){
                 update[casehandler.getFieldName(thiscase.current_stage)]=params[0];
            }
-           rollback_stage = =thiscase.current_stage;
            update["current_stage"]=current_stage=thiscase.current_stage+1;
            if(params[0]==='Yes'){
                 update["current_stage"]=thiscase.current_stage+2;
