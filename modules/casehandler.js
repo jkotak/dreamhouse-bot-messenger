@@ -44,7 +44,7 @@ var caseQuestions = [
             {
               "question":"I am sorry. I have contacted a service agent to support you",
               "optiontype":"Text",
-	      "Status":"Finish"
+	      "Status":"Error"
             },
             {
               "question":"Would you like to upload any attachments?",
@@ -167,6 +167,13 @@ exports.getMergeFieldNames = (i) =>{
 
 exports.isTheEnd=(i)=>{
 	if(caseQuestions[i].Status!==(null||undefined) && caseQuestions[i].Status === "Finish"){
+		return true;
+	}
+	return false;
+}
+
+exports.isError=(i)=>{
+	if(caseQuestions[i].Status!==(null||undefined) && caseQuestions[i].Status === "Error"){
 		return true;
 	}
 	return false;
