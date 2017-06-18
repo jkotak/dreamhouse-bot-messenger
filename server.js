@@ -19,7 +19,7 @@ var express = require('express'),
 var isMenuSet = false;
 var userid;
 var apps = ["startapplication",
-            "startaase"];
+            "startcase"];
 
 app.set('port', process.env.PORT || 5000);
 
