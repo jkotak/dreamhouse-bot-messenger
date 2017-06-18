@@ -61,7 +61,7 @@ app.post('/webhook', (req, res) => {
                     let result = processor.match(event.message.text);
                     console.log(apps.indexOf(user.last_keyword.toLowerCase()));
                     console.log(result.handlerName==='Help');
-                    if (result && (apps.indexOf(user.last_keyword.toLowerCase()) ===-1 || result.handlerName==='Help' )) {
+                    if (result && (apps.indexOf(user.last_keyword) ===-1 || result.handlerName==='Help' )) {
                         let handler = handlers[result.handler];
                         console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
