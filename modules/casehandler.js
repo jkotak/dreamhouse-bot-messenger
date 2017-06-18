@@ -52,7 +52,7 @@ var caseQuestions = [
               "options":['Yes','No']
             },
             {
-              "question":"Your case has been created",
+              "question":"Your case has been created. How did I do? http://bit.ly/2qOPctw",
               "optiontype":"Text",
 	      "Status":"Finish"
             },
