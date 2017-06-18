@@ -127,7 +127,10 @@ exports.startCase = (sender,params) =>{
         }else{
            update["current_stage"]=0;
         }
-        if(casehandler.isTheEnd(current_stage)){
+        if(casehandler.isTheEnd(current_stage) || casehandler.isError(current_stage)){
+            if(casehandler.isTheEnd(current_stage)){
+                salesforce.createCase(sender, thiscase.email_address,thiscase.type,thiscase.sub_type,thiscase.description);
+            }
             casehandler.deleteCase (sender).then((thiscase) =>{ 
                 userinfohandler.getSetUserHistory(sender,"help").then(() => {
                     messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender);
