@@ -15,9 +15,11 @@ var express = require('express'),
     app = express();
 
 
-var stopbot = false;
+
 var isMenuSet = false;
 var userid;
+var apps = ["startApplication",
+            "startCase"];
 
 app.set('port', process.env.PORT || 5000);
 
@@ -57,7 +59,7 @@ app.post('/webhook', (req, res) => {
                     sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
                 } else if (event.message && event.message.text) {
                     let result = processor.match(event.message.text);
-                    if (result) {
+                    if (result && (apps.indexOf(result.handler.toLowerCase()) ===-1 || result.handlerName==='Help' ) {
                         let handler = handlers[result.handler];
                         console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
@@ -65,7 +67,7 @@ app.post('/webhook', (req, res) => {
                                 handler(sender, result.match);
                             });
                         } else {
-                            console.log("Handler " + result.handlerName + " is not defined. Calling catch all function.");
+                            console.log("Handler " + result.handler + " is not defined. Calling catch all function.");
                             handlers.catchall(sender);
                         }
                     }else {
