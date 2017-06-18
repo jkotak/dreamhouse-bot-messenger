@@ -128,6 +128,7 @@ exports.startCase = (sender,params) =>{
         }else{
            update["current_stage"]=0;
         }
+        console.log('casehandler.isTheEnd(current_stage):'+casehandler.isTheEnd(current_stage));
         if(casehandler.isTheEnd(current_stage)){
             casehandler.deleteCase (sender).then(thiscase => { 
                 messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender).then(() => {
