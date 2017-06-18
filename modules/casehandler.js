@@ -43,7 +43,8 @@ var caseQuestions = [
             },
             {
               "question":"I am sorry. I have contacted a service agent to support you",
-              "optiontype":"Text"
+              "optiontype":"Text",
+	      "Status":"Finish"
             },
             {
               "question":"Would you like to upload any attachments?",
