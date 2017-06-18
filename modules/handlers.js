@@ -135,6 +135,8 @@ exports.startCase = (sender,params) =>{
         }else{
             casehandler.updateCase(sender,update).then(thiscase => { 
                 messenger.send(casehandler.createQuestion(sender,current_stage,params[0],moreparams), sender);
+            }).catch(function(e){
+                messenger.send({text: `Humm...that was not a valid option.`}, sender);
             });
         }
      });
