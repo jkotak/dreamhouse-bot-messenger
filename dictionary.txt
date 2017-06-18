@@ -43,6 +43,7 @@ startApplication I need a pre-approval
 startApplication I want a pre-approval
 startApplication pre-approval
 startApplication preapproval
+startApplication pre approval
 ContinueWithAgent transfer me
 ContinueWithoutAgent Continue with bot
 wakeup wake up
