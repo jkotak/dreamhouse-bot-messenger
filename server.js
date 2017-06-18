@@ -59,7 +59,7 @@ app.post('/webhook', (req, res) => {
                     sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
                 } else if (event.message && event.message.text) {
                     let result = processor.match(event.message.text);
-                    if (result && (apps.indexOf(result.handler.toLowerCase()) ===-1 || result.handlerName==='Help' ) {
+                    if (result && (apps.indexOf(result.handler.toLowerCase()) ===-1 || result.handlerName==='Help' )) {
                         let handler = handlers[result.handler];
                         console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
