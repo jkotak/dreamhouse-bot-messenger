@@ -130,7 +130,7 @@ exports.startCase = (sender,params) =>{
         if(casehandler.isTheEnd(current_stage) || casehandler.isError(current_stage)){
             if(casehandler.isTheEnd(current_stage)){
                 messenger.getUserInfo(sender).then(response => {
-                    salesforce.createCase(sender, response.first_name, response.last_namem,thiscase.email_address,thiscase.type,thiscase.sub_type,thiscase.description);
+                    salesforce.createCase(sender, response.first_name, response.last_name,thiscase.email_address,thiscase.type,thiscase.sub_type,thiscase.description);
                 });
             }
             casehandler.deleteCase (sender).then((thiscase) =>{ 
