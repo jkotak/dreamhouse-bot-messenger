@@ -184,14 +184,14 @@ let findRate = (params) => {
 }
     
 
-let createCase = (customerId, firstName, lastName, customerEmail,type,sub_type,description) => {
+let createCase = (customerId, firstName, lastName, customerPhone,type,sub_type,description) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Case');
         c.set('description', description);
         c.set('status', 'New');
         c.set('type', type);
-        c.set('SuppliedEmail', customerEmail);
+        c.set('SuppliedPhone', customerPhone);
         c.set('Sub_Type__c', sub_type);
         c.set('subject', 'Issue with '+ type);
         c.set('SuppliedName', firstName + lastName);
