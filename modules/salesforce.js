@@ -191,7 +191,7 @@ let createCase = (customerId, customerEmail,type,sub_type,description) => {
         c.set('description', description);
         c.set('status', 'New');
         c.set('type', type);
-        c.set('ContactEmail', customerEmail);
+        c.set('SuppliedEmail', customerEmail);
         c.set('Sub_Type__c', sub_type);
         c.set('subject', 'Issue with '+ type);
 
