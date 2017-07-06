@@ -41,6 +41,7 @@ startApplication I need a loan
 startApplication Loan application
 startApplication I need a pre-approval
 startApplication I want a pre-approval
+startApplication Approval
 startApplication pre-approval
 startApplication preapproval
 startApplication pre approval
