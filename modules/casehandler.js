@@ -22,7 +22,8 @@ var caseQuestions = [
               "optiontype":"DependentList",
               "options":{
               		"New Loan":[ "Change Address", "Status", "Escrow" ],
-              		"Existing Loan":[ "Billing Issue", "Change Address", "Loan Payoff" ]
+              		"Existing Loan":[ "Billing Issue", "Change Address", "Loan Payoff" ],
+              		"Other":[ "Website Help", "None of these"]
             		}
             },
             {
