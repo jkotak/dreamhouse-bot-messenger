@@ -45,6 +45,7 @@ startApplication Approval
 startApplication pre-approval
 startApplication preapproval
 startApplication pre approval
+startApplication home loan
 ContinueWithAgent transfer me
 ContinueWithoutAgent Continue with bot
 wakeup wake up
