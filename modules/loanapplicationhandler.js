@@ -130,7 +130,7 @@ exports.error=()=>{
         return {text: `I am sorry, but for some reason I am unable to process your request. You can try answering the previous question again, however, I have asked a loan office to contact you.`};
 };
 exports.approvalComplete=()=>{
-        return {text: `Awesome! Good luck with your house hunting! How did I do? How did I do? http://bit.ly/2qOPctw`};
+        return {text: `Awesome! Good luck with your house hunting! How did I do? http://bit.ly/2qOPctw`};
 };
 
 
