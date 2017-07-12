@@ -14,8 +14,8 @@
 
 const rp = require('request-promise');
 var Episode7 = require('episode-7');
-const updateToken = require('./update-token');
-const oAuthToken = require('./oauth-token');
+const updateToken = require('../lib/update-token');
+const oAuthToken = require('../lib/oauth-token');
 
 let loopPreventor = false;
 
