@@ -8,6 +8,7 @@ var express = require('express'),
     uploads = require('./modules/uploads'),
     userinfohandler = require("./modules/userinfohandler"),
     menu = require('./modules/menu'),
+    updateToken  = require('./lib/update-token');
     validator = require('validator'),
     phoneregex = require('phone-regex'),
     numeral = require('numeral'),
@@ -129,8 +130,8 @@ app.post('/webhook', (req, res) => {
 });
 
 
-
-
-app.listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
-});
+updateToken(pvsUrl, accountId, privateKey).then(() => {
+    app.listen(app.get('port'), function () {
+        console.log('Express server listening on port ' + app.get('port'));
+    });
+};
