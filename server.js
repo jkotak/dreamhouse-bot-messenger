@@ -7,6 +7,7 @@ var express = require('express'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
     userinfohandler = require("./modules/userinfohandler"),
+    sentimenthandler = require("./modules/sentimenthandler"),
     menu = require('./modules/menu'),
     validator = require('validator'),
     phoneregex = require('phone-regex'),
@@ -18,6 +19,8 @@ var express = require('express'),
 const pvsUrl = process.env.EINSTEIN_URL;
 const accountId  = process.env.EINSTEIN_USERNAME;
 const privateKey = process.env.EINSTEIN_PRIVATE_KEY;
+
+let jwtToken;
 
 const oAuthToken   = require('./lib/oauth-token'),
       updateToken  = require('./lib/update-token'),
@@ -59,6 +62,13 @@ app.post('/webhook', (req, res) => {
         for (let i = 0; i < events.length; i++) {
             let event = events[i];
             let sender = event.sender.id;
+            sentimenthandler.querySentimentApi(
+                       pvsUrl,
+                       event.message.text,
+                       'CommunitySentiment',
+                       accountId,
+                       privateKey,
+                       jwtToken)
             userinfohandler.findOneAndUpdateUserInfo(sender,{}).then(user => {
                 if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
                     sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
@@ -135,7 +145,8 @@ app.post('/webhook', (req, res) => {
 
 
 Episode7.run(updateToken, pvsUrl, accountId, privateKey)
-.then(() => {
+.then((token) => {
+    jwtToken = token;
     app.listen(app.get('port'), function () {
         console.log('Express server listening on port ' + app.get('port'));
     });
