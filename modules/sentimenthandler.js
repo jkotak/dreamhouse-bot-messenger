@@ -1,17 +1,5 @@
 "use strict";
 
-/*exports.getSentiment = () => {
-    request({
-      url: 'https://api.someapi.com/blah/something',
-      auth: {
-        'bearer': accessToken
-      }
-    }, function(err, res) {
-      console.log(res.body);
-    });
-
-}*/
-
 const rp = require('request-promise');
 var Episode7 = require('episode-7');
 const updateToken = require('../lib/update-token');
