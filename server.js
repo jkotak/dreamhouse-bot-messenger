@@ -23,7 +23,7 @@ const privateKey = process.env.EINSTEIN_PRIVATE_KEY;
 let jwtToken;
 
 const oAuthToken   = require('./lib/oauth-token'),
-      updateToken  = require('./lib/update-token'),
+      updateToken  = require('./lib/update-token');
 
 var isMenuSet = false;
 var userid;
