@@ -8,7 +8,7 @@ var EINSTEIN_PRIVATE_KEY = process.env.EINSTEIN_PRIVATE_KEY,
     EINSTEIN_URL = process.env.EINSTEIN_URL
 
 
-exports.getToken = () => {
+/*xports.getToken = () => {
     request({
       url: 'https://api.einstein.ai/v1/oauth2/token',
       method: 'POST',
@@ -23,7 +23,7 @@ exports.getToken = () => {
       var json = JSON.parse(res.body);
       console.log("Access Token:", json.access_token);
     });
-};
+};*/
 
 exports.getSentiment = () => {
     request({
