@@ -129,9 +129,7 @@ app.post('/webhook', (req, res) => {
 });
 
 
-Episode7.run(updateToken, pvsUrl, accountId, privateKey)
-.then(() => {
+
     app.listen(app.get('port'), function () {
         console.log('Express server listening on port ' + app.get('port'));
     });
-};
