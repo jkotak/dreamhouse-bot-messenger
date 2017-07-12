@@ -7,17 +7,12 @@ var express = require('express'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
     userinfohandler = require("./modules/userinfohandler"),
-    menu = require('./modules/menu'),
-    updateToken  = require('./lib/update-token'),
+    menu = require('./modules/menu'),\
     validator = require('validator'),
     phoneregex = require('phone-regex'),
     numeral = require('numeral'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
-
-const pvsUrl = process.env.EINSTEIN_URL;
-const accountId  = process.env.EINSTEIN_URL;
-const privateKey = process.env.EINSTEIN_PRIVATE_KEY;
 
 
 
