@@ -14,6 +14,10 @@ var express = require('express'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
+const pvsUrl = process.env.EINSTEIN_URL;
+const accountId  = process.env.EINSTEIN_URL;
+const privateKey = process.env.EINSTEIN_PRIVATE_KEY;
+
 
 
 var isMenuSet = false;
