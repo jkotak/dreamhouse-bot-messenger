@@ -7,7 +7,6 @@ var express = require('express'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
     userinfohandler = require("./modules/userinfohandler"),
-    updateToken  = require('./lib/update-token'),
     menu = require('./modules/menu'),
     validator = require('validator'),
     phoneregex = require('phone-regex'),
@@ -19,6 +18,9 @@ var express = require('express'),
 const pvsUrl = process.env.EINSTEIN_URL;
 const accountId  = process.env.EINSTEIN_USERNAME;
 const privateKey = process.env.EINSTEIN_PRIVATE_KEY;
+
+const oAuthToken   = require('./lib/oauth-token'),
+      updateToken  = require('./lib/update-token'),
 
 var isMenuSet = false;
 var userid;
