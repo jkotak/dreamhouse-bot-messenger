@@ -62,7 +62,7 @@ app.post('/webhook', (req, res) => {
         for (let i = 0; i < events.length; i++) {
             let event = events[i];
             let sender = event.sender.id;
-            let visionApiResult = yield Episode7.call(
+            let visionApiResult = Episode7.call(
                 querySentimentApi,
                 pvsUrl,
                 resizedImgUrl,
