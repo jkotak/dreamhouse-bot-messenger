@@ -13,6 +13,7 @@ var express = require('express'),
     phoneregex = require('phone-regex'),
     numeral = require('numeral'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
+    Episode7 = require('episode-7'),
     app = express();
 
 const pvsUrl = process.env.EINSTEIN_URL;
@@ -128,7 +129,8 @@ app.post('/webhook', (req, res) => {
 });
 
 
-updateToken(pvsUrl, accountId, privateKey).then(() => {
+Episode7.run(updateToken, pvsUrl, accountId, privateKey)
+.then(() => {
     app.listen(app.get('port'), function () {
         console.log('Express server listening on port ' + app.get('port'));
     });
