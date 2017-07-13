@@ -9,7 +9,7 @@ let loopPreventor = false;
 
 function* querySentimentApi(
                        pvsUrl,
-                       document,
+                       messengerText,
                        modelId='CommunitySentiment',
                        accountId,
                        privateKey,
@@ -18,7 +18,7 @@ function* querySentimentApi(
 
   var formData = {
     modelId: modelId,
-    document : document
+    document : messengerText
   }
   var options = {
       url: `${pvsUrl}v2/language/sentiment`,
@@ -56,7 +56,7 @@ function* querySentimentApi(
     let sentimentApiResult = yield Episode7.call( 
       querySentimentApi,
       pvsUrl,
-      document,
+      messengerText,
       modelId
     );
     setTimeout(()=>{loopPreventor = false},1000);
