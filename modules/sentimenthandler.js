@@ -56,7 +56,7 @@ function* querySentimentApi(
     let sentimentApiResult = yield Episode7.call( 
       querySentimentApi,
       pvsUrl,
-      resizedImgUrl,
+      document,
       modelId
     );
     setTimeout(()=>{loopPreventor = false},1000);
