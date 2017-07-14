@@ -23,7 +23,7 @@ let jwtToken;
 
 const oAuthToken   = require('./lib/oauth-token'),
       updateToken  = require('./lib/update-token'),
-      sentimenthandler = require("./modules/sentimenthandler");
+      querySentimentApi = require("./modules/sentimenthandler");
 
 var isMenuSet = false;
 var userid;
