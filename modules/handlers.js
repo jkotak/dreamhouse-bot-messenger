@@ -5,7 +5,7 @@ let salesforce = require('./salesforce'),
     formatter = require('./formatter'),
     loanapplicationhandler = require('./loanapplicationhandler'),
     userinfohandler = require('./userinfohandler'),
-    sentimenthandler = require('./sentimenthandler), 
+    sentimenthandler = require('./sentimenthandler'), 
     casehandler = require('./casehandler');
 
 const pvsUrl = process.env.EINSTEIN_URL;
