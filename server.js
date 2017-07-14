@@ -71,7 +71,7 @@ app.post('/webhook', (req, res) => {
                 privateKey,
                 jwtToken
               ).then(predictions=>{
-                console.log('Printing'+ predictions.probabilities);
+                console.log('Printing'+ predictions);
               });
             userinfohandler.findOneAndUpdateUserInfo(sender,{}).then(user => {
                 if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
