@@ -11,6 +11,7 @@ let salesforce = require('./salesforce'),
 const pvsUrl = process.env.EINSTEIN_URL;
 const accountId  = process.env.EINSTEIN_USERNAME;
 const privateKey = process.env.EINSTEIN_PRIVATE_KEY;
+const jwtToken = process.env.EINSTEIN_JWT_TOKEN;
 
 let userid = null;
 
