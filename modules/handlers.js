@@ -137,7 +137,20 @@ exports.startCase = (sender,params) =>{
         if(casehandler.isTheEnd(current_stage) || casehandler.isError(current_stage)){
             if(casehandler.isTheEnd(current_stage)){
                 messenger.getUserInfo(sender).then(response => {
-                    salesforce.createCase(sender, response.first_name, response.last_name,thiscase.phone_number,thiscase.type,thiscase.sub_type,thiscase.description);
+                    let t = Episode7.run(
+                            querySentimentApi,
+                            pvsUrl,
+                            event.message.text,
+                            'CommunitySentiment',
+                            accountId,
+                            privateKey,
+                            jwtToken
+                          ).then(predictions => {
+                            let predictionsJSON = JSON.parse(predictions);
+                            console.log('Label is '+predictionsJSON.probabilities[0].label);
+                            salesforce.createCase(sender, response.first_name, response.last_name,thiscase.phone_number,thiscase.type,thiscase.sub_type,thiscase.description);
+                          });
+                    
                 });
             }
             casehandler.deleteCase (sender).then((thiscase) =>{ 
