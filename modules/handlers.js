@@ -5,7 +5,7 @@ let salesforce = require('./salesforce'),
     formatter = require('./formatter'),
     loanapplicationhandler = require('./loanapplicationhandler'),
     userinfohandler = require('./userinfohandler'),
-    queryVisionApi = require('./sentimenthandler'), 
+    querySentimentApi = require('./sentimenthandler'), 
     casehandler = require('./casehandler'),
     Episode7 = require('episode-7');
 
