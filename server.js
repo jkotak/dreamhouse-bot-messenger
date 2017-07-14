@@ -71,7 +71,7 @@ app.post('/webhook', (req, res) => {
                 privateKey,
                 jwtToken
               ).then(predictions=>{
-                sentiment = t.next;
+                sentiment = predictions.next;
                 console.log('Printing'+ sentiment);
               });
             userinfohandler.findOneAndUpdateUserInfo(sender,{}).then(user => {
