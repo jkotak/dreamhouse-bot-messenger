@@ -28,7 +28,7 @@ var caseQuestions = [
             },
             {
               "field":"description",
-              "question":"Could you describe the issue for me, please?",
+              "question":"Could you describe the issue for me, please? Feel free to express yourself, I can analyze sentiments.",
               "optiontype":"Text"
             },
             {
