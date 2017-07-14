@@ -7,7 +7,6 @@ var express = require('express'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
     userinfohandler = require("./modules/userinfohandler"),
-    sentimenthandler = require("./modules/sentimenthandler"),
     menu = require('./modules/menu'),
     validator = require('validator'),
     phoneregex = require('phone-regex'),
@@ -23,7 +22,8 @@ const privateKey = process.env.EINSTEIN_PRIVATE_KEY;
 let jwtToken;
 
 const oAuthToken   = require('./lib/oauth-token'),
-      updateToken  = require('./lib/update-token');
+      updateToken  = require('./lib/update-token'),
+      sentimenthandler = require("./modules/sentimenthandler");
 
 var isMenuSet = false;
 var userid;
