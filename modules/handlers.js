@@ -294,8 +294,9 @@ exports.catchall = (sender,text) => {
                 accountId,
                 privateKey,
                 jwtToken
-              );
-    messenger.send({text: `Sorry, I don't understand that command. For list of commands please type "help"`}, sender);
+              ).then(prediction =>{
+                messenger.send({text: `Sorry, I don't understand that command. For list of commands please type "help"`}, sender);
+              });
 };
 
 exports.creator = (sender)  =>{
