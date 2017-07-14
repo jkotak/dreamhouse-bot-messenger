@@ -288,7 +288,7 @@ exports.help = (sender) => {
 };
 
 exports.catchall = (sender,text) => {
-            return Episode7.run(
+            /*return Episode7.run(
                 querySentimentApi,
                 pvsUrl,
                 text,
@@ -298,7 +298,16 @@ exports.catchall = (sender,text) => {
                 jwtToken
               ).then(prediction =>{
                 messenger.send({text: `Sorry, I don't understand that command. For list of commands please type "help"`}, sender);
-              });
+              });*/
+    Episode7.run(
+                querySentimentApi,
+                pvsUrl,
+                text,
+                'CommunitySentiment',
+                accountId,
+                privateKey,
+                jwtToken
+              );
 };
 
 exports.creator = (sender)  =>{
