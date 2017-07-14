@@ -78,7 +78,7 @@ app.post('/webhook', (req, res) => {
                             });
                         } else {
                             console.log("Handler " + result.handler + " is not defined. Calling catch all function.");
-                            handlers.catchall(sender);
+                            handlers.catchall(sender,event.message.text);
                         }
                     }else {
                         console.log(typeof event.message.quick_reply);
