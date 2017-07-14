@@ -15,7 +15,7 @@ function* querySentimentApi(
                        privateKey,
                        jwtToken){
   var token = jwtToken || oAuthToken.get();
-
+  console.log('In QUERY');
   var formData = {
     modelId: modelId,
     document : messengerText
