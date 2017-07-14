@@ -5,8 +5,9 @@ let salesforce = require('./salesforce'),
     formatter = require('./formatter'),
     loanapplicationhandler = require('./loanapplicationhandler'),
     userinfohandler = require('./userinfohandler'),
-    sentimenthandler = require('./sentimenthandler'), 
-    casehandler = require('./casehandler');
+    queryVisionApi = require('./sentimenthandler'), 
+    casehandler = require('./casehandler'),
+    Episode7 = require('episode-7');
 
 const pvsUrl = process.env.EINSTEIN_URL;
 const accountId  = process.env.EINSTEIN_USERNAME;
@@ -287,7 +288,8 @@ exports.help = (sender) => {
 };
 
 exports.catchall = (sender,text) => {
-    sentimenthandler.querySentimentApi(
+            return Episode7.run(
+                querySentimentApi,
                 pvsUrl,
                 text,
                 'CommunitySentiment',
