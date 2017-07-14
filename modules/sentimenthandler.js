@@ -62,7 +62,7 @@ function* querySentimentApi(
     setTimeout(()=>{loopPreventor = false},1000);
     return sentimentApiResult;
   } else {
-    console.log('BODY': body)
+    console.log('BODY:'+ body)
     return body;
   }
 }
