@@ -287,8 +287,8 @@ exports.help = (sender) => {
     messenger.send({text: `*This is for demonstration only*. You can ask me questions like "I want a pre-approval","Loan Status", "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes","rates" or "Transfer to agent"`}, sender);
 };
 
-exports.catchall = (sender,text) => {
-    messenger.send({text: `Sorry, I don't understand that command. For list of commands please type "help"`}, sender);     
+exports.catchall = (sender,sentiment) => {
+    messenger.send({text: `That is a ${sentiment} statement but I don't understand that command. For list of commands please type "help"`}, sender);     
 };
 
 exports.creator = (sender)  =>{
