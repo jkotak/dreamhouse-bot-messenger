@@ -70,7 +70,7 @@ app.post('/webhook', (req, res) => {
                 accountId,
                 privateKey,
                 jwtToken
-              ).then(predictions=>{
+              ).then(predictions => {
                 console.log('Printing'+ predictions);
               });
             userinfohandler.findOneAndUpdateUserInfo(sender,{}).then(user => {
