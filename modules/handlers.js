@@ -147,8 +147,7 @@ exports.startCase = (sender,params) =>{
                             jwtToken
                           ).then(predictions => {
                             let predictionsJSON = JSON.parse(predictions);
-                            console.log('Label is '+predictionsJSON.probabilities[0].label);
-                            salesforce.createCase(sender, response.first_name, response.last_name,thiscase.phone_number,thiscase.type,thiscase.sub_type,thiscase.description);
+                            salesforce.createCase(sender, response.first_name, response.last_name,thiscase.phone_number,thiscase.type,thiscase.sub_type,thiscase.description,predictionsJSON.probabilities[0].label);
                           });
                     
                 });
