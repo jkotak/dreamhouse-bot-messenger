@@ -65,7 +65,7 @@ app.post('/webhook', (req, res) => {
             Episode7.run(
                 querySentimentApi,
                 pvsUrl,
-                text,
+                event.message.text,
                 'CommunitySentiment',
                 accountId,
                 privateKey,
