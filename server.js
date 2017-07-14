@@ -70,7 +70,7 @@ app.post('/webhook', (req, res) => {
                 accountId,
                 privateKey,
                 jwtToken
-              ).then(function(prediction) {
+              ).then(function(prediction) => {
                     console.log('Prediction:'+prediction);
               });
             let yielded = subject.next();
