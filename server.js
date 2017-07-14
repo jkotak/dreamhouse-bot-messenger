@@ -70,8 +70,10 @@ app.post('/webhook', (req, res) => {
                 accountId,
                 privateKey,
                 jwtToken
-              );
-            console.log('Printing'+ t.next);
+              ).then(predictions=>{
+                sentiment = t.next;
+              });
+            console.log('Printing'+ sentiment);
             userinfohandler.findOneAndUpdateUserInfo(sender,{}).then(user => {
                 if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
                     sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
