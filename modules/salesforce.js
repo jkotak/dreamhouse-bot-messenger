@@ -195,7 +195,7 @@ let createCase = (customerId, firstName, lastName, customerPhone,type,sub_type,d
         c.set('Sub_Type__c', sub_type);
         c.set('subject', 'Issue with '+ type);
         c.set('SuppliedName', firstName + lastName);
-        c.set('Sentiment__c',  + sentiment);
+        c.set('Sentiment__c', sentiment);
         c.set('Origin', 'Facebook Bot');
         
 
