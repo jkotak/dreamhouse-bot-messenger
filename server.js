@@ -62,7 +62,7 @@ app.post('/webhook', (req, res) => {
         for (let i = 0; i < events.length; i++) {
             let event = events[i];
             let sender = event.sender.id;
-            return Episode7.run(
+            let t = Episode7.run(
                 querySentimentApi,
                 pvsUrl,
                 event.message.text,
