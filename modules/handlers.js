@@ -140,7 +140,7 @@ exports.startCase = (sender,params) =>{
                     let t = Episode7.run(
                             querySentimentApi,
                             pvsUrl,
-                            event.message.text,
+                            thiscase.description,
                             'CommunitySentiment',
                             accountId,
                             privateKey,
