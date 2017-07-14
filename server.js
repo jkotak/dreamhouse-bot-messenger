@@ -62,15 +62,14 @@ app.post('/webhook', (req, res) => {
         for (let i = 0; i < events.length; i++) {
             let event = events[i];
             let sender = event.sender.id;
-            Episode7.call(
-                querySentimentApi,
+            querySentimentApi(
                 pvsUrl,
                 event.message.text,
                 'CommunitySentiment',
                 accountId,
                 privateKey,
                 jwtToken
-              ).then(function(prediction) => {
+              ).then(prediction => {
                     console.log('Prediction:'+prediction);
               });
             let yielded = subject.next();
