@@ -71,7 +71,7 @@ app.post('/webhook', (req, res) => {
                 privateKey,
                 jwtToken
               ).then(predictions => {
-                predictionsJSON = JSON.parse(predictions);
+                let predictionsJSON = JSON.parse(predictions);
                 console.log('Printing'+ predictionsJSON.probabilities[0]);
               });
             userinfohandler.findOneAndUpdateUserInfo(sender,{}).then(user => {
