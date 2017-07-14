@@ -61,19 +61,6 @@ app.post('/webhook', (req, res) => {
         for (let i = 0; i < events.length; i++) {
             let event = events[i];
             let sender = event.sender.id;
-            var sentiment;
-            let t = Episode7.run(
-                querySentimentApi,
-                pvsUrl,
-                event.message.text,
-                'CommunitySentiment',
-                accountId,
-                privateKey,
-                jwtToken
-              ).then(predictions => {
-                let predictionsJSON = JSON.parse(predictions);
-                console.log('Printing'+ predictionsJSON.probabilities[0].label);
-              });
             userinfohandler.findOneAndUpdateUserInfo(sender,{}).then(user => {
                 if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
                     sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
@@ -122,7 +109,19 @@ app.post('/webhook', (req, res) => {
                             handler(sender, [event.message.text]);
                         }else{
                             console.log("Command" + event.message.text +" is not defined. Calling catch all function. Event.Message" + event.message);
-                            handlers.catchall(sender); 
+                            let t = Episode7.run(
+                            querySentimentApi,
+                            pvsUrl,
+                            event.message.text,
+                            'CommunitySentiment',
+                            accountId,
+                            privateKey,
+                            jwtToken
+                          ).then(predictions => {
+                            let predictionsJSON = JSON.parse(predictions);
+                            handlers.catchall(sender,predictionsJSON.probabilities[0].label); 
+                          });
+                            
                         }
                     }
                 }else if(event.account_linking){
