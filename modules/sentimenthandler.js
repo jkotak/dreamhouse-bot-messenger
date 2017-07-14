@@ -66,7 +66,6 @@ function* querySentimentApi(
     return body;
   }
 }
-
-module.exports = querySentimentApi;
  
         
+exports.querySentimentApi = querySentimentApi;
