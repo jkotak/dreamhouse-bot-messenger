@@ -68,4 +68,4 @@ function* querySentimentApi(
 }
  
         
-exports.querySentimentApi = querySentimentApi;
+module.exports = queryVisionApi;
