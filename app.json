@@ -1,5 +1,5 @@
 {
-  "name": "Cumulous Loan Mortgage Bot for Messenger",
+  "name": "Cumulus Mortgage Bot",
   "description": "Salesforce-powered Bot for Messenger in the Cumulus Mortgage sample app",
   "env": {
     "FB_PAGE_TOKEN": {
