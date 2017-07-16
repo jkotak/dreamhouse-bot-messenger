@@ -176,7 +176,7 @@ exports.formatLoanAccountLinking = () =>{
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text":"Happy to, but before I can provide you with the status, could you click below to authenticate yourself?",
+                "text":"Happy to, but before I can provide you with the status, could you click below to authenticate yourself? Since this is a demo, use username 'borrower@mmaster.demo' and password 'salesforce4'",
                 "buttons": [
                     {  
                     "type":"account_link",
