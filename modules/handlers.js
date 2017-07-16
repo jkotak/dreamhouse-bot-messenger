@@ -151,7 +151,11 @@ exports.startCase = (sender,params) =>{
                             jwtToken
                           ).then(predictions => {
                             let predictionsJSON = JSON.parse(predictions);
-                            salesforce.createCase(sender, response.first_name, response.last_name,thiscase.phone_number,thiscase.type,thiscase.sub_type,thiscase.description,predictionsJSON.probabilities[0].label);
+                            salesforce.createCase(sender, response.first_name, response.last_name,thiscase.phone_number,thiscase.type,thiscase.sub_type,thiscase.description,predictionsJSON.probabilities[0].label)((salesforcecase)=>{
+                                if(thiscase.attachment_url!=null && thiscase.attachment_url!=''){
+                                    salesforce.updateCaseAttachment(salesforcecase.id,thiscase.attachment_url,thiscase.attachment_type);
+                                }
+                            });
                           });
                     
                 });
