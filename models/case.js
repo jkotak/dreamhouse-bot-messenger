@@ -14,6 +14,8 @@ var CaseSchema = new Schema({
   phone_number: {type: String},
   status: {type: String},
   number: {type: Number},
+  attachment_type:{type: String},
+  attachment_url:{type: String},
   current_stage: {type: Number}
 });
 
