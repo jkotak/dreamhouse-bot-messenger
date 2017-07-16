@@ -44,6 +44,10 @@ exports.contact_me = (sender, values) => {
     });
 };
 
+exports.houses_near_me = (sender, values) => {
+    messenger.send(formatter.requestLocation(), sender);
+};
+
 exports.next_payment = (sender, values) => {
     messenger.getUserInfo(sender).then(response => {
         messenger.send({text: `Sorry, ${response.first_name}! My creator hasn't gotten to this yet. Please be patient and type "help" for list of commands for other options.`}, sender);
