@@ -28,9 +28,9 @@ let match = text => {
         if (match) {
             var handler = utterances[i].handler;
             return {handler, match};
-        } else {
+        } /*else {
             console.log('no match');
-        }
+        }*/
     }
 };
 
