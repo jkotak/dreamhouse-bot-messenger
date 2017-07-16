@@ -6,11 +6,6 @@ const disableInput = false;
 exports.createMenu = () => {
   messenger.setMenu([
   {
-    title: 'Find houses near me',
-    type: 'postback',
-    payload: 'houses_near_me'
-  },
-  {
     title: 'My Account',
     type: 'nested',
     call_to_actions: [
@@ -51,7 +46,12 @@ exports.createMenu = () => {
         payload: 'show_rates,FHA Mortgages'
       }
     ]
-  }, 
+  },
+  {
+    title: 'Find houses near me',
+    type: 'postback',
+    payload: 'houses_near_me'
+  },
   {
     title: 'Provide Feedback',
     type: 'web_url',
