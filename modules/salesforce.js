@@ -211,6 +211,39 @@ let createCase = (customerId, firstName, lastName, customerPhone,type,sub_type,d
 
 };
 
+let updateCaseAttachment = (salesforce_case_id,fileURL, fileName, fileType) => {
+    var requestSettings = {
+        method: 'GET',
+        url: fileURL,
+        encoding: null
+    };
+    request.get(requestSettings, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            return new Promise((resolve, reject) => {
+                console.log('creating image');
+               var c = nforce.createSObject('Attachment', {
+                    Name: 'CaseAttachment.jpg',
+                    Description: 'This is a case document',
+                    ParentId: salesforce_case_id,
+                    attachment: {
+                      fileName: 'CaseAttachment.jpg',
+                      ContentType:response.headers["content-type"] ,
+                      body: body
+                    }
+                });
+                org.insert({sobject: c}, err => {
+                    if (err) {
+                        console.error(err);
+                        reject("An error occurred while creating a lead");
+                    } else {
+                        resolve(c);
+                    }
+                });
+            });
+        }
+    });
+};
+
 let createLead = (propertyId, customerFirstName, customerLastName, customerId) => {
 
     return new Promise((resolve, reject) => {
