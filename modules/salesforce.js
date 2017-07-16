@@ -185,7 +185,6 @@ let findRate = (params) => {
     
 
 let createCase = (customerId, firstName, lastName, customerPhone,type,sub_type,description,sentiment) => {
-    console.log('Sentiment is '+ sentiment);
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Case');
         c.set('description', description);
