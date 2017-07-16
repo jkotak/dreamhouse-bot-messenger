@@ -106,7 +106,7 @@ exports.authenticated =(sender,userid)=>{
         var update = {
           'salesforce_id':userid,
           'first_name':response.first_name,
-          'last':response.last_name
+          'last_name':response.last_name
         };
         userinfohandler.updateUserInfo(sender,update);
         salesforce.getLoanStatus(userid).then(loans => {
