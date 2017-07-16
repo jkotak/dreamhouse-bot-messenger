@@ -48,14 +48,20 @@ exports.createMenu = () => {
     ]
   },
   {
-    title: 'Find houses near me',
-    type: 'postback',
-    payload: 'houses_near_me'
-  },
-  {
-    title: 'Provide Feedback',
-    type: 'web_url',
-    url: 'http://bit.ly/2qOPctw'
+    title: 'Other',
+    type: 'nested',
+    call_to_actions: [
+      {
+        title: 'Find houses near me',
+        type: 'postback',
+        payload: 'houses_near_me'
+      },
+      {
+        title: 'Provide Feedback',
+        type: 'web_url',
+        url: 'http://bit.ly/2qOPctw'
+      }
+    ]
   }
 ], disableInput);
 }
