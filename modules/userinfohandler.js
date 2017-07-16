@@ -66,4 +66,18 @@ exports.findOneAndUpdateUserInfo = (userid,update) => {
     });
 };
 
+exports.findUserHistory = (userid) => {
+    var filter = {user_id: userid};
+    return new Promise((resolve, reject) => {
+        UserInfo.findOne(filter,(err,user) =>{
+            if (err) {
+                 reject("An error as occurred");
+            } else {
+                console.log(user.user_id);
+                resolve(user);
+            }
+        });
+    });
+};
+
 
