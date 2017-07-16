@@ -4,6 +4,7 @@ let messenger = require('./messenger'),
     formatter = require('./formatter'),
     salesforce = require('./salesforce'),
     loanapplicationhandler = require('./loanapplicationhandler'),
+    casehandler = require('./casehandler'),
     visionService = require('./vision-service-mock');
 
 var apps = ["startcase","startapplication"];
