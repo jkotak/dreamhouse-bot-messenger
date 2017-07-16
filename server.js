@@ -66,7 +66,6 @@ app.post('/webhook', (req, res) => {
                             ((user.last_keyword ===null || typeof user.last_keyword === 'undefined') ||  
                              ((user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && apps.indexOf(user.last_keyword.toLowerCase())) ===-1 || result.handler==='help' ))) {
                         let handler = handlers[result.handler];
-                        console.log('handler:'+ result.handler);
                         if (handler && typeof handler === "function") {
                             userinfohandler.getSetUserHistory(sender,result.handler).then(updateduser => {
                                 handler(sender, result.match);
@@ -76,11 +75,9 @@ app.post('/webhook', (req, res) => {
                             handlers.catchall(sender,event.message.text);
                         }
                     }else {
-                        console.log(typeof event.message.quick_reply);
                         if(user.last_keyword !== null &&  typeof user.last_keyword !== 'undefined' && user.last_keyword==='startApplication'){
                             if (event.message.quick_reply !== null && typeof event.message.quick_reply === 'object'){
                                 var payload = event.message.quick_reply.payload; 
-                                console.log('Quick Reply'+ payload);
                                 var params = payload.split(",");
                                 let handler = handlers[params[0]];
                                 if (handler && typeof handler === "function") {
