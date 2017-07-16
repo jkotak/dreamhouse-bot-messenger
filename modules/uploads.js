@@ -6,7 +6,7 @@ let messenger = require('./messenger'),
     loanapplicationhandler = require('./loanapplicationhandler'),
     visionService = require('./vision-service-mock');
 
-var apps = ["startcase","startApplication"];
+var apps = ["startcase","startapplication"];
 
 
 exports.processUpload = (sender, attachments,lastKeyword) => {
