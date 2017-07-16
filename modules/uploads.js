@@ -34,7 +34,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
                 }else if(lastKeyword==="startCase"){
                     casehandler.findCase(sender).then(thiscase => {
                         console.log('This case'+ thiscase.current_stage);
-                        if (thiscase && "8"===thiscase.current_stage) {
+                        if (thiscase && 8===thiscase.current_stage) {
                             console.log('Formatting');
                             messenger.send(formatter.formatQuestions('Should I go ahead and submit this attachment?','createCase',['Yes','No']),sender);
                         }
