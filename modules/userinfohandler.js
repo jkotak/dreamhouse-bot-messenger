@@ -66,7 +66,7 @@ exports.findOneAndUpdateUserInfo = (userid,update) => {
     });
 };
 
-exports.findUserHistory = (userid,projections) => {
+exports.findUserHistoryWithProjections = (userid,projections) => {
     var filter = {user_id: userid};
     return new Promise((resolve, reject) => {
         UserInfo.findOne(filter,projections,(err,user) =>{
