@@ -52,7 +52,7 @@ exports.createMenu = () => {
     type: 'nested',
     call_to_actions: [
       {
-        title: 'Find houses near me',
+        title: 'Find Houses Near Me',
         type: 'postback',
         payload: 'houses_near_me'
       },
