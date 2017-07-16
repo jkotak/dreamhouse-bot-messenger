@@ -69,6 +69,7 @@ exports.contact_support = (sender, values) => {
 
 exports.loan_status = (sender,values) =>{
     userinfohandler.findUserHistory(sender,{salesforce_id: 1}).then(user => { 
+        console.log('User' + user.id + user.salesforce_id);
         if(user.salesforce_id!=null){
             salesforce.getLoanStatus(userid).then(loans => {
                 messenger.send(formatter.formatLoans(loans), sender);
