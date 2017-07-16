@@ -48,6 +48,11 @@ exports.createMenu = () => {
     ]
   },
   {
+    title: 'Find houses near me',
+    type: 'postback',
+    payload: 'houses_near_me'
+  },
+  {
     title: 'Provide Feedback',
     type: 'web_url',
     url: 'http://bit.ly/2qOPctw'
