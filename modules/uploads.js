@@ -27,6 +27,12 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
                              messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
                         }
                     });
+                }else if(lastKeyword==="startcase"){
+                    casehandler.findCase(sender).then(thiscase => {
+                        if (thiscase && "8"===thiscase.current_stage) {
+                            messenger.send(formatter.formatQuestions('Should I go ahead and submit this attachment?','createCase',['Yes','No'],),sender);
+                        }
+                    }
                 }
             }else{
                 messenger.send({text: 'OK, let me look at that picture...'}, sender);
