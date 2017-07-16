@@ -211,7 +211,7 @@ let createCase = (customerId, firstName, lastName, customerPhone,type,sub_type,d
 
 };
 
-let updateCaseAttachment = (salesforce_case_id,fileURL, fileName, fileType) => {
+let updateCaseAttachment = (salesforce_case_id,fileURL, fileType) => {
     var requestSettings = {
         method: 'GET',
         url: fileURL,
