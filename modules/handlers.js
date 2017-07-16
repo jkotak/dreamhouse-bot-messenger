@@ -14,8 +14,6 @@ const accountId  = process.env.EINSTEIN_USERNAME;
 const privateKey = process.env.EINSTEIN_PRIVATE_KEY;
 const jwtToken = process.env.EINSTEIN_JWT_TOKEN;
 
-let userid = null;
-
 exports.searchHouse = (sender) => {
     messenger.send(formatter.requestLocation(), sender);
 };
@@ -105,6 +103,10 @@ exports.authenticated =(sender,userid)=>{
     messenger.getUserInfo(sender).then(response => {
         messenger.send({text: `${response.first_name}, you are now authenticated. Let me check on that loan status for you...`}, sender);
         messenger.setTyping ('typing_on', sender);
+        var update = {
+          'salesforce_id':userid
+        };
+        userinfohandler.updateUserInfo(sender,update);
         salesforce.getLoanStatus(userid).then(loans => {
             messenger.send(formatter.formatLoans(loans), sender);
         });
