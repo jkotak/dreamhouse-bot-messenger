@@ -104,7 +104,9 @@ exports.authenticated =(sender,userid)=>{
         messenger.send({text: `${response.first_name}, you are now authenticated. Let me check on that loan status for you...`}, sender);
         messenger.setTyping ('typing_on', sender);
         var update = {
-          'salesforce_id':userid
+          'salesforce_id':userid,
+          'first_name':response.first_name,
+          'last':response.last_name
         };
         userinfohandler.updateUserInfo(sender,update);
         salesforce.getLoanStatus(userid).then(loans => {
