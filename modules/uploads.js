@@ -30,7 +30,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
                              messenger.send(loanapplicationhandler.processLoanApplicationConfirmation(), sender);
                         }
                     });
-                }else if(lastKeyword==="startcase"){
+                }else if(lastKeyword==="startCase"){
                     casehandler.findCase(sender).then(thiscase => {
                         console.log('This case'+ thiscase.current_stage);
                         if (thiscase && "8"===thiscase.current_stage) {
