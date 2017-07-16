@@ -296,7 +296,7 @@ exports.ContinueWithoutAgent =(sender)=>{
 }
 
 exports.help = (sender) => {
-    messenger.send({text: `*This is for demonstration only*. You can ask me questions like "I want a pre-approval","I have a question","What is my loan status", "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes",of "what are the rates"`}, sender);
+    messenger.send({text: `*This is for demonstration only*. You can ask me questions like "I want a pre-approval","I have a question","What is my loan status", "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes",or "what are the rates"`}, sender);
 };
 
 exports.catchall = (sender,sentiment) => {
