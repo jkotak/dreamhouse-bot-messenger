@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 var caseQuestions = [
 	    {
 	      "field":"type",
-              "question":"What is this issue regarding?",
+              "question":"What is this regarding?",
               "optiontype":"List",
               "options":['New Loan','Existing Loan','Other']
             },
