@@ -71,7 +71,7 @@ exports.loan_status = (sender,values) =>{
     userinfohandler.findUserHistoryWithProjections(sender,{salesforce_id: 1}).then(user => { 
         console.log('User' + user.id + user.salesforce_id);
         if(user.salesforce_id!=null){
-            salesforce.getLoanStatus(userid).then(loans => {
+            salesforce.getLoanStatus(user.salesforce_id).then(loans => {
                 messenger.send(formatter.formatLoans(loans), sender);
             });
         }else{
