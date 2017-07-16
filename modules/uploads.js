@@ -35,8 +35,13 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
                     casehandler.findCase(sender).then(thiscase => {
                         console.log('This case'+ thiscase.current_stage);
                         if (thiscase && 8===thiscase.current_stage) {
-                            console.log('Formatting');
-                            messenger.send(formatter.formatQuestions('Do you want to upload any more attachments?','createCase',['Yes','No']),sender);
+                            var update = {
+                              'attachment_type': attachment.typ],
+                              'attachment_url':attachment.payload.url
+                            }; 
+                            casehandler.updateCase(sender,update).then(thiscase => { 
+                                messenger.send(formatter.formatQuestions('Do you want to upload any more attachments?','createCase',['Yes','No']),sender);
+                            }); 
                         }
                     });
                 }
