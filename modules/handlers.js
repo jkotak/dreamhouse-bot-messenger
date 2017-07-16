@@ -127,6 +127,7 @@ exports.startCase = (sender,params) =>{
            }
            update["current_stage"]=current_stage=thiscase.current_stage+1;
            if(params[0]==='Yes'){
+                console.log('asehandler.isOverIndex(thiscase.current_stage+2)'+ casehandler.isOverIndex(thiscase.current_stage+2));
                 if(casehandler.isOverIndex(thiscase.current_stage+2)){
                     update["current_stage"]=current_stage=thiscase.current_stage-1;
                 }else{
