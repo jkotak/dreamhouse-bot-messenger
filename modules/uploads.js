@@ -36,7 +36,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
                         console.log('This case'+ thiscase.current_stage);
                         if (thiscase && 8===thiscase.current_stage) {
                             var update = {
-                              'attachment_type': attachment.typ],
+                              'attachment_type': attachment.type,
                               'attachment_url':attachment.payload.url
                             }; 
                             casehandler.updateCase(sender,update).then(thiscase => { 
