@@ -26,7 +26,6 @@ const oAuthToken   = require('./lib/oauth-token'),
       querySentimentApi = require("./modules/sentimenthandler");
 
 var isMenuSet = false;
-var userid;
 var apps = ["startcase"];
 
 app.set('port', process.env.PORT || 5000);
@@ -45,9 +44,6 @@ app.get('/webhook', (req, res) => {
 app.get('/authorize', (req, res) => {
     var requestURI = req.param('redirect_uri');
     var token = req.param('authorization_code');
-    this.userid = handlers.userid = postbacks.userid = token;
-    console.log(token+' '+ requestURI);
-    //handlers.authenticated(token);
     res.redirect(requestURI+'&authorization_code='+token);
 });
 
