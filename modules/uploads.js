@@ -36,7 +36,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
                         console.log('This case'+ thiscase.current_stage);
                         if (thiscase && 8===thiscase.current_stage) {
                             console.log('Formatting');
-                            messenger.send(formatter.formatQuestions('Should I go ahead and submit this attachment?','createCase',['Yes','No']),sender);
+                            messenger.send(formatter.formatQuestions('Do you want to upload any more attachments?','createCase',['Yes','No']),sender);
                         }
                     });
                 }
