@@ -14,8 +14,9 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
     if (attachments.length > 0) {
         let attachment = attachments[0];
         if (attachment.type === "image") {
-            console.log('Last Keyword'+lastKeyword);
+            console.log('apps.indexOf(lastKeyword.toLowerCase())'+apps.indexOf(lastKeyword.toLowerCase()));
             if(apps.indexOf(lastKeyword.toLowerCase()) > -1){
+                
                 if(lastKeyword==="startApplication"){
                     loanapplicationhandler.findLoanApp(sender).then(loanApp => {
                         if (loanApp && "process_docs"===loanApp.current_state) {
