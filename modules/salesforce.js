@@ -342,3 +342,4 @@ exports.createLeadApp = createLeadApp;
 exports.createCase = createCase;
 exports.getLoanStatus = getLoanStatus;
 exports.createLoanApp = createLoanApp;
+exports.updateCaseAttachment = updateCaseAttachment;
