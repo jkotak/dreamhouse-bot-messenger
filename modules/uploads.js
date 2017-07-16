@@ -30,7 +30,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
                 }else if(lastKeyword==="startcase"){
                     casehandler.findCase(sender).then(thiscase => {
                         if (thiscase && "8"===thiscase.current_stage) {
-                            messenger.send(formatter.formatQuestions('Should I go ahead and submit this attachment?','createCase',['Yes','No'],),sender);
+                            messenger.send(formatter.formatQuestions('Should I go ahead and submit this attachment?','createCase',['Yes','No']),sender);
                         }
                     }
                 }
