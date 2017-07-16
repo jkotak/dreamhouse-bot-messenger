@@ -41,7 +41,6 @@ exports.setTyping = (action, recipient) => {
 };
 
 exports.setMenu = (buttons, disableInput) => {
-    console.log(util.inspect(buttons));
     request({
         url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
         qs: { access_token: FB_PAGE_TOKEN },
@@ -52,7 +51,6 @@ exports.setMenu = (buttons, disableInput) => {
             }
         }
     }, function(error, response, body) {
-        console.log(response)
         if (error) {
             console.log('Error sending messages: ', error)
         } else if (response.body.error) {
