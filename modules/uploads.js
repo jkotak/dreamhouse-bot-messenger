@@ -14,6 +14,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
     if (attachments.length > 0) {
         let attachment = attachments[0];
         if (attachment.type === "image") {
+            console.log('Last Keyword'+lastKeyword);
             if(apps.indexOf(lastKeyword.toLowerCase()) > -1){
                 if(lastKeyword==="startApplication"){
                     loanapplicationhandler.findLoanApp(sender).then(loanApp => {
@@ -29,6 +30,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
                     });
                 }else if(lastKeyword==="startcase"){
                     casehandler.findCase(sender).then(thiscase => {
+                        console.log('This case'+ thiscase.current_stage);
                         if (thiscase && "8"===thiscase.current_stage) {
                             messenger.send(formatter.formatQuestions('Should I go ahead and submit this attachment?','createCase',['Yes','No']),sender);
                         }
