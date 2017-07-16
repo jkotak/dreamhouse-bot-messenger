@@ -7,7 +7,6 @@ let salesforce = require('./salesforce'),
     userinfohandler = require('./userinfohandler'),
     casehandler = require('./casehandler');
 
-let userid = null;
 
 exports.schedule_visit = (sender, values) => {
     console.log("Values " + values);
@@ -36,7 +35,6 @@ exports.show_rates = (sender,values) => {
 };
 
 exports.contact_me = (sender, values) => {
-
     let propertyId = values[1];
     messenger.send({text: `Thanks for your interest. I asked the loan officer to contact you asap. Before you leave, could you please provide feedback to my creator at http://bit.ly/2qOPctw ?`}, sender);
     messenger.getUserInfo(sender).then(response => {
@@ -48,10 +46,9 @@ exports.houses_near_me = (sender, values) => {
     messenger.send(formatter.requestLocation(), sender);
 };
 
-exports.next_payment = (sender, values) => {
-    messenger.getUserInfo(sender).then(response => {
-        messenger.send({text: `Sorry, ${response.first_name}! My creator hasn't gotten to this yet. Please be patient and type "help" for list of commands for other options.`}, sender);
-    });
+
+exports.next_payment = (sender,values) =>{
+    messenger.send(formatter.formatLoanAccountLinking(), sender);
 };
 
 
@@ -71,14 +68,17 @@ exports.contact_support = (sender, values) => {
 
 
 exports.loan_status = (sender,values) =>{
-    if(this.userid!=null){
-        salesforce.getLoanStatus(userid).then(loans => {
-            messenger.send(formatter.formatLoans(loans), sender);
-        });
-    }else{
-        messenger.send(formatter.formatLoanAccountLinking(), sender);
-    }
+    userinfohandler.findUserHistory(sender,{salesforce_id: 1}).then(user => { 
+        if(user.salesforce_id!=null){
+            salesforce.getLoanStatus(userid).then(loans => {
+                messenger.send(formatter.formatLoans(loans), sender);
+            });
+        }else{
+            messenger.send(formatter.formatLoanAccountLinking(), sender);
+        }
+    });
 };
+
 
 exports.occupancy_type = (sender,values) => {
     messenger.send(loanapplicationhandler.createSecondQuestion(), sender);
