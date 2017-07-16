@@ -29,8 +29,10 @@ hi hi
 hi hello
 help help
 startCase complaint
+startCase complain
 startCase issue
 startCase question
+startCase ticket
 startApplication want mortgage
 startApplication mortgage application
 startApplication apply for loan
