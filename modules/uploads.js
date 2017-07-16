@@ -15,6 +15,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
         let attachment = attachments[0];
         if (attachment.type === "image") {
             console.log('apps.indexOf(lastKeyword.toLowerCase())'+apps.indexOf(lastKeyword.toLowerCase()));
+            console.log('Last Keyword'+ lastKeyword);
             if(apps.indexOf(lastKeyword.toLowerCase()) > -1){
                 
                 if(lastKeyword==="startApplication"){
