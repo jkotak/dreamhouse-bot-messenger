@@ -156,7 +156,6 @@ exports.startCase = (sender,params) =>{
                             let predictionsJSON = JSON.parse(predictions);
                             salesforce.createCase(sender, response.first_name, response.last_name,thiscase.phone_number,thiscase.type,thiscase.sub_type,thiscase.description,predictionsJSON.probabilities[0].label).then((salesforcecase)=>{
                                 if(thiscase.attachment_url!=null && thiscase.attachment_url!=''){
-                                    console.log('Case ID is :'+ salesforcecase + ' '+ salesforcecase.id);
                                     salesforce.updateCaseAttachment(salesforcecase.id,thiscase.attachment_url,thiscase.attachment_type);
                                 }
                             });
