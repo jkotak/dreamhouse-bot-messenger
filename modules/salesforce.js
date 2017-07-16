@@ -198,15 +198,9 @@ let createCase = (customerId, firstName, lastName, customerPhone,type,sub_type,d
         c.set('Sentiment__c', sentiment);
         c.set('Origin', 'Facebook Bot');
         
-
-        org.insert({sobject: c}, err => {
-            if (err) {
-                console.error(err);
-                reject("An error occurred while creating a case");
-            } else {
-                resolve(c);
-            }
-        });
+        org.insert({sobject: c}).then(function (data) {
+            resolve(data)
+         });
     });
 
 };
