@@ -180,8 +180,7 @@ exports.isError=(i)=>{
 	return false;
 }
 exports.isOverIndex=(i)=>{
-	console.log(caseQuestions.length);
-	return i>caseQuestions.length?true:false;
+	return i>caseQuestions.length-1?true:false;
 }
 
 
