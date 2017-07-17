@@ -11,7 +11,6 @@ var CaseSchema = new Schema({
   sub_type: {type: String},
   email_address: {type: String},
   phone_number: {type: String},
-  phone_number: {type: String},
   status: {type: String},
   number: {type: Number},
   attachment_type:{type: String},
