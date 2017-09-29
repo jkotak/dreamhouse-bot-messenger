@@ -25,7 +25,6 @@ loanStatus status of my loan
 wakeup wakeup bot
 thankYou thanks
 thankYou thank 
-hi hi
 hi hello
 help help
 startCase complaint
