@@ -113,6 +113,30 @@ let getLoanStatus = (userid) => {
 
 };
 
+let getPaymentStatus = (userid) => {
+    return new Promise((resolve, reject) => {
+        let q = `Select 
+                    Amount__c,
+                    Due_Date__c,
+                    Payment_Recieved__c,
+                    Due_Date__c,
+                    owner.name
+                  From Payment_History__c 
+                  Where Contact__c in (select Contactid from user where id = '${userid}')`;
+        console.log(q);
+        org.query({query: q}, (err, resp) => {
+            if (err) {
+                console.error(err);
+                reject("An error as occurred");
+            } else {
+                console.log(resp.records);
+                resolve(resp.records);
+            }
+        });
+    });
+
+};
+
 let findPriceChanges = () => {
     return new Promise((resolve, reject) => {
         let q = `SELECT
