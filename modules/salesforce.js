@@ -122,7 +122,7 @@ let getPaymentStatus = (userid) => {
                     Due_Date__c,
                     owner.name
                   From Payment_History__c 
-                  Where Contact__c in (select Contactid from user where id = '${userid}' Limit 1)`;
+                  Where Contact__c in (select Contactid from user where id = '${userid}') Limit 1`;
         console.log(q);
         org.query({query: q}, (err, resp) => {
             if (err) {
