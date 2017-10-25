@@ -119,7 +119,6 @@ let getPaymentStatus = (userid) => {
                     Amount__c,
                     Due_Date__c,
                     Payment_Recieved__c,
-                    Due_Date__c,
                     owner.name
                   From Payment_History__c 
                   Where Contact__c in (select Contactid from user where id = '${userid}') Limit 1`;
