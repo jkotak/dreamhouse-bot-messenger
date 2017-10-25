@@ -109,8 +109,8 @@ exports.authenticated =(sender,userid)=>{
           'last_name':response.last_name
         };
         userinfohandler.updateUserInfo(sender,update);
-        salesforce.getPaymentStatus(userid).then(loans => {
-            messenger.send(formatter.formatPayments(loans), sender);
+        salesforce.getLoanStatus(userid).then(loans => {
+            messenger.send(formatter.formatLoans(loans), sender);
         });
     });
 }
