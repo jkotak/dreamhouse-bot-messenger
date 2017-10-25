@@ -122,7 +122,7 @@ let getPaymentStatus = (userid) => {
                     Due_Date__c,
                     owner.name
                   From Payment_History__c 
-                  Where Contact__c in (select Contactid from user where id = '${userid}')`;
+                  Where Contact__c in (select Contactid from user where id = '${userid}' Limit 1)`;
         console.log(q);
         org.query({query: q}, (err, resp) => {
             if (err) {
@@ -320,11 +320,11 @@ let createLoanApp = (fileURL, fileName, fileType,salesforce_lead_id) => {
             return new Promise((resolve, reject) => {
                 console.log('creating image');
                var c = nforce.createSObject('Attachment', {
-                    Name: 'TestDocument.jpg',
+                    Name: 'facebookdocument.jpg',
                     Description: 'This is a test document',
                     ParentId: salesforce_lead_id,
                     attachment: {
-                      fileName: 'TestDocument.jpg',
+                      fileName: 'facebookdocument.jpg',
                       ContentType:response.headers["content-type"] ,
                       body: body
                     }
@@ -358,5 +358,6 @@ exports.createLead = createLead;
 exports.createLeadApp = createLeadApp;
 exports.createCase = createCase;
 exports.getLoanStatus = getLoanStatus;
+exports.getPaymentStatus = getPaymentStatus;
 exports.createLoanApp = createLoanApp;
 exports.updateCaseAttachment = updateCaseAttachment;
