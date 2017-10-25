@@ -105,6 +105,51 @@ exports.formatLoans = loans => {
     }
 };
 
+exports.formatPayments = payments => {
+    let elements = [];
+    if(loans.length==0){
+        return {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": "Sorry, I couldn't find any payments. Do you want to contact customer support?",
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Contact Loan Officer",
+                            "payload": "contact_me"
+                        }]
+                }
+            }
+        };
+    }else{
+        payments.forEach(payment => {
+                elements.push({
+                    title: 'Invoice Date:'+payment.get("Due_Date__c"),
+                    subtitle: `Payment Amount: ${payment.get("Amount__c")} · Payment Status: ${payment.get("Payment_Recieved__c")}`,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Contact Support",
+                            "payload": "schedule_visit"
+                        }
+                    ]
+                })
+            }
+        );
+        return {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": elements
+                }
+            }
+        };
+    }
+};
+
 exports.requestLocation = location => {
     return {
         "text":"Please share your location:",
