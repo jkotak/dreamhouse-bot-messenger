@@ -268,7 +268,7 @@ let createLead = (propertyId, customerFirstName, customerLastName, customerId) =
         c.set('description', "Facebook id: " + customerId);
         c.set('LeadSource', 'Facebook Bot');
         c.set('status', 'New');
-        c.set('Property__c', propertyId);
+        c.set('Properties__c', propertyId);
 
         org.insert({sobject: c}, err => {
             if (err) {
