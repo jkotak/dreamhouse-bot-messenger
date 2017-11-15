@@ -385,7 +385,7 @@ exports.contactLoanOfficer = () => {
                 "type": "template",
                 "payload": {
                     "template_type": "button",
-                    "text": "Unfortunately, due of compliance, I am unable to provide ansnwer to that. Do you want me to ask a loan officer to contact you?",
+                    "text": "Unfortunately, due to compliance, I am unable to provide ansnwer to that. Do you want me to ask a loan officer to contact you?",
                     "buttons": [
                         {
                             "type": "postback",
