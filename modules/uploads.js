@@ -14,7 +14,7 @@ exports.processUpload = (sender, attachments,lastKeyword) => {
     
     if (attachments.length > 0) {
         let attachment = attachments[0];
-        console.log('This case'+ attachment);
+        console.log('This case'+ attachment.payload.coordinates);
         if (attachment.type === "image") {
             console.log('apps.indexOf(lastKeyword.toLowerCase())'+apps.indexOf(lastKeyword.toLowerCase()));
             console.log('Last Keyword'+ lastKeyword);
