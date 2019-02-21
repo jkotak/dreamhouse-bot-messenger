@@ -129,6 +129,7 @@ app.post('/webhook', (req, res) => {
                         console.log("Postback " + postback + " is not defined");
                     }
                 } else if (event.message && event.message.attachments) {
+                    console.log("Checking Attachment.");
                     uploads.processUpload(sender, event.message.attachments,user.last_keyword);
                 } 
             });//end find user
